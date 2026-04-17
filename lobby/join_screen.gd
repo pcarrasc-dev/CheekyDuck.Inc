@@ -18,9 +18,9 @@ func _ready() -> void:
 	player_name.text = OS.get_environment("USERNAME") + (str(randi() % 1000) if OS.has_feature("editor")
  else "")
 	join_button.pressed.connect(_join)
-	error_timer.timeout.connect(func(): error_label.hide())
+	error_timer.timeout.connect(func() -> void: error_label.hide())
 	error_label.hide()
-	back_button.pressed.connect(func(): Lobby.go_to_menu())
+	back_button.pressed.connect(func() -> void: Lobby.go_to_menu())
 	multiplayer.connected_to_server.connect(_handle_connected_to_server)
 	multiplayer.connection_failed.connect(_handle_connection_failed)
 	
@@ -31,8 +31,8 @@ func _ready() -> void:
 	cancel_button.pressed.connect(_handle_cancel_pressed)
 
 func _join() -> void:
-	var peer = ENetMultiplayerPeer.new()
-	var err = peer.create_client(ip.text if ip.text else "localhost", Statics.PORT)
+	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	var err: Error = peer.create_client(ip.text if ip.text else "localhost", Statics.PORT)
 	if err != OK:
 		error_label.show()
 		error_timer.stop()

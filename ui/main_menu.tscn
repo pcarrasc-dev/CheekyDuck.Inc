@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://buxla4a3c3k2"]
+[gd_scene format=3 uid="uid://buxla4a3c3k2"]
 
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="1_3qnx1"]
 [ext_resource type="Script" uid="uid://cnbk17iq1x68f" path="res://ui/main_menu.gd" id="2_p6ygj"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_xllby"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=90432305]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_vertical = 2
 theme = ExtResource("1_3qnx1")
 script = ExtResource("2_p6ygj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=953531144]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,32 +28,32 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=929965828]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Host" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="Host" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=923655091]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Host"
 
-[node name="Join" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="Join" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=771461010]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
 
-[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=1427127326]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=1446357876]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=95552055]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,12 +67,12 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=389958185]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 texture = ExtResource("2_xllby")
 
-[node name="MarginContainer3" type="MarginContainer" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=658664263]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,7 +86,7 @@ offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer3"]
+[node name="Label" type="Label" parent="MarginContainer3" unique_id=1435848050]
 layout_mode = 2
 theme_type_variation = &"Title"
 text = "Multiplayer Example"

@@ -14,14 +14,14 @@ func _ready() -> void:
 	player_name.caret_column = player_name.text.length()
 	player_name.grab_focus()
 	host_button.pressed.connect(_host)
-	error_timer.timeout.connect(func(): error_label.hide())
+	error_timer.timeout.connect(func() -> void: error_label.hide())
 	error_label.hide()
-	back_button.pressed.connect(func(): Lobby.go_to_menu())
+	back_button.pressed.connect(func() -> void: Lobby.go_to_menu())
 
 
 func _host() -> void:
-	var peer = ENetMultiplayerPeer.new()
-	var err = peer.create_server(Statics.PORT, Statics.MAX_CLIENTS)
+	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	var err: Error = peer.create_server(Statics.PORT, Statics.MAX_CLIENTS)
 	if err != OK:
 		error_label.show()
 		error_timer.stop()

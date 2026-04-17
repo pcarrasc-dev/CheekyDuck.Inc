@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bqpjkukohh2sn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x8fbi"]
+
+[node name="Ball" type="Node3D" unique_id=2005105486]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1283054121]
+mesh = SubResource("SphereMesh_cbx31")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D" unique_id=679022217]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D" unique_id=9153378]
+shape = SubResource("SphereShape3D_x8fbi")

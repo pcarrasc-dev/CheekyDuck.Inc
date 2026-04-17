@@ -16,17 +16,17 @@ extends Control
 
 
 
-var LOBBY_PLAYER_SCENE = preload("res://lobby/lobby_player.tscn")
+var LOBBY_PLAYER_SCENE: PackedScene = preload("res://lobby/lobby_player.tscn")
 
 
 func _ready() -> void:
 	player_name.text = Game.get_current_player().name
 	ready_button.pressed.connect(_toggle_ready)
 	Game.players_updated.connect(_handle_players_updated)
-	Game.player_updated.connect(func(id): _update_ready_button())
-	Game.vote_updated.connect(func(id): _handle_vote_updated())
+	Game.player_updated.connect(func(_id: int) -> void: _update_ready_button())
+	Game.vote_updated.connect(func(_id: int) -> void: _handle_vote_updated())
 	if multiplayer.is_server():
-		start_timer.timeout.connect(func(): _start_game.rpc())
+		start_timer.timeout.connect(func() -> void: _start_game.rpc())
 	_handle_players_updated()
 	role_button.visible = Game.use_roles
 	back_button.pressed.connect(_handle_back_pressed)
@@ -38,13 +38,13 @@ func _ready() -> void:
 	
 	if Game.use_roles:
 		_fill_role_container()
-		var role = Game.get_current_player().role
+		var role: Statics.Role = Game.get_current_player().role
 		role_button.text = Statics.get_role_name(role)
 		if role == Statics.Role.NONE:
 			role_button.text = "Role?"
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	game_start_counter.text = str(int(ceil(start_timer.time_left)))
 
 
@@ -54,18 +54,18 @@ func _toggle_ready() -> void:
 
 
 func _update_player() -> void:
-	var player_ready = Game.get_current_player().vote
+	var player_ready: bool = Game.get_current_player().vote
 	player_texture.modulate = Color.GREEN if player_ready else Color.WHITE
 	role_container.hide()
 
 
 func _handle_players_updated() -> void:
-	for child in player_list.get_children():
+	for child: Node in player_list.get_children():
 		child.queue_free()
 	waiting_label.visible = Game.players.size() == 1
-	for player in Game.players:
+	for player: Statics.PlayerData in Game.players:
 		if player.id != multiplayer.get_unique_id():
-			var lobby_player_inst = LOBBY_PLAYER_SCENE.instantiate()
+			var lobby_player_inst: LobbyPlayer = LOBBY_PLAYER_SCENE.instantiate()
 			lobby_player_inst.set_player(player)
 			player_list.add_child(lobby_player_inst)
 	_update_ready_button()
@@ -86,10 +86,10 @@ func _handle_role_pressed() -> void:
 
 func _fill_role_container() -> void:
 	# Skip Role.NONE
-	for i in Statics.Role.size() - 1:
-		var button = Button.new()
+	for i: int in Statics.Role.size() - 1:
+		var button: Button = Button.new()
 		button.text = Statics.get_role_name(i + 1)
-		button.pressed.connect(func(): _update_role(i + 1))
+		button.pressed.connect(func() -> void: _update_role(i + 1))
 		role_list.add_child(button)
 
 
@@ -102,8 +102,8 @@ func _update_role(role: Statics.Role) -> void:
 func _handle_vote_updated() -> void:
 	_update_player()
 	if multiplayer and multiplayer.is_server():
-		var all_voted = true
-		for player in Game.players:
+		var all_voted: bool = true
+		for player: Statics.PlayerData in Game.players:
 			all_voted = all_voted and player.vote
 		if all_voted and _can_start_game():
 			_start_timer.rpc()
@@ -132,10 +132,10 @@ func _start_game() -> void:
 
 
 func _can_start_game() -> bool:
-	var quantity = Game.players.size() >= Game.min_players
-	var completion = not Game.use_roles or not Game.all_roles or _are_all_roles_selected()
-	var uniqueness = not Game.use_roles or not Game.unique_roles or _are_all_roles_unique()
-	var fullness = not Game.use_roles or _all_players_selected_role()
+	var quantity: bool = Game.players.size() >= Game.min_players
+	var completion: bool = not Game.use_roles or not Game.all_roles or _are_all_roles_selected()
+	var uniqueness: bool = not Game.use_roles or not Game.unique_roles or _are_all_roles_unique()
+	var fullness: bool = not Game.use_roles or _all_players_selected_role()
 	return quantity and completion and uniqueness and fullness
 
 
@@ -144,19 +144,19 @@ func _update_ready_button() -> void:
 
 
 func _are_all_roles_selected() -> bool:
-	var roles = Statics.Role.values()
+	var roles: Array[Statics.Role] = Statics.Role.values()
 	# remove NONE
 	roles.pop_front()
-	for player in Game.players:
+	for player: Statics.PlayerData in Game.players:
 		roles.erase(player.role)
 	return roles.is_empty()
 
 
 func _are_all_roles_unique() -> bool:
-	var roles = Statics.Role.values()
+	var roles: Array[Statics.Role] = Statics.Role.values()
 	# remove NONE
 	roles.pop_front()
-	for player in Game.players:
+	for player: Statics.PlayerData in Game.players:
 		if roles.has(player.role):
 			roles.erase(player.role)
 		else:
@@ -164,7 +164,7 @@ func _are_all_roles_unique() -> bool:
 	return true
 
 func _all_players_selected_role() -> bool:
-	for player in Game.players:
+	for player: Statics.PlayerData in Game.players:
 		if player.role == Statics.Role.NONE:
 			return false
 	return true

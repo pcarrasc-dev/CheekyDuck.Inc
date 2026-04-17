@@ -1,17 +1,17 @@
 extends Node
 
 
-@export var return_to_lobby_on_player_disconnect := true
-@export var debug := false
+@export var return_to_lobby_on_player_disconnect : bool = true
+@export var debug : bool = false
 
-var _skip_server_disconnect_action = false
+var _skip_server_disconnect_action: bool = false
 
 @onready var player_disconnected: MarginContainer = %PlayerDisconnected
 @onready var server_disconnected: MarginContainer = %ServerDisconnected
 @onready var message_container: Panel = %MessageContainer
 
 
-func _ready():
+func _ready() -> void:
 	multiplayer.connected_to_server.connect(_handle_connected_to_server)
 	multiplayer.connection_failed.connect(_handle_connection_failed)
 	multiplayer.peer_connected.connect(_handle_peer_connected)
