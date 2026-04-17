@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://iobnvr8f3tkm"]
+[gd_scene format=3 uid="uid://iobnvr8f3tkm"]
 
 [ext_resource type="Script" uid="uid://eed5mjiac1bg" path="res://lobby/lobby_player.gd" id="1_1jc8v"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_dxmoh"]
 
-[node name="LobbyPlayer" type="HBoxContainer"]
+[node name="LobbyPlayer" type="HBoxContainer" unique_id=1117288705]
 custom_minimum_size = Vector2(200, 0)
 offset_right = 114.0
 offset_bottom = 23.0
 script = ExtResource("1_1jc8v")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="." unique_id=1579868219]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Player"
 
-[node name="RoleLabel" type="Label" parent="."]
+[node name="RoleLabel" type="Label" parent="." unique_id=400049722]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Role"
 
-[node name="ReadyIcon" type="TextureRect" parent="."]
+[node name="ReadyIcon" type="TextureRect" parent="." unique_id=1640184208]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

@@ -25,6 +25,13 @@ Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
 Lobby="*res://autoloads/lobby.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+
 [display]
 
 window/size/viewport_width=1280
@@ -41,4 +48,4 @@ test={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.278431, 0.54902, 0.74902, 1)
+environment/defaults/default_clear_color=Color(0.1287, 0.24612503, 0.33, 1)

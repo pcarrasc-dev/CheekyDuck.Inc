@@ -1,11 +1,11 @@
 extends Node
 
 
-@onready var canvas_layer  = CanvasLayer.new()
-@onready var container = VBoxContainer.new()
+@onready var canvas_layer: CanvasLayer  = CanvasLayer.new()
+@onready var container: VBoxContainer = VBoxContainer.new()
 
-var index = 0
-var window_title = ""
+var index: int = 0
+var window_title: String = ""
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func log(message: Variant, seconds: float = 2) -> void:
 	if not OS.is_debug_build():
 		return
 	if is_online():
-		var prefix = _get_prefix()
+		var prefix: String = _get_prefix()
 		print_rich("[b]%s:[/b] " % prefix, message)
 		add_message.rpc("%s: %s" % [prefix, str(message)], seconds)
 	else:
@@ -32,7 +32,7 @@ func log(message: Variant, seconds: float = 2) -> void:
 
 @rpc("any_peer", "reliable", "call_local")
 func add_message(message: String, seconds: float) -> void:
-	var label = Label.new()
+	var label: Label = Label.new()
 	label.text = message
 	label.set("theme_override_constants/outline_size", 2)
 	label.set("theme_override_colors/font_outline_color", Color.BLACK)
