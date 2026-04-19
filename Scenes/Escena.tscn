@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
-[ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://escena.gd" id="1_1wh3i"]
-[ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://player.tscn" id="2_1wh3i"]
-[ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Objects/FootBall/ball.tscn" id="2_u2bpn"]
+[ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_u2bpn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
 size = Vector2(15, 20)
@@ -27,7 +27,7 @@ transform = Transform3D(-4.371139e-08, 0.76604444, -0.64278764, 0, 0.64278764, 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
 transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)
-light_color = Color(0.8106425, 0.9996781, 0.84131616, 1)
+light_color = Color(0.9503198, 0.93344027, 0.48539716, 1)
 light_energy = 0.525
 
 [node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
