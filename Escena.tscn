@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
-[ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://ball.tscn" id="1_u2bpn"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://player.tscn" id="2_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Objects/FootBall/ball.tscn" id="2_u2bpn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
 size = Vector2(15, 20)
@@ -27,8 +27,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7
 light_color = Color(0.8106425, 0.9996781, 0.84131616, 1)
 light_energy = 0.525
 
-[node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("1_u2bpn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5641097, 1.3124999, -0.4209944)
-
 [node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
+
+[node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("2_u2bpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8177638, 1.0005, 0.19810927)
