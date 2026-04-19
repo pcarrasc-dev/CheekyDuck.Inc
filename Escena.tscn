@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
+[ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://player.tscn" id="2_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Objects/FootBall/ball.tscn" id="2_u2bpn"]
 
@@ -10,6 +11,8 @@ size = Vector2(15, 20)
 size = Vector3(15, 0.001, 20)
 
 [node name="Escena" type="Node3D" unique_id=1303625090]
+script = ExtResource("1_1wh3i")
+ball_scene = ExtResource("2_u2bpn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=482136501]
 mesh = SubResource("PlaneMesh_gpcq5")
@@ -20,10 +23,10 @@ mesh = SubResource("PlaneMesh_gpcq5")
 shape = SubResource("BoxShape3D_324th")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
-transform = Transform3D(1, 0, 0, 0, -0.00022694468, 1, 0, -1, -0.00022694468, 0, 5.513579, 0)
+transform = Transform3D(-4.371139e-08, 0.76604444, -0.64278764, 0, 0.64278764, 0.76604444, 1, 3.3484866e-08, -2.809714e-08, -6.2012367, 6.678987, 0.00541687)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.2112, 0)
+transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)
 light_color = Color(0.8106425, 0.9996781, 0.84131616, 1)
 light_energy = 0.525
 
@@ -31,4 +34,4 @@ light_energy = 0.525
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
 
 [node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("2_u2bpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8177638, 1.0005, 0.19810927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051175714, 2.2855737, 0.19810927)

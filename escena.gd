@@ -1,14 +1,13 @@
-extends Node
+extends Node3D
 
-@export var speed: int = 200
-@export var acceleration: float = 4
+@export var ball_scene: PackedScene
+@onready var ball: Node3D = $Ball
+@onready var ball_spawn_point: Node3D = $BallSpawnPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-func _physics_process(delta: float) -> void:
 	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
