@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6w18akihquxq"
-path="res://.godot/imported/FootBall.fbx-7231d57d2ce8f02c69249dc7e3a62af8.scn"
+path="res://.godot/imported/FootBall.fbx-8df4c1b003969537352107cf08f55d8b.scn"
 
 [deps]
 
-source_file="res://Objects/FootBall/FootBall.fbx"
-dest_files=["res://.godot/imported/FootBall.fbx-7231d57d2ce8f02c69249dc7e3a62af8.scn"]
+source_file="res://Scenes/Objects/FootBall/FootBall.fbx"
+dest_files=["res://.godot/imported/FootBall.fbx-8df4c1b003969537352107cf08f55d8b.scn"]
 
 [params]
 
