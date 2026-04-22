@@ -12,6 +12,7 @@ size = Vector3(15, 0.001, 20)
 [node name="Escena" type="Node3D" unique_id=1303625090]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=482136501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09884071, -0.044163465, 0.081489086)
 mesh = SubResource("PlaneMesh_gpcq5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=387364672]
