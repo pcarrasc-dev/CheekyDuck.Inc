@@ -20,7 +20,8 @@ color = Color(0.8670491, 0.044628553, 0.17411542, 1)
 hue_variation_min = -2.2351742e-08
 hue_variation_max = 0.16999997
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pskol"]
+[sub_resource type="BoxMesh" id="BoxMesh_2kbhy"]
+size = Vector3(1, 1, 0.01)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pskol"]
 properties/0/path = NodePath("FootBall:position")
@@ -47,8 +48,9 @@ material_override = SubResource("StandardMaterial3D_2kbhy")
 transparency = 0.18
 cast_shadow = 0
 amount = 20
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_311sh")
-draw_pass_1 = SubResource("RibbonTrailMesh_pskol")
+draw_pass_1 = SubResource("BoxMesh_2kbhy")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=938207850]
 replication_config = SubResource("SceneReplicationConfig_pskol")
