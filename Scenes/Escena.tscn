@@ -13,6 +13,9 @@ size = Vector2(15, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_324th"]
 size = Vector3(15, 0.001, 20)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ybuur"]
+bounce = 0.75
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_2lio0"]
 radius = 0.9719775
 
@@ -93,6 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
 
 [node name="FootBall" parent="Ball" unique_id=1986362826 instance=ExtResource("5_kfaxj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_ybuur")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball/FootBall" unique_id=1246239969]
 transform = Transform3D(0.974, 0, 0, 0, 0.974, 0, 0, 0, 0.974, 1.923289, 1.042, 0)
@@ -100,6 +104,7 @@ shape = SubResource("SphereShape3D_2lio0")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Ball/FootBall" unique_id=1510045281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 1, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_ryv62")
 transparency = 0.18
 cast_shadow = 0
