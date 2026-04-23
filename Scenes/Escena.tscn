@@ -10,6 +10,17 @@ size = Vector2(15, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_324th"]
 size = Vector3(15, 0.001, 20)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
+properties/0/path = NodePath("Ball:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Ball:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Player:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
 ball_scene = ExtResource("2_u2bpn")
@@ -35,3 +46,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097
 
 [node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("2_u2bpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051175714, 2.2855737, 0.19810927)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
+replication_config = SubResource("SceneReplicationConfig_ybuur")
