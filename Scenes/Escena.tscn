@@ -88,6 +88,7 @@ light_energy = 0.525
 
 [node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
+visible = false
 
 [node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
 
