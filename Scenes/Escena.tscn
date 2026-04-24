@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_u2bpn"]
+[ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="4_i7vgw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
 size = Vector2(15, 20)
@@ -24,7 +25,7 @@ mesh = SubResource("PlaneMesh_gpcq5")
 shape = SubResource("BoxShape3D_324th")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
-transform = Transform3D(-4.371139e-08, 0.76604444, -0.64278764, 0, 0.64278764, 0.76604444, 1, 3.3484866e-08, -2.809714e-08, -6.2012367, 6.678987, 0.00541687)
+transform = Transform3D(-4.3680487e-08, 0.7896627, -0.61354125, 1.6429212e-09, 0.61354125, 0.7896627, 1, 3.3484852e-08, -2.8097134e-08, -9.82299, 10.615921, -1.1320868)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
 transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)
@@ -35,4 +36,10 @@ light_energy = 0.525
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
 
 [node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("2_u2bpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051175714, 2.2855737, 0.19810927)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.051175714, 2.2855737, 0.19810927)
+
+[node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("4_i7vgw")]
+transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0, 0, 0.36312675)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=843715136]
+transform = Transform3D(0.999365, -0.018775998, 0.03028377, -0.030252595, 0.0019422474, 0.9995404, -0.018826187, -0.99982184, 0.0013729912, 0, 531.0814, 0)
