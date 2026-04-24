@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bqpjkukohh2sn" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_u2bpn"]
+[ext_resource type="PackedScene" uid="uid://cs2pvjf0tihap" path="res://Scenes/Objects/Bar/bar.tscn" id="4_i7vgw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
 size = Vector2(15, 20)
@@ -32,6 +33,14 @@ light_energy = 0.525
 
 [node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
+visible = false
 
 [node name="Ball" parent="." unique_id=2005105486 instance=ExtResource("2_u2bpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051175714, 2.2855737, 0.19810927)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.051, 0, 0.198)
+
+[node name="Bar" parent="." unique_id=92024880 instance=ExtResource("4_i7vgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+
+[node name="Bar2" parent="." unique_id=2029702815 instance=ExtResource("4_i7vgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4)
+bar_index = 1

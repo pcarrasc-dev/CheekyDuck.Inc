@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cs2pvjf0tihap"]
+
+[ext_resource type="Script" uid="uid://gp3hfveknwf3" path="res://Scenes/Objects/Bar/Bar.gd" id="1_5gpg3"]
+[ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="1_srxpe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gpg3"]
+radius = 0.08
+height = 10.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8xvvv"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 10.0
+
+[node name="Bar" type="StaticBody3D" unique_id=92024880]
+script = ExtResource("1_5gpg3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=412934136]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_5gpg3")
+
+[node name="Player" parent="." unique_id=531167561 instance=ExtResource("1_srxpe")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1346283022]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8xvvv")

@@ -11,7 +11,7 @@ signal vote_updated(id: int)
 @export var min_players: int = 2 # won't start if there are at least these players
 @export var fill_screen: bool = true
 @export var test_players: Array[PlayerDataResource] = [] # first one is server
-@export var main_scene: PackedScene
+@export var main_scene: PackedScene = preload("res://Scenes/Escena.tscn")
 
 var players: Array[Statics.PlayerData] = []
 var change_window_scale : bool = true :
