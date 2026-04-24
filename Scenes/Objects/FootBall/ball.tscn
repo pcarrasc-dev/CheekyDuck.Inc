@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqpjkukohh2sn"]
 
-[ext_resource type="Script" uid="uid://birdju7ej1rs4" path="res://Objects/FootBall/ball.gd" id="1_dw5p0"]
-[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Objects/FootBall/FootBall.fbx" id="1_pinnw"]
+[ext_resource type="Script" uid="uid://birdju7ej1rs4" path="res://Scenes/Objects/FootBall/ball.gd" id="1_dw5p0"]
+[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="1_pinnw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dw5p0"]
 
