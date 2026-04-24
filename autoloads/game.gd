@@ -5,7 +5,7 @@ signal player_updated(id: int)
 signal vote_updated(id: int)
 
 @export var multiplayer_test: bool = false
-@export var use_roles: bool = true
+@export var use_roles: bool = false
 @export var unique_roles: bool = true # won't start with repeated roles
 @export var all_roles: bool = true # won't start if all roles aren't selected
 @export var min_players: int = 2 # won't start if there are at least these players
