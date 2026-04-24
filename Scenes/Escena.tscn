@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://cs2pvjf0tihap" path="res://Scenes/Objects/Bar/bar.tscn" id="3_i7vgw"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
-
-[sub_resource type="Resource" id="Resource_ybuur"]
-metadata/__load_path__ = "res://Scenes/Objects/FootBall/ball.tscn"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
 size = Vector2(15, 20)
@@ -68,7 +66,6 @@ properties/9/replication_mode = 1
 
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
-ball_scene = SubResource("Resource_ybuur")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=482136501]
 mesh = SubResource("PlaneMesh_gpcq5")
@@ -91,6 +88,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097
 visible = false
 
 [node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
+
+[node name="Bar" parent="." unique_id=92024880 instance=ExtResource("3_i7vgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Bar2" parent="." unique_id=503867354 instance=ExtResource("3_i7vgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+bar_index = 1
 
 [node name="Ball" type="Node3D" parent="." unique_id=1225003722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)

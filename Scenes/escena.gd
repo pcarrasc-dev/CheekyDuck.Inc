@@ -1,14 +1,25 @@
 extends Node3D
 
-@export var ball_scene: PackedScene
-@onready var ball: Node3D = $Ball
-@onready var ball_spawn_point: Marker3D = $BallSpawnPoint
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Debug.log("Players al cargar: %d" % Game.players.size())
+	for p in Game.players:
+		Debug.log("  id:%d index:%d" % [p.id, p.index])
+	
+	if Game.players.size() >= 2:
+		_setup_bars_authority()
+	else:
+		Game.players_updated.connect(_on_players_updated)
 
+func _on_players_updated() -> void:
+	if Game.players.size() < 2:
+		return
+	Game.players_updated.disconnect(_on_players_updated)
+	_setup_bars_authority()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _setup_bars_authority() -> void:
+	Game.sort_players()
+	$Bar.set_multiplayer_authority(Game.players[0].id)
+	$Bar2.set_multiplayer_authority(Game.players[1].id)
+	Debug.log("Bar0 autoridad: %d | Bar1 autoridad: %d" % [
+		Game.players[0].id, Game.players[1].id
+	])
