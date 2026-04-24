@@ -1,6 +1,5 @@
 extends Node
 
-
 var player_index = 1
 
 @onready var start_game_timer: Timer = $StartGameTimer
@@ -25,7 +24,6 @@ func _ready():
 	if not _try_host():
 		_try_join()
 	
-	# disable in order to be able to reach main menu again
 	Game.multiplayer_test = false
 
 
@@ -37,7 +35,6 @@ func _try_host() -> bool:
 		Debug.add_to_window_title("Server")
 		Game.update_player_id()
 		_update_window_placement(0)
-		start_game_timer.timeout.connect(_on_start_game_timeout)
 	return err == OK
 
 
@@ -55,20 +52,23 @@ func _on_peer_connected(id: int) -> void:
 		for i in Game.players.size():
 			_send_player_data_id.rpc(i, Game.players[i].id)
 		player_index += 1
-		start_game_timer.start()
 
 
 @rpc("reliable")
 func _send_player_data_id(index, id):
-	if multiplayer.get_unique_id() == id and not Game.players[index].id:
+	Game.players[index].id = id
+	if multiplayer.get_unique_id() == id:
 		Debug.add_to_window_title("Client %d" % index)
 		Debug.index = index
 		_update_window_placement(index)
-	Game.players[index].id = id
+		# Cliente confirma al servidor que recibió sus datos
+		_confirm_ready.rpc_id(1)
 
 
-func _on_start_game_timeout() -> void:
-	_start_game.rpc()
+@rpc("any_peer", "reliable")
+func _confirm_ready() -> void:
+	if multiplayer.is_server():
+		_start_game.rpc()
 
 
 @rpc("reliable", "call_local")
