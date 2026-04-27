@@ -1,147 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://byny6bp0olu78"]
+[gd_scene format=3 uid="uid://byny6bp0olu78"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_1g6tu"]
 [ext_resource type="Script" uid="uid://d1urh7pr0l6lh" path="res://lobby/waiting_screen.gd" id="2_a2sqk"]
 [ext_resource type="PackedScene" uid="uid://iobnvr8f3tkm" path="res://lobby/lobby_player.tscn" id="2_wjc1o"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_0nkhr"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="3_0nkhr"]
 
-[node name="WaitingScreen" instance=ExtResource("1_1g6tu")]
+[node name="WaitingScreen" unique_id=2089421988 instance=ExtResource("1_1g6tu")]
 script = ExtResource("2_a2sqk")
 
-[node name="Label" parent="MarginContainer2/VBoxContainer/Panel" index="0"]
-text = "Lobby"
-
-[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" index="0"]
-clip_contents = true
-custom_minimum_size = Vector2(629, 375)
-offset_left = -110.0
-offset_right = 519.0
-offset_bottom = 375.0
-
-[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0"]
-layout_mode = 2
-
-[node name="PlayerList" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_type_variation = &"Zero"
-
-[node name="LobbyPlayer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="0" instance=ExtResource("2_wjc1o")]
-visible = false
-layout_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="1"]
-visible = false
-layout_mode = 2
-
-[node name="LobbyPlayer2" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="2" instance=ExtResource("2_wjc1o")]
-visible = false
-layout_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="3"]
-visible = false
-layout_mode = 2
-
-[node name="LobbyPlayer3" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="4" instance=ExtResource("2_wjc1o")]
-visible = false
-layout_mode = 2
-
-[node name="HSeparator3" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="5"]
-visible = false
-layout_mode = 2
-
-[node name="WaitingLabel" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Wating for players ..."
-horizontal_alignment = 1
-
-[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" index="1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.1
-offset_left = -511.0
-offset_right = -183.0
-offset_bottom = 375.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" index="0"]
-custom_minimum_size = Vector2(0, 375)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_type_variation = &"Zero"
-
-[node name="PlayerTexture" type="TextureRect" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_0nkhr")
-stretch_mode = 2
-
-[node name="PlayerName" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Player"
-horizontal_alignment = 1
-
-[node name="RoleButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Role?"
-
-[node name="Control" type="Control" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton" index="0"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_right = 16.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="RoleContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control" index="0"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -16.0
-offset_right = 32.0
-offset_bottom = 16.0
-grow_vertical = 2
-theme_type_variation = &"Darker"
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control/RoleContainer" index="0"]
-layout_mode = 2
-theme_type_variation = &"Tight"
-
-[node name="RoleList" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control/RoleContainer/MarginContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"Zero"
-
-[node name="ReadyButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="3"]
-unique_name_in_owner = true
-layout_mode = 2
-disabled = true
-text = "Ready"
-
-[node name="GameStartContainer" type="PanelContainer" parent="." index="1"]
+[node name="GameStartContainer" type="PanelContainer" parent="." index="1" unique_id=1009457198]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -158,23 +25,156 @@ grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"Darker"
 
-[node name="MarginContainer" type="MarginContainer" parent="GameStartContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="GameStartContainer" index="0" unique_id=823482570]
 layout_mode = 2
 theme_type_variation = &"Tight"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameStartContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameStartContainer/MarginContainer" index="0" unique_id=2138522403]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="0" unique_id=1104916417]
 layout_mode = 2
 text = "Game starting"
 horizontal_alignment = 1
 
-[node name="GameStartCounter" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="GameStartCounter" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="1" unique_id=127296286]
 unique_name_in_owner = true
 layout_mode = 2
 text = "X"
 horizontal_alignment = 1
 
-[node name="StartTimer" type="Timer" parent="." index="2"]
+[node name="StartTimer" type="Timer" parent="." index="2" unique_id=1656501961]
 wait_time = 3.0
+
+[node name="Label" parent="MarginContainer2/VBoxContainer/Panel" parent_id_path=PackedInt32Array(1647368166) index="0" unique_id=1514084047]
+text = "Lobby"
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(1043687473) index="0" unique_id=1393195370]
+clip_contents = true
+custom_minimum_size = Vector2(629, 375)
+offset_left = -110.0
+offset_right = 519.0
+offset_bottom = 375.0
+
+[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0" unique_id=2116861970]
+layout_mode = 2
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0" unique_id=2107732853]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Zero"
+
+[node name="LobbyPlayer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="0" unique_id=1746540625 instance=ExtResource("2_wjc1o")]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="1" unique_id=1878738879]
+visible = false
+layout_mode = 2
+
+[node name="LobbyPlayer2" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="2" unique_id=32242735 instance=ExtResource("2_wjc1o")]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="3" unique_id=1189961893]
+visible = false
+layout_mode = 2
+
+[node name="LobbyPlayer3" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="4" unique_id=51388794 instance=ExtResource("2_wjc1o")]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/PlayerList" index="5" unique_id=1966803990]
+visible = false
+layout_mode = 2
+
+[node name="WaitingLabel" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="1" unique_id=1862041184]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wating for players ..."
+horizontal_alignment = 1
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(1043687473) index="1" unique_id=2076598775]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -511.0
+offset_right = -183.0
+offset_bottom = 375.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" index="0" unique_id=1165695663]
+custom_minimum_size = Vector2(0, 375)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0" unique_id=1189161334]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Zero"
+
+[node name="PlayerTexture" type="TextureRect" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="0" unique_id=260187731]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_0nkhr")
+stretch_mode = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="1" unique_id=1675071312]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player"
+horizontal_alignment = 1
+
+[node name="RoleButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="2" unique_id=164639168]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Role?"
+
+[node name="Control" type="Control" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton" index="0" unique_id=1211695144]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RoleContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control" index="0" unique_id=1774933215]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+grow_vertical = 2
+theme_type_variation = &"Darker"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control/RoleContainer" index="0" unique_id=2079542177]
+layout_mode = 2
+theme_type_variation = &"Tight"
+
+[node name="RoleList" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton/Control/RoleContainer/MarginContainer" index="0" unique_id=444492024]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Zero"
+
+[node name="ReadyButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="3" unique_id=306351675]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Ready"
