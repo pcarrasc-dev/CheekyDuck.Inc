@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf8ype3b0y31w"]
+[gd_scene format=3 uid="uid://cf8ype3b0y31w"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_xldsp"]
 [ext_resource type="Script" uid="uid://cr2abnsynvkkq" path="res://lobby/join_screen.gd" id="2_0bjwb"]
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="3_i53lg"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_q5f0x"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="4_q5f0x"]
 
 [sub_resource type="Animation" id="Animation_c2ij0"]
 length = 0.001
@@ -66,72 +66,18 @@ _data = {
 &"loading": SubResource("Animation_34y7y")
 }
 
-[node name="JoinScreen" instance=ExtResource("1_xldsp")]
+[node name="JoinScreen" unique_id=1192640542 instance=ExtResource("1_xldsp")]
 script = ExtResource("2_0bjwb")
 
-[node name="Label" parent="MarginContainer2/VBoxContainer/Panel" index="0"]
-text = "Join"
-
-[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Player"
-
-[node name="PlayerName" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-alignment = 1
-max_length = 14
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "IP"
-
-[node name="IP" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-placeholder_text = "127.0.0.1"
-alignment = 1
-
-[node name="JoinButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Join"
-
-[node name="ErrorLabel" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="3"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
-text = "An error occurred · o ·)>"
-horizontal_alignment = 1
-
-[node name="ErrorTimer" type="Timer" parent="." index="1"]
+[node name="ErrorTimer" type="Timer" parent="." index="1" unique_id=1975916426]
 wait_time = 3.0
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2" unique_id=2114539573]
 process_mode = 3
 layer = 64
 
-[node name="MessageContainer" type="Panel" parent="CanvasLayer" index="0"]
+[node name="MessageContainer" type="Panel" parent="CanvasLayer" index="0" unique_id=837406337]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,7 +88,7 @@ mouse_filter = 2
 theme = ExtResource("3_i53lg")
 theme_type_variation = &"Darker"
 
-[node name="JoiningServer" type="MarginContainer" parent="CanvasLayer/MessageContainer" index="0"]
+[node name="JoiningServer" type="MarginContainer" parent="CanvasLayer/MessageContainer" index="0" unique_id=571562192]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -157,29 +103,29 @@ offset_bottom = 147.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/JoiningServer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/JoiningServer" index="0" unique_id=70861884]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="0" unique_id=1152146214]
 layout_mode = 2
 text = "Joinning server"
 horizontal_alignment = 1
 
-[node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="1"]
+[node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="1" unique_id=29212045]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("4_q5f0x")
 stretch_mode = 2
 
-[node name="CancelButton" type="Button" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="2"]
+[node name="CancelButton" type="Button" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="2" unique_id=993296398]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Cancel"
 
-[node name="ConnectionFailed" type="MarginContainer" parent="CanvasLayer/MessageContainer" index="1"]
+[node name="ConnectionFailed" type="MarginContainer" parent="CanvasLayer/MessageContainer" index="1" unique_id=461265809]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 433.5
 offset_top = 213.5
 offset_right = 846.5
@@ -187,23 +133,75 @@ offset_bottom = 506.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/ConnectionFailed" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/ConnectionFailed" index="0" unique_id=610202227]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="0" unique_id=905359939]
 layout_mode = 2
 text = "Connection failed!"
 horizontal_alignment = 1
 
-[node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="1"]
+[node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="1" unique_id=1004944200]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("4_q5f0x")
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_kd86l")
-}
-autoplay = "loading"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" index="1" unique_id=252638828]
+libraries/ = SubResource("AnimationLibrary_kd86l")
+autoplay = &"loading"
+
+[node name="Label" parent="MarginContainer2/VBoxContainer/Panel" parent_id_path=PackedInt32Array(1647368166) index="0" unique_id=1514084047]
+text = "Join"
+
+[node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" parent_id_path=PackedInt32Array(1393195370) index="0" unique_id=1311031033]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0" unique_id=1455447271]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="0" unique_id=1018868443]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="0" unique_id=19293191]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player"
+
+[node name="PlayerName" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="1" unique_id=1410203261]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+max_length = 14
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="1" unique_id=1348599689]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="0" unique_id=1816134315]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP"
+
+[node name="IP" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="1" unique_id=1671199681]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "127.0.0.1"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="2" unique_id=1396763777]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join"
+
+[node name="ErrorLabel" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="3" unique_id=1409265949]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+text = "An error occurred · o ·)>"
+horizontal_alignment = 1
