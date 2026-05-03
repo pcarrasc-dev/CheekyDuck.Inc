@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gp3hfveknwf3" path="res://Scenes/Objects/Bar/Bar.gd" id="1_5gpg3"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="1_srxpe"]
+[ext_resource type="Material" uid="uid://c2a1y88oyolpy" path="res://resources/Metal053B_4K-JPG/Metal053B_4K-JPG.tres" id="3_8xvvv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gpg3"]
 radius = 0.08
@@ -29,6 +30,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1346283022]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("3_8xvvv")
 mesh = SubResource("CylinderMesh_8xvvv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1059844396]

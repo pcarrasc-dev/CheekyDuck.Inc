@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://by0dxsbp44hby"]
 
 [ext_resource type="Texture2D" uid="uid://dajk5tucjpwr7" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Color.jpg" id="1_3jhb6"]
+[ext_resource type="Script" uid="uid://u6x7e8a8pp80" path="res://Scenes/Objects/Table/field_v_2.gd" id="1_smpyy"]
 [ext_resource type="Texture2D" uid="uid://b1nt01gnw8q2l" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_Color.jpg" id="1_vesjg"]
 [ext_resource type="Texture2D" uid="uid://cyp22ruj3ivju" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Displacement.jpg" id="2_2kec3"]
 [ext_resource type="Texture2D" uid="uid://c81tqrpcuqrpl" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_AmbientOcclusion.jpg" id="2_vibgu"]
@@ -15,6 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://dhrbkdox4hshh" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Metalness.jpg" id="7_vesjg"]
 [ext_resource type="Texture2D" uid="uid://ddpyrct0uh73m" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_NormalGL.jpg" id="8_vibgu"]
 [ext_resource type="Texture2D" uid="uid://br1odww0e2rt6" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Roughness.jpg" id="9_7bie4"]
+[ext_resource type="PackedScene" uid="uid://cs2pvjf0tihap" path="res://Scenes/Objects/Bar/bar.tscn" id="16_vibgu"]
+[ext_resource type="PackedScene" uid="uid://c2kt1glldldkt" path="res://Scenes/Objects/Bar/bar_2.tscn" id="17_7nhww"]
+[ext_resource type="PackedScene" uid="uid://bvcvtc5euh8fm" path="res://Scenes/Objects/Bar/bar_3.tscn" id="18_smpyy"]
+[ext_resource type="PackedScene" uid="uid://gykqmalhs30l" path="res://Scenes/Objects/Bar/bar_4.tscn" id="19_113q2"]
+[ext_resource type="PackedScene" uid="uid://3bt4rq04dt1w" path="res://Scenes/Objects/Bar/bar_5.tscn" id="20_tokhk"]
+[ext_resource type="PackedScene" uid="uid://bhfocnvai4lyx" path="res://Scenes/Objects/Bar/bar_6.tscn" id="21_lghmx"]
+[ext_resource type="PackedScene" uid="uid://b3d5g3dl73ggx" path="res://Scenes/Objects/Bar/bar_7.tscn" id="22_ib6ql"]
+[ext_resource type="PackedScene" uid="uid://bspewck47d1xu" path="res://Scenes/Objects/Bar/bar_8.tscn" id="23_elkuu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5w8u"]
 albedo_color = Color(0.92389965, 0.92389965, 0.92389965, 1)
@@ -84,8 +93,11 @@ uv1_scale = Vector3(7, 7, 7)
 uv1_triplanar = true
 
 [node name="FieldV2" type="Node3D" unique_id=151697161]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_smpyy")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1603543840]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 use_collision = true
 
 [node name="suelo" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2099872447]
@@ -136,10 +148,34 @@ size = Vector3(0.19, 0.195, 0.325)
 material = SubResource("StandardMaterial3D_7nhww")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=122768734]
-transform = Transform3D(-0.9997299, -0.013665003, -0.018802537, -0.022264931, 0.7952609, 0.6058584, 0.0066738655, 0.6061133, -0.7953503, -0.0034700036, 0.8479108, -0.98907954)
+transform = Transform3D(-8.571355e-09, -0.80146265, 0.5980449, -7.0066086e-08, 0.5980449, 0.80146265, -1, -3.5033043e-08, -6.1281405e-08, 0.5186213, 0.7067868, 0.0015049208)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1696544822]
 transform = Transform3D(1, 0, 0, 0, 0.057598833, 0.99833983, 0, -0.99833983, 0.057598833, 0, 1.63397, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=931451191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3130656, -0.009818494)
+
+[node name="Bar" parent="." unique_id=92024880 instance=ExtResource("16_vibgu")]
+transform = Transform3D(0.079, 0, 0, 0, 0.079, 0, 0, 0, 0.079, 0, 0.09, 0.69)
+
+[node name="Bar2" parent="." unique_id=1279569897 instance=ExtResource("17_7nhww")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.55)
+
+[node name="Bar3" parent="." unique_id=2032274654 instance=ExtResource("18_smpyy")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.15)
+
+[node name="Bar4" parent="." unique_id=1308378987 instance=ExtResource("19_113q2")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.35)
+
+[node name="Bar5" parent="." unique_id=1997327750 instance=ExtResource("20_tokhk")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.69)
+
+[node name="Bar6" parent="." unique_id=936293861 instance=ExtResource("21_lghmx")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.55)
+
+[node name="Bar7" parent="." unique_id=1829875151 instance=ExtResource("22_ib6ql")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.15)
+
+[node name="Bar8" parent="." unique_id=1189047964 instance=ExtResource("23_elkuu")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.35)
