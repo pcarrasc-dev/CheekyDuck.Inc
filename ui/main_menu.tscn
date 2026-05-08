@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="1_3qnx1"]
 [ext_resource type="Script" uid="uid://cnbk17iq1x68f" path="res://ui/main_menu.gd" id="2_p6ygj"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="2_xllby"]
+[ext_resource type="Texture2D" uid="uid://bs74pxram15ao" path="res://Scenes/25 sin título_20260427005219.png" id="3_wk0pr"]
 
 [node name="MainMenu" type="Control" unique_id=90432305]
 layout_mode = 3
@@ -14,6 +14,20 @@ grow_vertical = 2
 theme = ExtResource("1_3qnx1")
 script = ExtResource("2_p6ygj")
 
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=95552055]
+clip_contents = true
+layout_mode = 1
+offset_left = -65.0
+offset_top = -47.0
+offset_right = 1345.0
+offset_bottom = 770.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=389958185]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("3_wk0pr")
+expand_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=953531144]
 layout_mode = 1
 anchors_preset = 8
@@ -21,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 140.0
-offset_top = -160.0
-offset_right = 640.0
-offset_bottom = 220.0
+offset_left = -254.0
+offset_top = -20.0
+offset_right = 259.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -53,25 +67,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=95552055]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -490.0
-offset_top = -160.0
-offset_right = -34.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=389958185]
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-texture = ExtResource("2_xllby")
-
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=658664263]
 layout_mode = 1
 anchors_preset = 8
@@ -79,14 +74,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -417.5
-offset_top = -360.0
-offset_right = 417.5
-offset_bottom = -112.0
+offset_left = -407.0
+offset_top = -393.0
+offset_right = 433.5
+offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="MarginContainer3" unique_id=1435848050]
 layout_mode = 2
 theme_type_variation = &"Title"
-text = "Multiplayer Example"
+text = "Taca Taca con Huesillo"

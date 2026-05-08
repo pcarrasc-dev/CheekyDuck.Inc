@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
+
+[ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ybuur"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2lio0"]
+radius = 0.9719775
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryv62"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0btyn"]
+direction = Vector3(-1, 0, 0)
+spread = 6.882
+initial_velocity_min = 37.629997
+initial_velocity_max = 37.64
+color = Color(0.8670491, 0.044628553, 0.17411542, 1)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.16999997
+
+[sub_resource type="BoxMesh" id="BoxMesh_esmtv"]
+size = Vector3(1, 1, 0.01)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
+properties/0/path = NodePath("Player:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Ball/FootBall:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Ball/FootBall:angular_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Ball/GPUParticles3D:amount")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Ball/GPUParticles3D:lifetime")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Ball/GPUParticles3D:emitting")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Ball/FootBall:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Ball/FootBall:rotation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Ball/GPUParticles3D:position")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Ball/GPUParticles3D:rotation")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+
+[node name="Escena" type="Node3D" unique_id=1303625090]
+script = ExtResource("1_1wh3i")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
+transform = Transform3D(1, 0, 0, 0, 0.40429565, 0.9146283, 0, -0.9146283, 0.40429565, 0.054712296, 12.908352, 8.235708)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
+transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)
+light_color = Color(0.9503198, 0.93344027, 0.48539716, 1)
+light_energy = 0.525
+
+[node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
+visible = false
+
+[node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
+
+[node name="Ball" type="Node3D" parent="." unique_id=1225003722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
+
+[node name="FootBall" parent="Ball" unique_id=1986362826 instance=ExtResource("5_kfaxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_ybuur")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball/FootBall" unique_id=1246239969]
+transform = Transform3D(0.974, 0, 0, 0, 0.974, 0, 0, 0, 0.974, 1.923289, 1.042, 0)
+shape = SubResource("SphereShape3D_2lio0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Ball/FootBall" unique_id=1510045281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_ryv62")
+transparency = 0.18
+cast_shadow = 0
+amount = 10
+lifetime = 0.1
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_0btyn")
+draw_pass_1 = SubResource("BoxMesh_esmtv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
+replication_config = SubResource("SceneReplicationConfig_ybuur")
+
+[node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("5_i7ybl")]
+transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0, 0, 0)

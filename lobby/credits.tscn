@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://57sil4m6nfve"]
+[gd_scene format=3 uid="uid://57sil4m6nfve"]
 
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="1_bob82"]
 [ext_resource type="Script" uid="uid://cuqvj8grm28qy" path="res://ui/credits.gd" id="2_hvxmk"]
+[ext_resource type="Texture2D" uid="uid://bs74pxram15ao" path="res://Scenes/25 sin título_20260427005219.png" id="3_mvqlp"]
 
-[node name="Credits" type="Control"]
+[node name="Credits" type="Control" unique_id=741954446]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +14,21 @@ grow_vertical = 2
 theme = ExtResource("1_bob82")
 script = ExtResource("2_hvxmk")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1717600633]
+clip_contents = true
+layout_mode = 0
+offset_left = -65.0
+offset_top = -47.0
+offset_right = 1345.0
+offset_bottom = 770.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3" unique_id=582285207]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("3_mvqlp")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=369183616]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,16 +37,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Zero"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=405626492]
 layout_mode = 2
 theme_type_variation = &"Zero"
 
-[node name="Panel" type="Panel" parent="MarginContainer2/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer2/VBoxContainer" unique_id=1631849923]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/Panel" unique_id=1532322685]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -51,7 +66,7 @@ text = "Credits
 "
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer/Panel"]
+[node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer/Panel" unique_id=136608696]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -65,16 +80,16 @@ offset_right = -250.0
 offset_bottom = -4.0
 text = "く"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer" unique_id=1575696539]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"Zero"
 
-[node name="Control" type="Control" parent="MarginContainer2/VBoxContainer/MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer2/VBoxContainer/MarginContainer" unique_id=1616278976]
 layout_mode = 2
 theme_type_variation = &"Zero"
 
-[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" type="RichTextLabel" parent="MarginContainer2/VBoxContainer/MarginContainer/Control"]
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" type="RichTextLabel" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" unique_id=11667397]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

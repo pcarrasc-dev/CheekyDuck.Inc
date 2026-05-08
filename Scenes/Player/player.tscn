@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfotyicask2r2"]
 
 [ext_resource type="Script" uid="uid://4ve8sb0hif8g" path="res://Scenes/Player/player.gd" id="1_4flbx"]
+[ext_resource type="Material" uid="uid://eo3r4vp1dpgv" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG.tres" id="2_a3d8c"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 
@@ -11,6 +12,7 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 script = ExtResource("1_4flbx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1420936729]
+material_override = ExtResource("2_a3d8c")
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D" unique_id=1764176198]
