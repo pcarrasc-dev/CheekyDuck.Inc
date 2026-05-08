@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://cs2pvjf0tihap" path="res://Scenes/Objects/Bar/bar.tscn" id="3_i7vgw"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="4_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gpcq5"]
@@ -96,6 +97,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 bar_index = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1640060796]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1293266083]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_i7ybl")
+
 [node name="Ball" type="Node3D" parent="." unique_id=1225003722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
 
@@ -109,7 +117,6 @@ shape = SubResource("SphereShape3D_2lio0")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Ball/FootBall" unique_id=1510045281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 1, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_ryv62")
 transparency = 0.18
 cast_shadow = 0
