@@ -2,12 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://cs2pvjf0tihap" path="res://Scenes/Objects/Bar/bar.tscn" id="3_i7vgw"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="4_i7ybl"]
-=======
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
->>>>>>> 55dc9962e5efdcb6c9966f53b70272c7cafa18c1
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ybuur"]
@@ -80,23 +75,6 @@ visible = false
 
 [node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
 
-<<<<<<< HEAD
-[node name="Bar" parent="." unique_id=92024880 instance=ExtResource("3_i7vgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
-[node name="Bar2" parent="." unique_id=503867354 instance=ExtResource("3_i7vgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-bar_index = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1640060796]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1293266083]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_i7ybl")
-
-=======
->>>>>>> 55dc9962e5efdcb6c9966f53b70272c7cafa18c1
 [node name="Ball" type="Node3D" parent="." unique_id=1225003722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
 
