@@ -2,6 +2,9 @@ extends Node
 
 @export var speed: int = 200
 @export var acceleration: float = 4
+@onready var ball_particle: GPUParticles3D = $FootBall/BallParticle
+@onready var foot_ball: RigidBody3D = $FootBall
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,4 +15,9 @@ func _physics_process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	ball_particle.look_at(foot_ball.global_rotation * delta)
+	if foot_ball.linear_velocity == Vector3(0,0,0):
+		ball_particle.emitting = false
+	else:
+		ball_particle.emitting = true
 	pass
