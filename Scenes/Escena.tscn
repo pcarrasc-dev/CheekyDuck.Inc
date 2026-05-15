@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
+[ext_resource type="PackedScene" uid="uid://gllgvfbw3j4r" path="res://Scenes/Skills/shield_skill.tscn" id="5_2lio0"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
 
@@ -77,6 +78,7 @@ visible = false
 
 [node name="Ball" type="Node3D" parent="." unique_id=1225003722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
+visible = false
 
 [node name="FootBall" parent="Ball" unique_id=1986362826 instance=ExtResource("5_kfaxj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93, 0, 0)
@@ -102,3 +104,10 @@ replication_config = SubResource("SceneReplicationConfig_ybuur")
 
 [node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("5_i7ybl")]
 transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0, 0, 0)
+script = null
+
+[node name="Skills" type="Node3D" parent="." unique_id=1160852673]
+
+[node name="Shield" parent="Skills" unique_id=1682651150 instance=ExtResource("5_2lio0")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.644721, 1.6787586, 0)
+script = null
