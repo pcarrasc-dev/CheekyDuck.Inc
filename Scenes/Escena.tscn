@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
-[ext_resource type="PackedScene" uid="uid://bfotyicask2r2" path="res://Scenes/Player/player.tscn" id="2_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://gllgvfbw3j4r" path="res://Scenes/Skills/shield_skill.tscn" id="5_2lio0"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
@@ -70,10 +69,6 @@ transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.8
 light_color = Color(0.9503198, 0.93344027, 0.48539716, 1)
 light_energy = 0.525
 
-[node name="Player" parent="." unique_id=531167561 instance=ExtResource("2_1wh3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6738801, 1.3716722, 1.8097532)
-visible = false
-
 [node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
 
 [node name="Ball" type="Node3D" parent="." unique_id=1225003722]
@@ -109,5 +104,5 @@ script = null
 [node name="Skills" type="Node3D" parent="." unique_id=1160852673]
 
 [node name="Shield" parent="Skills" unique_id=1682651150 instance=ExtResource("5_2lio0")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.644721, 1.6787586, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
 script = null
