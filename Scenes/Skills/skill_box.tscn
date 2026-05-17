@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://du651h2fd1qqu"]
+
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="1_00wdd"]
+[ext_resource type="Script" uid="uid://bp61wo0oaw05d" path="res://Scenes/Skills/skill_box.gd" id="1_s8ch3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8ch3"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cm6sg"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_00wdd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxwca"]
+material = SubResource("ORMMaterial3D_cm6sg")
+
+[node name="SkillBox" type="Node3D" unique_id=1608362586]
+script = ExtResource("1_s8ch3")
+
+[node name="SkillBoxArea" type="Area3D" parent="." unique_id=2117335705]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SkillBoxArea" unique_id=339980354]
+transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_s8ch3")
+
+[node name="SkillBoxMesh" type="MeshInstance3D" parent="." unique_id=687758417]
+transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+mesh = SubResource("BoxMesh_dxwca")
+skeleton = NodePath("")

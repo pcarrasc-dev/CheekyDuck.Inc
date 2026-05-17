@@ -1,5 +1,16 @@
 extends Node3D
 
+@onready var skill_app: Node3D = $Skills/SkillApp
+@onready var sp_0: Marker3D = $"Skills/Skill SpawnPoint/SP0"
+@onready var sp_1: Marker3D = $"Skills/Skill SpawnPoint/SP1"
+@onready var sp_2: Marker3D = $"Skills/Skill SpawnPoint/SP2"
+@onready var sp_3: Marker3D = $"Skills/Skill SpawnPoint/SP3"
+@onready var skill_timer: Timer = $Skills/SkillTimer
+@onready var skill_box: SkillBox = %SkillBox
+
+var Skill_Marker: Array[Marker3D] = [sp_0, sp_1, sp_2, sp_3]
+var Skill_Array: Array[int]
+
 func _ready() -> void:
 	Debug.log("Players al cargar: %d" % Game.players.size())
 	for p in Game.players:
@@ -16,6 +27,12 @@ func _on_players_updated() -> void:
 	Game.players_updated.disconnect(_on_players_updated)
 	_setup_bars_authority()
 
+func _process(delta: float) -> void:
+	if skill_timer.is_stopped():
+		skill_app.add_child(skill_box, true)
+		
+	pass
+
 func _setup_bars_authority() -> void:
 	Game.sort_players()
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
@@ -29,3 +46,7 @@ func _setup_bars_authority() -> void:
 	Debug.log("Bar0 autoridad: %d | Bar1 autoridad: %d" % [
 		Game.players[0].id, Game.players[1].id
 	])
+
+func skill() -> void:
+	
+	pass
