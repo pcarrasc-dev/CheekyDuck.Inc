@@ -1,6 +1,7 @@
 class_name Player
 extends Node3D
 
+var item: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

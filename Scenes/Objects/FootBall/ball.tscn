@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://17ruqc4en430"]
+
+[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="1_lb1e3"]
+[ext_resource type="Script" uid="uid://birdju7ej1rs4" path="res://Scenes/Objects/FootBall/ball.gd" id="2_2kbhy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ybuur"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2lio0"]
+radius = 0.9719775
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryv62"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0btyn"]
+direction = Vector3(-1, 0, 0)
+spread = 6.882
+initial_velocity_min = 37.629997
+initial_velocity_max = 37.64
+color = Color(0.8670491, 0.044628553, 0.17411542, 1)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.16999997
+
+[sub_resource type="BoxMesh" id="BoxMesh_esmtv"]
+size = Vector3(1, 1, 0.01)
+
+[node name="Ball" type="Node3D" unique_id=575437862]
+
+[node name="FootBall" parent="." unique_id=777078215 instance=ExtResource("1_lb1e3")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_ybuur")
+script = ExtResource("2_2kbhy")
+
+[node name="BallArea" type="Area3D" parent="FootBall" unique_id=1378218211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FootBall/BallArea" unique_id=1560676771]
+shape = SubResource("SphereShape3D_2lio0")
+
+[node name="BallCollision" type="CollisionShape3D" parent="FootBall" unique_id=1035257428]
+transform = Transform3D(0.974, 0, 0, 0, 0.974, 0, 0, 0, 0.974, 1.923289, 1.042, 0)
+shape = SubResource("SphereShape3D_2lio0")
+
+[node name="BallParticles" type="GPUParticles3D" parent="FootBall" unique_id=468524782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_ryv62")
+transparency = 0.18
+cast_shadow = 0
+amount = 10
+lifetime = 0.1
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_0btyn")
+draw_pass_1 = SubResource("BoxMesh_esmtv")

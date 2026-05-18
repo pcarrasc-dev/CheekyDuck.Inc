@@ -13,17 +13,55 @@ albedo_texture = ExtResource("1_00wdd")
 [sub_resource type="BoxMesh" id="BoxMesh_dxwca"]
 material = SubResource("ORMMaterial3D_cm6sg")
 
-[node name="SkillBox" type="Node3D" unique_id=1608362586]
+[sub_resource type="Animation" id="Animation_cm6sg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillBoxMesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s8ch3"]
+resource_name = "getSkill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillBoxMesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 1),
+"transitions": PackedFloat32Array(4.594795, 4.924578, 4.924578),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.4, 0.4, 0.4), Vector3(1.5, 1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cm6sg"]
+_data = {
+&"RESET": SubResource("Animation_cm6sg"),
+&"getSkill": SubResource("Animation_s8ch3")
+}
+
+[node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
 script = ExtResource("1_s8ch3")
 
-[node name="SkillBoxArea" type="Area3D" parent="." unique_id=2117335705]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SkillBoxArea" unique_id=339980354]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339980354]
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_s8ch3")
 
 [node name="SkillBoxMesh" type="MeshInstance3D" parent="." unique_id=687758417]
+physics_interpolation_mode = 2
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
 mesh = SubResource("BoxMesh_dxwca")
 skeleton = NodePath("")
+
+[node name="SkillGet" type="AnimationPlayer" parent="." unique_id=86888162]
+libraries/ = SubResource("AnimationLibrary_cm6sg")

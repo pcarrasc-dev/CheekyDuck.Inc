@@ -1,32 +1,11 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
-[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://17ruqc4en430" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_kfaxj"]
+[ext_resource type="Script" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://du651h2fd1qqu" path="res://Scenes/Skills/skill_box.tscn" id="4_kfaxj"]
 [ext_resource type="PackedScene" uid="uid://gllgvfbw3j4r" path="res://Scenes/Skills/shield_skill.tscn" id="5_2lio0"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
-[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/Objects/FootBall/FootBall.fbx" id="5_kfaxj"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ybuur"]
-bounce = 0.75
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_2lio0"]
-radius = 0.9719775
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryv62"]
-vertex_color_use_as_albedo = true
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0btyn"]
-direction = Vector3(-1, 0, 0)
-spread = 6.882
-initial_velocity_min = 37.629997
-initial_velocity_max = 37.64
-color = Color(0.8670491, 0.044628553, 0.17411542, 1)
-hue_variation_min = -2.2351742e-08
-hue_variation_max = 0.16999997
-
-[sub_resource type="BoxMesh" id="BoxMesh_esmtv"]
-size = Vector3(1, 1, 0.01)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
 properties/0/path = NodePath("Player:rotation")
@@ -73,30 +52,9 @@ light_energy = 0.525
 
 [node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
 
-[node name="Ball" type="Node3D" parent="." unique_id=1225003722]
+[node name="Ball" parent="." unique_id=575437862 instance=ExtResource("2_kfaxj")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
-visible = false
-
-[node name="FootBall" parent="Ball" unique_id=1986362826 instance=ExtResource("5_kfaxj")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93, 0, 0)
-physics_material_override = SubResource("PhysicsMaterial_ybuur")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball/FootBall" unique_id=1246239969]
-transform = Transform3D(0.974, 0, 0, 0, 0.974, 0, 0, 0, 0.974, 1.923289, 1.042, 0)
-shape = SubResource("SphereShape3D_2lio0")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Ball/FootBall" unique_id=1510045281]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 1, 0)
-material_override = SubResource("StandardMaterial3D_ryv62")
-transparency = 0.18
-cast_shadow = 0
-amount = 10
-lifetime = 0.1
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_0btyn")
-draw_pass_1 = SubResource("BoxMesh_esmtv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
 replication_config = SubResource("SceneReplicationConfig_ybuur")

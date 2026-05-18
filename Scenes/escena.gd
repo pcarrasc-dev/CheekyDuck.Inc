@@ -7,6 +7,7 @@ extends Node3D
 @onready var sp_3: Marker3D = $"Skills/Skill SpawnPoint/SP3"
 @onready var skill_timer: Timer = $Skills/SkillTimer
 @onready var skill_box: SkillBox = %SkillBox
+@onready var skill_box_area: Area3D = $SkillBoxArea
 
 var Skill_Marker: Array[Marker3D] = [sp_0, sp_1, sp_2, sp_3]
 var Skill_Array: Array[int]
@@ -28,9 +29,9 @@ func _on_players_updated() -> void:
 	_setup_bars_authority()
 
 func _process(delta: float) -> void:
-	if skill_timer.is_stopped():
-		skill_app.add_child(skill_box, true)
-		
+	skill.rpc_id(1)
+	if skill_box_area.area_entered:
+		pass	
 	pass
 
 func _setup_bars_authority() -> void:
@@ -46,7 +47,11 @@ func _setup_bars_authority() -> void:
 	Debug.log("Bar0 autoridad: %d | Bar1 autoridad: %d" % [
 		Game.players[0].id, Game.players[1].id
 	])
-
-func skill() -> void:
 	
-	pass
+@rpc("any_peer", "reliable")
+func skill() -> void:
+	if not skill_timer.is_stopped():
+		return
+	skill_timer.start()
+	#skill_app.add_child(skill_box, true)
+	Debug.log("Skill")

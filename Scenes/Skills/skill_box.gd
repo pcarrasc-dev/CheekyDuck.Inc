@@ -1,7 +1,7 @@
-extends Node3D
+extends Area3D
 class_name SkillBox
 
-@onready var skill_box_area: Area3D = $SkillBoxArea
+@onready var skill_get: AnimationPlayer = $SkillGet
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,4 +10,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	body_entered.connect(_on_body_entered)
 	pass
+
+func _on_body_entered(body: Node3D) -> void:
+	var ball: Ball = body as Ball
+	if ball:
+		skill_get.play("getSkill")
+		await skill_get.animation_finished
+		queue_free()
