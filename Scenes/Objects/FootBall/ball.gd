@@ -3,7 +3,7 @@ class_name Ball
 
 @export var speed: int = 200
 @export var acceleration: float = 4
-@onready var ball_area: Area3D = $FootBall/BallArea
+@onready var ball_area: Area3D = $BallArea
 
 var player_id
 

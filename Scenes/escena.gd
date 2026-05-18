@@ -30,8 +30,6 @@ func _on_players_updated() -> void:
 
 func _process(delta: float) -> void:
 	skill.rpc_id(1)
-	if skill_box_area.area_entered:
-		pass	
 	pass
 
 func _setup_bars_authority() -> void:

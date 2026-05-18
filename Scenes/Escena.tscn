@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://17ruqc4en430" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_kfaxj"]
 [ext_resource type="Script" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
-[ext_resource type="PackedScene" uid="uid://du651h2fd1qqu" path="res://Scenes/Skills/skill_box.tscn" id="4_kfaxj"]
-[ext_resource type="PackedScene" uid="uid://gllgvfbw3j4r" path="res://Scenes/Skills/shield_skill.tscn" id="5_2lio0"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
 properties/0/path = NodePath("Player:rotation")
@@ -67,13 +66,18 @@ script = null
 
 [node name="SkillApp" type="Node3D" parent="Skills" unique_id=111137199]
 
-[node name="SkillBox" parent="Skills/SkillApp" unique_id=1608362586 instance=ExtResource("4_kfaxj")]
-unique_name_in_owner = true
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
-
 [node name="SkillTimer" type="Timer" parent="Skills" unique_id=2103678800]
 wait_time = 60.0
 script = ExtResource("4_i7ybl")
+
+[node name="ShieldsSpawn" type="Node3D" parent="Skills" unique_id=2069301348]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="ShieldSpawn1" type="Marker3D" parent="Skills/ShieldsSpawn" unique_id=1019637695]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1, -4.3711392e-08, 2.701347, 0.20734005, 0)
+
+[node name="ShieldSpawn2" type="Marker3D" parent="Skills/ShieldsSpawn" unique_id=1840397351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8038206, 0, 0)
 
 [node name="Skill SpawnPoint" type="Node3D" parent="Skills" unique_id=1841719548]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
@@ -90,6 +94,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8000002, -0.18300001, -0.90
 [node name="SP3" type="Marker3D" parent="Skills/Skill SpawnPoint" unique_id=793223306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7155504, -0.18300006, 0.5)
 
-[node name="Shield" parent="Skills" unique_id=1682651150 instance=ExtResource("5_2lio0")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
-script = null
+[node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]

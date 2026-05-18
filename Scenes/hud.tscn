@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duwtl4se34to"]
+
+[ext_resource type="Script" uid="uid://vof4iv4n55sq" path="res://Scenes/hud.gd" id="1_bjfho"]
+[ext_resource type="Theme" uid="uid://dkxpidgc0e706" path="res://Scenes/theme.tres" id="1_fccik"]
+[ext_resource type="PackedScene" uid="uid://v1a05naolsn3" path="res://Scenes/player_skill.tscn" id="2_fccik"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1177319416]
+script = ExtResource("1_bjfho")
+player_skills_scene = ExtResource("2_fccik")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2137176547]
+offset_right = 170.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_fccik")
+
+[node name="SkillsHudContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1431849345]
+layout_mode = 2
+size_flags_horizontal = 0

@@ -1,8 +1,11 @@
 extends Area3D
 class_name SkillBox
 
+@onready var skill_texture: TextureRect = $MarginContainer/Skill/SkillTexture
+@onready var shield: Node3D = $"../../Shield"
 @onready var skill_get: AnimationPlayer = $SkillGet
-
+@onready var player: Player = $Player
+var available_skillset: Array[Node3D] = [shield]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,6 +19,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	var ball: Ball = body as Ball
 	if ball:
+		player.item = available_skillset[0]
 		skill_get.play("getSkill")
 		await skill_get.animation_finished
 		queue_free()

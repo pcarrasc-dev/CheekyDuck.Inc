@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://v1a05naolsn3"]
+
+[ext_resource type="Script" uid="uid://cv63pgbbb56xl" path="res://Scenes/player_skill.gd" id="1_2xwyt"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="2_fgaag"]
+
+[node name="PlayerSkill" type="HBoxContainer" unique_id=1676397705]
+script = ExtResource("1_2xwyt")
+
+[node name="SkillSprite" type="Sprite2D" parent="." unique_id=343085053]
+texture = ExtResource("2_fgaag")
