@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://ctmuead1fmdww"]
+
+[ext_resource type="Texture2D" uid="uid://b1nt01gnw8q2l" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_Color.jpg" id="1_lu2hn"]
+[ext_resource type="Texture2D" uid="uid://c81tqrpcuqrpl" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_AmbientOcclusion.jpg" id="2_3tg5y"]
+[ext_resource type="Texture2D" uid="uid://7wfohhljmank" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_Displacement.jpg" id="3_0u7qi"]
+[ext_resource type="Texture2D" uid="uid://cg7kp071csq1" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_NormalGL.jpg" id="4_bnd4m"]
+[ext_resource type="Texture2D" uid="uid://hsaa6jhafxl" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_Roughness.jpg" id="5_4rs33"]
+[ext_resource type="Texture2D" uid="uid://dajk5tucjpwr7" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Color.jpg" id="6_d35g1"]
+[ext_resource type="Texture2D" uid="uid://cyp22ruj3ivju" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Displacement.jpg" id="7_doigy"]
+[ext_resource type="Texture2D" uid="uid://c3pj3hjcnpyy" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_NormalGL.jpg" id="8_g54pm"]
+[ext_resource type="Texture2D" uid="uid://cu4i7nsh38c54" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Roughness.jpg" id="9_j3hs1"]
+[ext_resource type="Material" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG.tres" id="10_4t8yf"]
+[ext_resource type="Texture2D" uid="uid://beoj4k6i1yu4w" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Color.jpg" id="11_1ri4m"]
+[ext_resource type="Texture2D" uid="uid://bic37mfte2jv0" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Displacement.jpg" id="12_vs8ty"]
+[ext_resource type="Texture2D" uid="uid://dhrbkdox4hshh" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Metalness.jpg" id="13_u2duu"]
+[ext_resource type="Texture2D" uid="uid://ddpyrct0uh73m" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_NormalGL.jpg" id="14_oe0gc"]
+[ext_resource type="Texture2D" uid="uid://br1odww0e2rt6" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Roughness.jpg" id="15_88t5j"]
+[ext_resource type="PackedScene" uid="uid://d0fqaw3cw6g7c" path="res://Scenes/Objects/Bar/bar_V2.tscn" id="16_hc8fu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5w8u"]
+albedo_color = Color(0.92389965, 0.92389965, 0.92389965, 1)
+albedo_texture = ExtResource("1_lu2hn")
+roughness_texture = ExtResource("5_4rs33")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_bnd4m")
+ao_enabled = true
+ao_texture = ExtResource("2_3tg5y")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_0u7qi")
+uv1_scale = Vector3(1.5, 1.5, 1.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw45l"]
+albedo_texture = ExtResource("6_d35g1")
+roughness_texture = ExtResource("9_j3hs1")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("8_g54pm")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("7_doigy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y4ya"]
+albedo_texture = ExtResource("6_d35g1")
+roughness_texture = ExtResource("9_j3hs1")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("8_g54pm")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("7_doigy")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muehn"]
+albedo_texture = ExtResource("11_1ri4m")
+metallic = 1.0
+metallic_texture = ExtResource("13_u2duu")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("15_88t5j")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("14_oe0gc")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("12_vs8ty")
+uv1_scale = Vector3(7, 7, 7)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nhww"]
+albedo_texture = ExtResource("11_1ri4m")
+metallic = 1.0
+metallic_texture = ExtResource("13_u2duu")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("15_88t5j")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("14_oe0gc")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("12_vs8ty")
+uv1_scale = Vector3(7, 7, 7)
+uv1_triplanar = true
+
+[node name="FieldV3" type="Node3D" unique_id=151697161]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1603543840]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+use_collision = true
+
+[node name="suelo" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2099872447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027048282, 0)
+size = Vector3(1.4, 0.05, 0.8)
+material = SubResource("StandardMaterial3D_p5w8u")
+
+[node name="Paredes" type="CSGBox3D" parent="CSGCombiner3D" unique_id=897209270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07241158, 0)
+size = Vector3(1.45, 0.2, 0.85)
+material = SubResource("StandardMaterial3D_cw45l")
+
+[node name="Interior" type="CSGBox3D" parent="CSGCombiner3D/Paredes" unique_id=675702972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048438847, 0)
+operation = 2
+size = Vector3(1.4, 0.3, 0.8)
+material = SubResource("StandardMaterial3D_6y4ya")
+
+[node name="Arco_4" type="CSGBox3D" parent="CSGCombiner3D/Paredes/Interior" unique_id=1631098397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74248934, -0.020999998, 0.009)
+size = Vector3(0.09, 0.195, 0.325)
+material = ExtResource("10_4t8yf")
+
+[node name="Arco_5" type="CSGBox3D" parent="CSGCombiner3D/Paredes/Interior" unique_id=1488716768]
+transform = Transform3D(-0.9998938, 0, 0.014573021, 0, 1, 0, -0.014573021, 0, -0.9998938, 0.71532184, -0.021452323, 0.009338383)
+size = Vector3(0.09, 0.195, 0.325)
+
+[node name="Arco_3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=497162145]
+transform = Transform3D(-0.9998938, 0, 0.014573021, 0, 1, 0, -0.014573021, 0, -0.9998938, 0.80274945, 0.09939811, 0.009421483)
+size = Vector3(0.2, 0.2, 0.33)
+material = SubResource("StandardMaterial3D_muehn")
+
+[node name="Arco_3" type="CSGBox3D" parent="CSGCombiner3D/Arco_3" unique_id=569495577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0057023168, 0, 0)
+operation = 2
+size = Vector3(0.19, 0.195, 0.325)
+material = SubResource("StandardMaterial3D_7nhww")
+
+[node name="Arco_4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1308391671]
+transform = Transform3D(0.9999773, 0, -0.0067543974, 0, 1, 0, 0.0067543974, 0, 0.9999773, -0.80782723, 0.09939811, 0.009421483)
+size = Vector3(0.2, 0.2, 0.33)
+material = SubResource("StandardMaterial3D_muehn")
+
+[node name="Arco_3" type="CSGBox3D" parent="CSGCombiner3D/Arco_4" unique_id=199339221]
+transform = Transform3D(0.99999994, 0, 4.656613e-10, 0, 1, 0, -4.656613e-10, 0, 0.99999994, 0.008014977, 0, -1.5621074e-05)
+operation = 2
+size = Vector3(0.19, 0.195, 0.325)
+material = SubResource("StandardMaterial3D_7nhww")
+
+[node name="BarV2" parent="." unique_id=301409963 instance=ExtResource("16_hc8fu")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=122768734]
+transform = Transform3D(-8.571355e-09, -0.80146265, 0.5980449, -7.0066086e-08, 0.5980449, 0.80146265, -1, -3.5033043e-08, -6.1281405e-08, 0.5186213, 0.7067868, 0.0015049208)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1696544822]
+transform = Transform3D(1, 0, 0, 0, 0.057598833, 0.99833983, 0, -0.99833983, 0.057598833, 0, 1.63397, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=931451191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3130656, -0.009818494)

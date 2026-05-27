@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://17ruqc4en430" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_kfaxj"]
-[ext_resource type="Script" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
+[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
 
@@ -37,6 +37,9 @@ properties/8/replication_mode = 1
 properties/9/path = NodePath("Ball/GPUParticles3D:rotation")
 properties/9/spawn = true
 properties/9/replication_mode = 1
+properties/10/path = NodePath("Field_V2/Bar:position")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")

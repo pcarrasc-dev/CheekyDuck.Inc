@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d0fqaw3cw6g7c"]
+
+[ext_resource type="Material" uid="uid://c2a1y88oyolpy" path="res://resources/Metal053B_4K-JPG/Metal053B_4K-JPG.tres" id="1_6vkjj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mx0l3"]
+height = 1.5
+radius = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7xwho"]
+material = ExtResource("1_6vkjj")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.5
+
+[node name="BarV2" type="Node3D" unique_id=301409963]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1398668418]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1255147874]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mx0l3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D" unique_id=179076608]
+mesh = SubResource("CylinderMesh_7xwho")
+skeleton = NodePath("../..")

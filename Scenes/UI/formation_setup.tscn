@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://b55b664bg3q18"]
+
+[ext_resource type="Script" uid="uid://b76c8dw67ftid" path="res://Scenes/UI/formation_setup.gd" id="1_setup"]
+
+[node name="FormationSetup" type="CanvasLayer" unique_id=1069786033]
+script = ExtResource("1_setup")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1732155684]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="VBoxMain" type="VBoxContainer" parent="." unique_id=1295719042]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="VBoxMain" unique_id=569706098]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Configura tu Formación"
+horizontal_alignment = 1
+
+[node name="GoalkeeperRow" type="HBoxContainer" parent="VBoxMain" unique_id=2116872838]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="GoalkeeperTitle" type="Label" parent="VBoxMain/GoalkeeperRow" unique_id=1904350374]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Portero (Barra 1)"
+horizontal_alignment = 1
+
+[node name="GoalkeeperFixed" type="Label" parent="VBoxMain/GoalkeeperRow" unique_id=208788471]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "1  (fijo)"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="VBoxMain" unique_id=1864193772]
+layout_mode = 2
+
+[node name="BarsRow" type="HBoxContainer" parent="VBoxMain" unique_id=1535397454]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Bar2Col" type="VBoxContainer" parent="VBoxMain/BarsRow" unique_id=1670370747]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Bar2Title" type="Label" parent="VBoxMain/BarsRow/Bar2Col" unique_id=348514697]
+layout_mode = 2
+text = "Barra 2"
+horizontal_alignment = 1
+
+[node name="Bar2Plus" type="Button" parent="VBoxMain/BarsRow/Bar2Col" unique_id=1677121470]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Bar2CountLabel" type="Label" parent="VBoxMain/BarsRow/Bar2Col" unique_id=610249359]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "3"
+horizontal_alignment = 1
+
+[node name="Bar2Minus" type="Button" parent="VBoxMain/BarsRow/Bar2Col" unique_id=1025756402]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "−"
+
+[node name="Bar3Col" type="VBoxContainer" parent="VBoxMain/BarsRow" unique_id=1036414283]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Bar3Title" type="Label" parent="VBoxMain/BarsRow/Bar3Col" unique_id=1756510148]
+layout_mode = 2
+text = "Barra 3"
+horizontal_alignment = 1
+
+[node name="Bar3Plus" type="Button" parent="VBoxMain/BarsRow/Bar3Col" unique_id=117691765]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Bar3CountLabel" type="Label" parent="VBoxMain/BarsRow/Bar3Col" unique_id=86212782]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "4"
+horizontal_alignment = 1
+
+[node name="Bar3Minus" type="Button" parent="VBoxMain/BarsRow/Bar3Col" unique_id=1086742803]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "−"
+
+[node name="Bar4Col" type="VBoxContainer" parent="VBoxMain/BarsRow" unique_id=789407845]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Bar4Title" type="Label" parent="VBoxMain/BarsRow/Bar4Col" unique_id=2685929]
+layout_mode = 2
+text = "Barra 4"
+horizontal_alignment = 1
+
+[node name="Bar4Plus" type="Button" parent="VBoxMain/BarsRow/Bar4Col" unique_id=1226979812]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Bar4CountLabel" type="Label" parent="VBoxMain/BarsRow/Bar4Col" unique_id=2052696109]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "3"
+horizontal_alignment = 1
+
+[node name="Bar4Minus" type="Button" parent="VBoxMain/BarsRow/Bar4Col" unique_id=1062403632]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 40)
+layout_mode = 2
+text = "−"
+
+[node name="Separator2" type="HSeparator" parent="VBoxMain" unique_id=1914767022]
+layout_mode = 2
+
+[node name="RemainingLabel" type="Label" parent="VBoxMain" unique_id=849820932]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restantes: 0"
+horizontal_alignment = 1
+
+[node name="ReadyButton" type="Button" parent="VBoxMain" unique_id=1027113113]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "¡Listo!"
+
+[node name="StatusLabel" type="Label" parent="VBoxMain" unique_id=766321602]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1

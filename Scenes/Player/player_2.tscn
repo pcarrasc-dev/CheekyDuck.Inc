@@ -29,8 +29,7 @@ script = ExtResource("1_ktnsh")
 material_override = SubResource("StandardMaterial3D_g4j5n")
 mesh = SubResource("CapsuleMesh_sh265")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D" unique_id=1764176198]
-lock_rotation = true
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=408717749]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D" unique_id=240296017]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=240296017]
 shape = SubResource("ConvexPolygonShape3D_4flbx")
