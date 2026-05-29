@@ -2,15 +2,13 @@ extends Node3D
 
 @onready var skill_app: Node3D = $Skills/SkillApp
 @onready var sp_0: Marker3D = $"Skills/Skill SpawnPoint/SP0"
-@onready var sp_1: Marker3D = $"Skills/Skill SpawnPoint/SP1"
-@onready var sp_2: Marker3D = $"Skills/Skill SpawnPoint/SP2"
-@onready var sp_3: Marker3D = $"Skills/Skill SpawnPoint/SP3"
 @onready var skill_timer: Timer = $Skills/SkillTimer
-@onready var skill_box: SkillBox = %SkillBox
-@onready var skill_box_area: Area3D = $SkillBoxArea
+@onready var skill_box: PackedScene = preload("res://Scenes/Skills/skill_box.tscn")
 
-var Skill_Marker: Array[Marker3D] = [sp_0, sp_1, sp_2, sp_3]
-var Skill_Array: Array[int]
+var skill_player_1: Skills
+var skill_player_2: Skills
+
+var Skill_Marker: Array[Marker3D] = [sp_0]
 
 func _ready() -> void:
 	Debug.log("Players al cargar: %d" % Game.players.size())
@@ -19,6 +17,7 @@ func _ready() -> void:
 	
 	if Game.players.size() >= 2:
 		_setup_bars_authority()
+		_set_skills()
 	else:
 		Game.players_updated.connect(_on_players_updated)
 
@@ -30,6 +29,12 @@ func _on_players_updated() -> void:
 
 func _process(delta: float) -> void:
 	skill.rpc_id(1)
+	pass
+
+func _input(event: InputEvent) -> void:
+	if is_multiplayer_authority():
+		if Input.is_action_just_pressed("skill"):
+			activate_skill.rpc()
 	pass
 
 func _setup_bars_authority() -> void:
@@ -55,7 +60,16 @@ func skill() -> void:
 	#skill_app.add_child(skill_box, true)
 	Debug.log("Skill")
 
-# 
+@rpc("authority", "reliable")
+func activate_skill()-> void:
+	Debug.log("activated skill")
+	var id = Game.player_id
+	pass
+
+func _set_skills() -> void:
+	skill_player_1.set_multiplayer_authority(Game.players[0].id)
+	skill_player_2.set_multiplayer_authority(Game.players[1].id)
+
 @export var player_slot_spread: float = 0.8
 const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
 var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")

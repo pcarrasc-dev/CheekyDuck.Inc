@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
 [ext_resource type="PackedScene" uid="uid://17ruqc4en430" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_kfaxj"]
-[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
+[ext_resource type="Script" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
 
@@ -85,16 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8038206, 0, 0)
 [node name="Skill SpawnPoint" type="Node3D" parent="Skills" unique_id=1841719548]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
 
-[node name="SP1" type="Marker3D" parent="Skills/Skill SpawnPoint" unique_id=1565951283]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999999, -0.18343167, -0.5)
-
 [node name="SP0" type="Marker3D" parent="Skills/Skill SpawnPoint" unique_id=665493483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89860404, -0.18300003, 0.6713703)
-
-[node name="SP2" type="Marker3D" parent="Skills/Skill SpawnPoint" unique_id=1624668661]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8000002, -0.18300001, -0.9091021)
-
-[node name="SP3" type="Marker3D" parent="Skills/Skill SpawnPoint" unique_id=793223306]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7155504, -0.18300006, 0.5)
 
 [node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]
