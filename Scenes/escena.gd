@@ -55,9 +55,21 @@ func _on_players_updated() -> void:
 	_setup_bars_authority()
 
 
-func _process(_delta: float) -> void:
-	if match_running and multiplayer.is_server():
+var _timer_sync: float = 0.0
+
+func _process(delta: float) -> void:
+	if not match_running:
+		return
+	if multiplayer.is_server():
 		hud.update_timer(match_timer.time_left)
+		_timer_sync += delta
+		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
+			_timer_sync = 0.0
+			_sync_timer.rpc(match_timer.time_left)
+
+@rpc("authority", "unreliable")
+func _sync_timer(time_left: float) -> void:
+	hud.update_timer(time_left)
 
 
 # ── Gol ───────────────────────────────────────────────────────────────────────
@@ -136,6 +148,8 @@ func skill() -> void:
 
 func _setup_bars_authority() -> void:
 	Game.sort_players()
+	$Ball/FootBall.set_multiplayer_authority(1)
+	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar3.set_multiplayer_authority(Game.players[0].id)
