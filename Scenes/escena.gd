@@ -1,26 +1,52 @@
 extends Node3D
 
-@onready var skill_app: Node3D = $Skills/SkillApp
-@onready var sp_0: Marker3D = $"Skills/Skill SpawnPoint/SP0"
-@onready var sp_1: Marker3D = $"Skills/Skill SpawnPoint/SP1"
-@onready var sp_2: Marker3D = $"Skills/Skill SpawnPoint/SP2"
-@onready var sp_3: Marker3D = $"Skills/Skill SpawnPoint/SP3"
-@onready var skill_timer: Timer = $Skills/SkillTimer
-@onready var skill_box: SkillBox = %SkillBox
-@onready var skill_box_area: Area3D = $SkillBoxArea
+# ── Referencias ───────────────────────────────────────────────────────────────
+@onready var skill_app: Node3D     = $Skills/SkillApp
+@onready var skill_timer: Timer    = $Skills/SkillTimer
+@onready var hud: CanvasLayer      = $HUD
+@onready var ball_node: Node3D     = $Ball
+@onready var goal_area_a: Area3D   = $GoalAreaA   # gol para equipo B (arco de A)
+@onready var goal_area_b: Area3D   = $GoalAreaB   # gol para equipo A (arco de B)
+@onready var match_timer: Timer    = $MatchTimer
 
-var Skill_Marker: Array[Marker3D] = [sp_0, sp_1, sp_2, sp_3]
-var Skill_Array: Array[int]
+# ── Estado del partido ────────────────────────────────────────────────────────
+const MATCH_DURATION: float  = 180.0   # 3 minutos
+const GOALS_TO_WIN:   int    = 1
+
+var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
+var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
+var match_running: bool = false
+var ball_spawn: Vector3 = Vector3(0, 4.834766, 0)
+
+# ── Spawn / formaciones ───────────────────────────────────────────────────────
+@export var player_slot_spread: float = 0.8
+const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
+var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")
+var _player_scene_b: PackedScene = preload("res://Scenes/Player/player_2.tscn")
+
 
 func _ready() -> void:
 	Debug.log("Players al cargar: %d" % Game.players.size())
 	for p in Game.players:
 		Debug.log("  id:%d index:%d" % [p.id, p.index])
-	
+
+	# Conectar áreas de gol
+	goal_area_a.body_entered.connect(func(body): _on_goal(body, "A"))
+	goal_area_b.body_entered.connect(func(body): _on_goal(body, "B"))
+
 	if Game.players.size() >= 2:
 		_setup_bars_authority()
 	else:
 		Game.players_updated.connect(_on_players_updated)
+
+	# Arrancar partido (solo servidor gestiona el timer)
+	if multiplayer.is_server():
+		match_timer.wait_time = MATCH_DURATION
+		match_timer.one_shot  = true
+		match_timer.timeout.connect(_on_match_timeout)
+		match_timer.start()
+	match_running = true
+
 
 func _on_players_updated() -> void:
 	if Game.players.size() < 2:
@@ -28,9 +54,85 @@ func _on_players_updated() -> void:
 	Game.players_updated.disconnect(_on_players_updated)
 	_setup_bars_authority()
 
-func _process(delta: float) -> void:
-	skill.rpc_id(1)
-	pass
+
+func _process(_delta: float) -> void:
+	if match_running and multiplayer.is_server():
+		hud.update_timer(match_timer.time_left)
+
+
+# ── Gol ───────────────────────────────────────────────────────────────────────
+
+# La pelota entró al área de gol del equipo "side" → anota el equipo contrario
+func _on_goal(body: Node3D, side: String) -> void:
+	if not multiplayer.is_server():
+		return
+	# Sólo la pelota marca gol
+	if not (body is RigidBody3D):
+		return
+	if not match_running:
+		return
+
+	if side == "A":
+		score_b += 1
+	else:
+		score_a += 1
+
+	Debug.log("¡GOL! Score A:%d  B:%d" % [score_a, score_b])
+	_sync_score.rpc(score_a, score_b)
+	_reset_ball.rpc()
+
+	if score_a >= GOALS_TO_WIN or score_b >= GOALS_TO_WIN:
+		_end_match.rpc(score_a, score_b)
+
+
+@rpc("authority", "reliable", "call_local")
+func _sync_score(a: int, b: int) -> void:
+	score_a = a
+	score_b = b
+	hud.update_score(score_a, score_b)
+
+
+@rpc("authority", "reliable", "call_local")
+func _reset_ball() -> void:
+	var football: RigidBody3D = $Ball/FootBall
+	football.linear_velocity  = Vector3.ZERO
+	football.angular_velocity = Vector3.ZERO
+	football.global_position  = ball_spawn
+
+
+# ── Fin de partido ────────────────────────────────────────────────────────────
+
+func _on_match_timeout() -> void:
+	if not multiplayer.is_server():
+		return
+	_end_match.rpc(score_a, score_b)
+
+
+@rpc("authority", "reliable", "call_local")
+func _end_match(final_a: int, final_b: int) -> void:
+	match_running = false
+	match_timer.stop()
+	var winner: String
+	if final_a > final_b:
+		winner = Game.players[0].name
+	elif final_b > final_a:
+		winner = Game.players[1].name
+	else:
+		winner = "Empate"
+	hud.show_end_screen(winner, final_a, final_b)
+
+
+# ── Skill (placeholder) ───────────────────────────────────────────────────────
+
+@rpc("any_peer", "reliable")
+func skill() -> void:
+	if not skill_timer.is_stopped():
+		return
+	skill_timer.start()
+	Debug.log("Skill")
+
+
+# ── Barras / spawn ────────────────────────────────────────────────────────────
 
 func _setup_bars_authority() -> void:
 	Game.sort_players()
@@ -46,65 +148,32 @@ func _setup_bars_authority() -> void:
 		Game.players[0].id, Game.players[1].id
 	])
 	_spawn_players()
-	
-@rpc("any_peer", "reliable")
-func skill() -> void:
-	if not skill_timer.is_stopped():
-		return
-	skill_timer.start()
-	#skill_app.add_child(skill_box, true)
-	Debug.log("Skill")
 
-# 
-@export var player_slot_spread: float = 0.8
-const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
-var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")
-var _player_scene_b: PackedScene = preload("res://Scenes/Player/player_2.tscn")
 
 func _spawn_players() -> void:
-	var bars_a: Array[StaticBody3D] = [
-		$FieldV2/Bar,
-		$FieldV2/Bar2,
-		$FieldV2/Bar3,
-		$FieldV2/Bar4,
-	]
-	var bars_b: Array[StaticBody3D] = [
-		$FieldV2/Bar5,
-		$FieldV2/Bar6,
-		$FieldV2/Bar7,
-		$FieldV2/Bar8,
-	]
-#	var formation_a: Array[int] = Game.get_player_formation(Game.players[0].id)
-#	var formation_b: Array[int] = Game.get_player_formation(Game.players[1].id)
-#	_spawn_team(bars_a, formation_a, _player_scene_a)
-#	_spawn_team(bars_b, formation_b, _player_scene_b)
-#	Debug.log("Spawn completado — equipo A: %s | equipo B: %s" % [str(formation_a), str(formation_b)])
-	
+	pass   # formaciones comentadas igual que antes
+
+
 func _spawn_team(bars: Array[StaticBody3D], formation: Array[int], scene: PackedScene) -> void:
 	_spawn_in_bar(bars[0], 1, scene, -1)
 	for i: int in range(3):
 		_spawn_in_bar(bars[i + 1], formation[i], scene, i)
 
-func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_index: int = -1) ->void:
+
+func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_index: int = -1) -> void:
 	var existing_players: int = 0
 	for child: Node in bar.get_children():
 		if child is Node3D:
 			existing_players += 1
 	if existing_players > 0:
-		Debug.log("Barra '%s' ya tiene %d personajes, se omite el spawn." % [bar.name, existing_players])
 		return
 	var final_count: int = count
 	if final_count <= 0:
 		if bar_field_index >= 0 and bar_field_index < DEFAULT_FORMATION.size():
 			final_count = DEFAULT_FORMATION[bar_field_index]
-			Debug.log("Barra '%s': count inválido, usando fallback %d." % [bar.name, final_count])
 		else:
 			final_count = 1
-			Debug.log("Barra '%s': count inválido sin índice de fallback, usando 1." % bar.name)
-			
-	var positions: Array[Vector3] = FormationSetup.get_slot_positions(
-		final_count, player_slot_spread
-	)
+	var positions: Array[Vector3] = FormationSetup.get_slot_positions(final_count, player_slot_spread)
 	for pos: Vector3 in positions:
 		var instance: Node3D = scene.instantiate() as Node3D
 		bar.add_child(instance)

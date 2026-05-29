@@ -41,6 +41,9 @@ properties/10/path = NodePath("Field_V2/Bar:position")
 properties/10/spawn = true
 properties/10/replication_mode = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
+size = Vector3(1.4672318, 2.5521865, 6.420129)
+
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
 
@@ -63,7 +66,6 @@ replication_config = SubResource("SceneReplicationConfig_ybuur")
 
 [node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("5_i7ybl")]
 transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0, 0, 0)
-script = null
 
 [node name="Skills" type="Node3D" parent="." unique_id=1160852673]
 
@@ -98,3 +100,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8000002, -0.18300001, -0.90
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7155504, -0.18300006, 0.5)
 
 [node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]
+
+[node name="MatchTimer" type="Timer" parent="." unique_id=1668992692]
+wait_time = 180.0
+one_shot = true
+
+[node name="GoalAreaA" type="Area3D" parent="." unique_id=517932853]
+transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98855454, 13.8, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaA" unique_id=2082696953]
+transform = Transform3D(0.9981847, 0.029808197, 0.05233567, -0.029666068, 0.9995539, -0.0034906531, -0.052416347, 0.0019317223, 0.9986239, 1.1435442, 0.5896984, -0.5285961)
+shape = SubResource("BoxShape3D_i7ybl")
+
+[node name="GoalAreaB" type="Area3D" parent="." unique_id=1875410742]
+transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98855454, 13.8, 1, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
+shape = SubResource("BoxShape3D_i7ybl")

@@ -17,3 +17,71 @@ theme = ExtResource("1_fccik")
 [node name="SkillsHudContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1431849345]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=769818566]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=714138333]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer2/VBoxContainer" unique_id=764225204]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0-0"
+
+[node name="TimerLabel" type="Label" parent="MarginContainer2/VBoxContainer" unique_id=540597240]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "3:00"
+horizontal_alignment = 1
+
+[node name="EndPanel" type="Panel" parent="." unique_id=2113008093]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -137.0
+offset_right = 250.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndPanel" unique_id=1414762325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinnerLabel" type="Label" parent="EndPanel/VBoxContainer" unique_id=41128188]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Jugador 1 gana!"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="EndPanel/VBoxContainer" unique_id=671859960]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Marcador final: 0-0."
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="EndPanel/VBoxContainer" unique_id=36813689]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volver al lobby"

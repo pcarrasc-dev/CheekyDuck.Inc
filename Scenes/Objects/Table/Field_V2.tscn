@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3pj3hjcnpyy" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_NormalGL.jpg" id="3_abjfv"]
 [ext_resource type="Texture2D" uid="uid://cg7kp071csq1" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_NormalGL.jpg" id="4_cw45l"]
 [ext_resource type="Texture2D" uid="uid://cu4i7nsh38c54" path="res://resources/Wood066_4K-JPG/Wood066_4K-JPG_Roughness.jpg" id="4_k4gyb"]
-[ext_resource type="Material" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG.tres" id="5_2kec3"]
+[ext_resource type="Material" uid="uid://tcmfuxrkry02" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG.tres" id="5_2kec3"]
 [ext_resource type="Texture2D" uid="uid://hsaa6jhafxl" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_Roughness.jpg" id="5_6y4ya"]
 [ext_resource type="Texture2D" uid="uid://beoj4k6i1yu4w" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Color.jpg" id="5_bpq23"]
 [ext_resource type="Texture2D" uid="uid://bic37mfte2jv0" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Displacement.jpg" id="6_fisfa"]
