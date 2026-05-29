@@ -74,11 +74,11 @@ func _spawn_players() -> void:
 		$FieldV2/Bar7,
 		$FieldV2/Bar8,
 	]
-	var formation_a: Array[int] = Game.get_player_formation(Game.players[0].id)
-	var formation_b: Array[int] = Game.get_player_formation(Game.players[1].id)
-	_spawn_team(bars_a, formation_a, _player_scene_a)
-	_spawn_team(bars_b, formation_b, _player_scene_b)
-	Debug.log("Spawn completado — equipo A: %s | equipo B: %s" % [str(formation_a), str(formation_b)])
+#	var formation_a: Array[int] = Game.get_player_formation(Game.players[0].id)
+#	var formation_b: Array[int] = Game.get_player_formation(Game.players[1].id)
+#	_spawn_team(bars_a, formation_a, _player_scene_a)
+#	_spawn_team(bars_b, formation_b, _player_scene_b)
+#	Debug.log("Spawn completado — equipo A: %s | equipo B: %s" % [str(formation_a), str(formation_b)])
 	
 func _spawn_team(bars: Array[StaticBody3D], formation: Array[int], scene: PackedScene) -> void:
 	_spawn_in_bar(bars[0], 1, scene, -1)

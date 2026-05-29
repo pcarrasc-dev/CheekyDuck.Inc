@@ -178,13 +178,13 @@ func _handle_node_added(node: Node) -> void:
 		change_window_scale = node is MainMenu or node is LobbyHostScreen or \
 			node is LobbyJoinScreen or node is LobbyWaitingScreen or node is Credits
 
-var player_formations: Dictionary = {}
+#var player_formations: Dictionary = {}
 
-func set_player_formation(peer_id: int, formation: Array[int]) -> void:
-	player_formations[peer_id] = formation
-	Debug.log("Game: formación guardada para peer %d → %s" % [peer_id, str(formation)])
+#func set_player_formation(peer_id: int, formation: Array[int]) -> void:
+#	player_formations[peer_id] = formation
+#	Debug.log("Game: formación guardada para peer %d → %s" % [peer_id, str(formation)])
 	
-func get_player_formation(peer_id: int) -> Array[int]:
-	if player_formations.has(peer_id):
-		return player_formations[peer_id]
-	return [2,3,5]
+#func get_player_formation(peer_id: int) -> Array[int]:
+#	if player_formations.has(peer_id):
+#		return player_formations[peer_id]
+#	return [2,3,5]
