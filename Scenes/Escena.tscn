@@ -56,7 +56,7 @@ light_energy = 0.525
 
 [node name="Ball" parent="." unique_id=575437862 instance=ExtResource("2_kfaxj")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.834766, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1139164, 4.834766, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
 replication_config = SubResource("SceneReplicationConfig_ybuur")
