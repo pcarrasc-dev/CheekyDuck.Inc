@@ -78,4 +78,5 @@ bar_4={
 
 [rendering]
 
+lights_and_shadows/tighter_shadow_caster_culling=false
 environment/defaults/default_clear_color=Color(0.1287, 0.24612503, 0.33, 1)
