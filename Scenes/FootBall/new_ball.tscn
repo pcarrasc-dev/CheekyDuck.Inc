@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://pbsomgi086yu"]
+
+[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="1_cpbe1"]
+[ext_resource type="Script" uid="uid://byeuwmcn0vvrx" path="res://Scenes/FootBall/new_ball.gd" id="1_d3f3d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
+
+[node name="Node3D" type="Node3D" unique_id=312642086]
+script = ExtResource("1_d3f3d")
+
+[node name="FootBall" parent="." unique_id=1515229799 instance=ExtResource("1_cpbe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, 0, -0.0316571)
+freeze_mode = 1
+
+[node name="ball_shape" type="CollisionShape3D" parent="FootBall" unique_id=2116463812]
+transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 1.9284674, 1.0435269, 0.0007420778)
+shape = SubResource("SphereShape3D_11hlg")
+
+[node name="ball_area" type="Area3D" parent="FootBall" unique_id=1939856972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0, -3.7252903e-09)
+
+[node name="ball_shape2" type="CollisionShape3D" parent="FootBall/ball_area" unique_id=1343976970]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 1.9284675, 1.0435269, 0.00074208155)
+shape = SubResource("SphereShape3D_11hlg")

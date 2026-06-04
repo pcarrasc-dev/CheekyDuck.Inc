@@ -9,17 +9,23 @@ extends StaticBody3D
 var is_selected: bool = false
 var _origin_x: float = 0.0
 
-
-
+var angular_velocity: Vector3
+var previous_rotation: Vector3
 
 func _ready() -> void:
 	_origin_x = position.x
-	Debug.log("Bar (team_idx:%d) — autoridad: %d" % [
-		team_bar_index,
-		$MultiplayerSynchronizer.get_multiplayer_authority()
-	])
+	#Debug.log("Bar (team_idx:%d) — autoridad: %d" % [
+	#	team_bar_index,
+	#	$MultiplayerSynchronizer.get_multiplayer_authority()
+	#])
  
- 
+func _process(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
+	if not is_selected:
+		return
+	 
+
 func _input(event: InputEvent) -> void:
 	# Solo el dueño de la barra la controla
 	if not is_multiplayer_authority():
