@@ -1,19 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="acg_djy0lxm8"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://tcmfuxrkry02"]
 
-[ext_resource type="Texture2D" uid="uid://acg_j9ui6g70" id="Color" path="./SheetMetal002_4K-JPG_Color.jpg"]
-[ext_resource type="Texture2D" uid="uid://acg_1gu54hfs" id="Metalness" path="./SheetMetal002_4K-JPG_Metalness.jpg"]
-[ext_resource type="Texture2D" uid="uid://acg_vpg274ed" id="Displacement" path="./SheetMetal002_4K-JPG_Displacement.jpg"]
-[ext_resource type="Texture2D" uid="uid://acg_fiuz7xv5" id="Roughness" path="./SheetMetal002_4K-JPG_Roughness.jpg"]
-[ext_resource type="Texture2D" uid="uid://acg_24ncmof1" id="NormalGL" path="./SheetMetal002_4K-JPG_NormalGL.jpg"]
+[ext_resource type="Texture2D" uid="uid://beoj4k6i1yu4w" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Color.jpg" id="Color"]
+[ext_resource type="Texture2D" uid="uid://bic37mfte2jv0" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Displacement.jpg" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://dhrbkdox4hshh" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Metalness.jpg" id="Metalness"]
+[ext_resource type="Texture2D" uid="uid://ddpyrct0uh73m" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_NormalGL.jpg" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://br1odww0e2rt6" path="res://resources/SheetMetal002_4K-JPG/SheetMetal002_4K-JPG_Roughness.jpg" id="Roughness"]
+
 [resource]
 albedo_texture = ExtResource("Color")
-metallic_texture = ExtResource("Metalness")
 metallic = 1.0
+metallic_texture = ExtResource("Metalness")
 metallic_texture_channel = 4
 roughness_texture = ExtResource("Roughness")
 roughness_texture_channel = 4
-normal_texture = ExtResource("NormalGL")
 normal_enabled = true
-heightmap_texture = ExtResource("Displacement")
-heightmap_scale = 1.0
+normal_texture = ExtResource("NormalGL")
 heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")
