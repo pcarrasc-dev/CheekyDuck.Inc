@@ -48,7 +48,7 @@ size = Vector3(1.4672318, 2.5521865, 6.420129)
 script = ExtResource("1_1wh3i")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
-transform = Transform3D(1, 0, 0, 0, 0.4708578, 0.8822093, 0, -0.8822093, 0.4708578, 0.054712296, 11.60795, 7.505907)
+transform = Transform3D(1, 0, 0, 0, 0.47085774, 0.8822092, 0, -0.8822092, 0.47085774, 0.054712296, 13.080267, 9.59486)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
 transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)

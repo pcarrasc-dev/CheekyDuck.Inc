@@ -11,7 +11,7 @@ height = 10.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_8xvvv"]
 top_radius = 0.08
 bottom_radius = 0.08
-height = 10.0
+height = 100.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5gpg3"]
 properties/0/path = NodePath(".:rotation")
@@ -27,9 +27,10 @@ script = ExtResource("1_5gpg3")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=412934136]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_5gpg3")
+disabled = true
 
 [node name="Player" parent="." unique_id=531167561 instance=ExtResource("1_srxpe")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1346283022]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
