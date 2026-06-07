@@ -159,7 +159,7 @@ func skill() -> void:
 
 func _setup_bars_authority() -> void:
 	Game.sort_players()
-	#$Balls.set_multiplayer_authority(1)
+	$Balls.set_multiplayer_authority(1)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
