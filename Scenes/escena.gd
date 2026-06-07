@@ -9,6 +9,8 @@ extends Node3D
 @onready var goal_area_b: Area3D     = $GoalAreaB   # gol para equipo A (arco de B)
 @onready var match_timer: Timer      = $MatchTimer
 @onready var play_area: Area3D       = $PlayArea
+@onready var camera_3d: Camera3D     = $Camera3D
+@onready var camera_3d_2: Camera3D   = $Camera3D2
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
@@ -37,6 +39,13 @@ func _ready() -> void:
 
 	if Game.players.size() >= 2:
 		_setup_bars_authority()
+		
+		if Game.get_current_player().id == Game.players[0].id:
+			camera_3d_2.set_multiplayer_authority(Game.players[0].id)
+			camera_3d_2.make_current()
+		elif Game.get_current_player().id == Game.players[1].id:
+			camera_3d.set_multiplayer_authority(Game.players[1].id)
+			camera_3d.make_current()
 	else:
 		Game.players_updated.connect(_on_players_updated)
 
