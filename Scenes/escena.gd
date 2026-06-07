@@ -1,13 +1,14 @@
 extends Node3D
 
 # ── Referencias ───────────────────────────────────────────────────────────────
-@onready var skill_app: Node3D     = $Skills/SkillApp
-@onready var skill_timer: Timer    = $Skills/SkillTimer
-@onready var hud: CanvasLayer      = $HUD
-@onready var ball_node: Node3D     = $Ball
-@onready var goal_area_a: Area3D   = $GoalAreaA   # gol para equipo B (arco de A)
-@onready var goal_area_b: Area3D   = $GoalAreaB   # gol para equipo A (arco de B)
-@onready var match_timer: Timer    = $MatchTimer
+@onready var skill_app: Node3D       = $Skills/SkillApp
+@onready var skill_timer: Timer      = $Skills/SkillTimer
+@onready var hud: CanvasLayer        = $HUD
+@onready var ball_node: Node3D = $Ball
+@onready var goal_area_a: Area3D     = $GoalAreaA   # gol para equipo B (arco de A)
+@onready var goal_area_b: Area3D     = $GoalAreaB   # gol para equipo A (arco de B)
+@onready var match_timer: Timer      = $MatchTimer
+@onready var play_area: Area3D       = $PlayArea
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
@@ -66,6 +67,7 @@ func _process(delta: float) -> void:
 		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
+		play_area.body_exited.connect(ball_reset)
 
 @rpc("authority", "unreliable")
 func _sync_timer(time_left: float) -> void:
@@ -192,3 +194,11 @@ func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_
 		var instance: Node3D = scene.instantiate() as Node3D
 		bar.add_child(instance)
 		instance.position = pos
+
+func ball_reset(body: Node3D) -> void:
+	var ball = body
+	Debug.log("body exited")
+	if ball:
+		Debug.log("ball exited")
+		ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		#ball.ball_stop.rpc()

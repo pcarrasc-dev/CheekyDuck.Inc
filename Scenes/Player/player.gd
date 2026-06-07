@@ -12,9 +12,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _input(event: InputEvent) -> void:
-	var mouse_event = event as InputEventMouseMotion
-	if mouse_event:
-		Debug.log(mouse_event.relative)
 		
 		

@@ -44,6 +44,9 @@ properties/10/replication_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
 size = Vector3(1.4672318, 2.5521865, 6.420129)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
+size = Vector3(28.932222, 13.225159, 38.19432)
+
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
 
@@ -117,4 +120,11 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.173647
 shape = SubResource("BoxShape3D_i7ybl")
 
 [node name="Ball" parent="." unique_id=312642086 instance=ExtResource("5_kfaxj")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
+
+[node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
+
+[node name="PlayAreaShape" type="CollisionShape3D" parent="PlayArea" unique_id=486252881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11272144, 3.0450134, -0.8747921)
+shape = SubResource("BoxShape3D_kfaxj")
