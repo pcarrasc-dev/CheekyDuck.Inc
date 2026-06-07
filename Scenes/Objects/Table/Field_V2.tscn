@@ -100,18 +100,18 @@ use_collision = true
 
 [node name="suelo" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2099872447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027048282, 0)
-size = Vector3(1.4, 0.05, 0.8)
+size = Vector3(1.4, 0.05, 1)
 material = SubResource("StandardMaterial3D_p5w8u")
 
 [node name="Paredes" type="CSGBox3D" parent="CSGCombiner3D" unique_id=897209270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07241158, 0)
-size = Vector3(1.45, 0.2, 0.85)
+size = Vector3(1.45, 0.2, 1.05)
 material = SubResource("StandardMaterial3D_cw45l")
 
 [node name="Interior" type="CSGBox3D" parent="CSGCombiner3D/Paredes" unique_id=675702972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048438847, 0)
 operation = 2
-size = Vector3(1.4, 0.3, 0.8)
+size = Vector3(1.4, 0.3, 1)
 material = SubResource("StandardMaterial3D_6y4ya")
 
 [node name="Arco_4" type="CSGBox3D" parent="CSGCombiner3D/Paredes/Interior" unique_id=1631098397]
@@ -155,31 +155,31 @@ transform = Transform3D(1, 0, 0, 0, 0.057598833, 0.99833983, 0, -0.99833983, 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3130656, -0.009818494)
 
 [node name="Bar" parent="." unique_id=92024880 instance=ExtResource("16_vibgu")]
-transform = Transform3D(0.079, 0, 0, 0, 0.079, 0, 0, 0, 0.079, 0, 0.09, 0.69)
+transform = Transform3D(0.079, 0, 0, 0, 0.079, 0, 0, 0, 0.079, 0, 0.125, 0.69)
 
 [node name="Bar2" parent="." unique_id=1279569897 instance=ExtResource("17_7nhww")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.55)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, 0.55)
 team_bar_index = 2
 
 [node name="Bar3" parent="." unique_id=2032274654 instance=ExtResource("18_smpyy")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.15)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, 0.15)
 team_bar_index = 3
 
 [node name="Bar4" parent="." unique_id=1308378987 instance=ExtResource("19_113q2")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.35)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.35)
 team_bar_index = 4
 
 [node name="Bar5" parent="." unique_id=1997327750 instance=ExtResource("20_tokhk")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.69)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.69)
 
 [node name="Bar6" parent="." unique_id=936293861 instance=ExtResource("21_lghmx")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.55)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.55)
 team_bar_index = 2
 
 [node name="Bar7" parent="." unique_id=1829875151 instance=ExtResource("22_ib6ql")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, -0.15)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.15)
 team_bar_index = 3
 
 [node name="Bar8" parent="." unique_id=1189047964 instance=ExtResource("23_elkuu")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.09, 0.35)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, 0.35)
 team_bar_index = 4

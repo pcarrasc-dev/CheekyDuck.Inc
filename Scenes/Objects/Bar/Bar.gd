@@ -1,8 +1,8 @@
 class_name Bar
 extends StaticBody3D
 
-@export var rotation_sensibility: float = 0.03
-@export var traslation_sensibility: float = 0.005
+@export var rotation_sensibility: float = 0.006
+@export var traslation_sensibility: float = 0.0025
 @export var traslation_limit: float = 0.3
 @export var team_bar_index: int = 1
 
