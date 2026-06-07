@@ -36,8 +36,12 @@ func _input(event: InputEvent) -> void:
  
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
 	if mouse_event:
-		_apply_rotation(mouse_event.relative.x)
-		_apply_translation(mouse_event.relative.y)
+		if Game.get_current_player().id == Game.players[0].id:
+			_apply_rotation(-mouse_event.relative.x)
+			_apply_translation(-mouse_event.relative.y)
+		elif Game.get_current_player().id == Game.players[1].id:
+			_apply_rotation(mouse_event.relative.x)
+			_apply_translation(mouse_event.relative.y)
  
  
 func _unhandled_input(event: InputEvent) -> void:
