@@ -1,13 +1,14 @@
 extends Node3D
 
 # ── Referencias ───────────────────────────────────────────────────────────────
-@onready var skill_app: Node3D     = $Skills/SkillApp
-@onready var skill_timer: Timer    = $Skills/SkillTimer
-@onready var hud: CanvasLayer      = $HUD
-@onready var ball_node: Node3D     = $Ball
-@onready var goal_area_a: Area3D   = $GoalAreaA   # gol para equipo B (arco de A)
-@onready var goal_area_b: Area3D   = $GoalAreaB   # gol para equipo A (arco de B)
-@onready var match_timer: Timer    = $MatchTimer
+@onready var skill_app: Node3D       = $Skills/SkillApp
+@onready var skill_timer: Timer      = $Skills/SkillTimer
+@onready var hud: CanvasLayer        = $HUD
+@onready var ball_node: Node3D = $Balls/Ball
+@onready var goal_area_a: Area3D     = $GoalAreaA   # gol para equipo B (arco de A)
+@onready var goal_area_b: Area3D     = $GoalAreaB   # gol para equipo A (arco de B)
+@onready var match_timer: Timer      = $MatchTimer
+@onready var play_area: Area3D       = $PlayArea
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
@@ -66,6 +67,7 @@ func _process(delta: float) -> void:
 		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
+		play_area.body_exited.connect(ball_reset)
 
 @rpc("authority", "unreliable")
 func _sync_timer(time_left: float) -> void:
@@ -106,7 +108,7 @@ func _sync_score(a: int, b: int) -> void:
 
 @rpc("authority", "reliable", "call_local")
 func _reset_ball() -> void:
-	var football: RigidBody3D = $Ball/FootBall
+	var football: RigidBody3D = $Balls/Ball/FootBall
 	football.linear_velocity  = Vector3.ZERO
 	football.angular_velocity = Vector3.ZERO
 	football.global_position  = ball_spawn
@@ -148,7 +150,7 @@ func skill() -> void:
 
 func _setup_bars_authority() -> void:
 	Game.sort_players()
-	$Ball/FootBall.set_multiplayer_authority(1)
+	#$Balls.set_multiplayer_authority(1)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
@@ -192,3 +194,11 @@ func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_
 		var instance: Node3D = scene.instantiate() as Node3D
 		bar.add_child(instance)
 		instance.position = pos
+
+func ball_reset(body: Node3D) -> void:
+	var ball = body
+	Debug.log("body exited")
+	if ball:
+		Debug.log("ball exited")
+		ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		#ball.ball_stop.rpc()

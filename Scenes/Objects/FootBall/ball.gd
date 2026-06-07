@@ -9,11 +9,11 @@ var player_id
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ball_area.body_entered.connect(_on_body_entered)
 	if not is_multiplayer_authority():
 		set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
+	ball_area.body_entered.connect(_on_body_entered)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

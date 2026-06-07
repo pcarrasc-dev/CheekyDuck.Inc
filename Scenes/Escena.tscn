@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
 
 [ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
-[ext_resource type="PackedScene" uid="uid://17ruqc4en430" path="res://Scenes/Objects/FootBall/ball.tscn" id="2_kfaxj"]
 [ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://pbsomgi086yu" path="res://Scenes/FootBall/new_ball.tscn" id="5_kfaxj"]
 [ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
@@ -43,6 +43,9 @@ properties/10/replication_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
 size = Vector3(1.4672318, 2.5521865, 6.420129)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
+size = Vector3(28.932222, 13.225159, 38.19432)
 
 [node name="Escena" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
@@ -119,3 +122,15 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
 shape = SubResource("BoxShape3D_i7ybl")
+
+[node name="Balls" type="Node3D" parent="." unique_id=2045065630]
+
+[node name="Ball" parent="Balls" unique_id=312642086 instance=ExtResource("5_kfaxj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
+
+[node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
+
+[node name="PlayAreaShape" type="CollisionShape3D" parent="PlayArea" unique_id=486252881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11272144, 3.0450134, -0.8747921)
+shape = SubResource("BoxShape3D_kfaxj")

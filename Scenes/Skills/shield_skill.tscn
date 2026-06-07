@@ -53,6 +53,7 @@ material = SubResource("ORMMaterial3D_pgbqi")
 size = Vector3(0.01, 1, 1.5)
 
 [node name="Shield" type="Node3D" unique_id=1682651150]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_cj5lc")
 
 [node name="Shield Appearance" type="AnimationPlayer" parent="." unique_id=535434756]
