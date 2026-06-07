@@ -4,7 +4,7 @@ extends Node3D
 @onready var skill_app: Node3D       = $Skills/SkillApp
 @onready var skill_timer: Timer      = $Skills/SkillTimer
 @onready var hud: CanvasLayer        = $HUD
-@onready var ball_node: Node3D = $Ball
+@onready var ball_node: Node3D = $Balls/Ball
 @onready var goal_area_a: Area3D     = $GoalAreaA   # gol para equipo B (arco de A)
 @onready var goal_area_b: Area3D     = $GoalAreaB   # gol para equipo A (arco de B)
 @onready var match_timer: Timer      = $MatchTimer
@@ -108,7 +108,7 @@ func _sync_score(a: int, b: int) -> void:
 
 @rpc("authority", "reliable", "call_local")
 func _reset_ball() -> void:
-	var football: RigidBody3D = $Ball/FootBall
+	var football: RigidBody3D = $Balls/Ball/FootBall
 	football.linear_velocity  = Vector3.ZERO
 	football.angular_velocity = Vector3.ZERO
 	football.global_position  = ball_spawn
@@ -150,7 +150,7 @@ func skill() -> void:
 
 func _setup_bars_authority() -> void:
 	Game.sort_players()
-	$Ball/FootBall.set_multiplayer_authority(1)
+	#$Balls.set_multiplayer_authority(1)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
