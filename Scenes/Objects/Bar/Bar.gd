@@ -12,6 +12,8 @@ var _origin_x: float = 0.0
 var angular_velocity: Vector3
 var previous_rotation: Vector3
 
+var skill: Skills
+
 func _ready() -> void:
 	_origin_x = position.x
 	#Debug.log("Bar (team_idx:%d) — autoridad: %d" % [
@@ -22,9 +24,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
-	if not is_selected:
-		return
-	 
+	if Input.is_action_just_pressed("skill"):
+		Debug.log("skill")
+		
+			
+		pass
+	
 
 func _input(event: InputEvent) -> void:
 	# Solo el dueño de la barra la controla
@@ -71,3 +76,8 @@ func _apply_translation(mouse_y: float) -> void:
 	var min_x: float = _origin_x -traslation_limit
 	var max_x: float = _origin_x + traslation_limit
 	position.x = clampf(new_x, min_x, max_x)
+	
+func set_skill(id: float) -> void:
+	if is_multiplayer_authority():
+		pass
+	pass

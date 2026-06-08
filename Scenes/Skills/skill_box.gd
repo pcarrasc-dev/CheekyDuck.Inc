@@ -2,10 +2,9 @@ extends Area3D
 class_name SkillBox
 
 @onready var skill_texture: TextureRect = $MarginContainer/Skill/SkillTexture
-@onready var shield: Node3D = $"../../Shield"
+@onready var shield: Skills = preload("res://Scenes/Skills/shield_skill.tscn").instantiate()
 @onready var skill_get: AnimationPlayer = $SkillGet
-@onready var player: Player = $Player
-var available_skillset: Array[Node3D] = [shield]
+var available_skillset: Array[Skills] = [shield]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -13,13 +12,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	body_entered.connect(_on_body_entered)
 	pass
 
 func _on_body_entered(body: Node3D) -> void:
-	var ball: Ball = body as Ball
+	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
-		player.item = available_skillset[0]
+		var bar: Bar = ball.get_player()
+		bar.skill = shield
 		skill_get.play("getSkill")
 		await skill_get.animation_finished
 		queue_free()

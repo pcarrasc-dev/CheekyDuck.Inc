@@ -1,16 +1,22 @@
 extends Node3D
 
 # ── Referencias ───────────────────────────────────────────────────────────────
-@onready var skill_app: Node3D       = $Skills/SkillApp
-@onready var skill_timer: Timer      = $Skills/SkillTimer
-@onready var hud: CanvasLayer        = $HUD
-@onready var ball_node: Node3D = $Balls/Ball
-@onready var goal_area_a: Area3D     = $GoalAreaA   # gol para equipo B (arco de A)
-@onready var goal_area_b: Area3D     = $GoalAreaB   # gol para equipo A (arco de B)
-@onready var match_timer: Timer      = $MatchTimer
-@onready var play_area: Area3D       = $PlayArea
-@onready var camera_3d: Camera3D     = $Camera3D
-@onready var camera_3d_2: Camera3D   = $Camera3D2
+@onready var skill_app: Node3D            = $Skills/SkillApp
+@onready var skill_timer: Timer           = $Skills/SkillTimer
+@onready var skill_spawn_list: Array[int] = [0,0,0,0]
+@onready var sp_0: Marker3D               = $"Skills/Skill SpawnPoint/SP0"
+@onready var sp_1: Marker3D               = $"Skills/Skill SpawnPoint/SP1"
+@onready var sp_2: Marker3D               = $"Skills/Skill SpawnPoint/SP2"
+@onready var sp_3: Marker3D               = $"Skills/Skill SpawnPoint/SP3"
+var sp_list: Array[Marker3D]              = [sp_0, sp_1, sp_2, sp_3]
+@onready var hud: CanvasLayer             = $HUD
+@onready var goal_area_a: Area3D          = $GoalAreaA   # gol para equipo B (arco de A)
+@onready var goal_area_b: Area3D          = $GoalAreaB   # gol para equipo A (arco de B)
+@onready var match_timer: Timer           = $MatchTimer
+@onready var play_area: Area3D            = $PlayArea
+@onready var camera_3d: Camera3D          = $Camera3D
+@onready var camera_3d_2: Camera3D        = $Camera3D2
+@onready var balls: Node3D                = $Balls
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
@@ -152,6 +158,12 @@ func skill() -> void:
 	if not skill_timer.is_stopped():
 		return
 	skill_timer.start()
+	var new_skill: SkillBox = preload("res://Scenes/Skills/skill_box.tscn").instantiate()
+	for i in range(0, 4):
+		if skill_spawn_list[i] == 0:
+			new_skill.global_position = sp_list[i].global_position
+			skill_spawn_list[i] = 1
+			skill_app.add_child(new_skill)
 	Debug.log("Skill")
 
 
@@ -209,5 +221,9 @@ func ball_reset(body: Node3D) -> void:
 	Debug.log("body exited")
 	if ball:
 		Debug.log("ball exited")
+		#ball.queue_free()
+		#var new_ball: kinetic_ball = preload("res://Scenes/FootBall/new_ball.tscn").instantiate()
+		#balls.add_child(new_ball)
+		#new_ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		#new_ball.set_multiplayer_authority(1)
 		ball.global_position = Vector3(-0.158, 7.181, 0.145)
-		#ball.ball_stop.rpc()
