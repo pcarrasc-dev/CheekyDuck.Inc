@@ -30,6 +30,8 @@ size = Vector3(0.743, 0.354, 0.771)
 size = Vector3(0.7427368, 0.35437012, 0.77111816)
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=408717749]
+collision_layer = 255
+collision_mask = 255
 script = ExtResource("1_ktnsh")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=240296017]
