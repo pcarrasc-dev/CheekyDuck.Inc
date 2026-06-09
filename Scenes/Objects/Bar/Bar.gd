@@ -53,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Solo el dueño gestiona la selección de barra
 	if not is_multiplayer_authority():
 		return
- 
+
 	if event.is_action_pressed("bar_1"):
 		is_selected = (team_bar_index == 1)
 	elif event.is_action_pressed("bar_2"):

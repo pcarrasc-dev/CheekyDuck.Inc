@@ -4,7 +4,6 @@ class_name kinetic_ball
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
-@onready var ball: kinetic_ball = $"."
 
 var last_player_obj: StaticBody3D
 var last_mouse_speed: Vector2 = Vector2(0,0)
@@ -14,7 +13,7 @@ var mouse_acc: Vector2 = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not is_multiplayer_authority():
-		ball.set_physics_process(false)
+		set_physics_process(false)
 		return
 	multiplayer_synchronizer.set_multiplayer_authority(Game.players[0].id)
 
@@ -23,16 +22,16 @@ func _physics_process(delta: float) -> void:
 		return
 	if sleeping:
 		linear_velocity= Vector3(1,1,1)
-	var collide = ball.move_and_collide(linear_velocity*delta)
-	var collision_list:Array[Node3D] = ball.get_colliding_bodies()
+	var collide = move_and_collide(linear_velocity*delta)
+	var collision_list:Array[Node3D] = get_colliding_bodies()
 	if collision_list:
-		#Debug.log("collide")
-		var bar = collision_list[0] as StaticBody3D
+		Debug.log("collide")
+		var bar = collision_list[0] as Player
 		if bar:
 			last_player_obj = bar
-			#Debug.log(last_player_obj)
+			Debug.log(last_player_obj)
 			if collide:
-				ball.apply_force(Vector3(mouse_acc[0], 0, mouse_acc[1])*0.0005)
+				apply_force(Vector3(mouse_acc[0], 0, mouse_acc[1])*0.0005)
 				last_mouse_speed = mouse_speed
 
 func _input(event: InputEvent) -> void:

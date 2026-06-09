@@ -4,11 +4,11 @@
 [ext_resource type="Material" uid="uid://eo3r4vp1dpgv" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG.tres" id="2_a3d8c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3d8c"]
-radius = 0.6
+radius = 0.3
 height = 3.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
-radius = 0.6
+radius = 0.3
 height = 3.0
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=67029722]

@@ -8,6 +8,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyora"]
 radius = 0.3
+height = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4j5n"]
 albedo_color = Color(0, 0, 0, 1)
@@ -21,6 +22,8 @@ heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_fy55f")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+radius = 0.3
+height = 3.0
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=408717749]
 script = ExtResource("1_ktnsh")
