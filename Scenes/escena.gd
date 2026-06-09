@@ -217,7 +217,7 @@ func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_
 		instance.position = pos
 
 func ball_reset(body: Node3D) -> void:
-	var ball = body
+	var ball:kinetic_ball = body as kinetic_ball
 	Debug.log("body exited")
 	if ball:
 		Debug.log("ball exited")
@@ -226,4 +226,6 @@ func ball_reset(body: Node3D) -> void:
 		#balls.add_child(new_ball)
 		#new_ball.global_position = Vector3(-0.158, 7.181, 0.145)
 		#new_ball.set_multiplayer_authority(1)
+		ball.linear_velocity = Vector3.ZERO
+		ball.angular_velocity = Vector3.ZERO
 		ball.global_position = Vector3(-0.158, 7.181, 0.145)

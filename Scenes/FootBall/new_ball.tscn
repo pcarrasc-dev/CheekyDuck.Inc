@@ -4,39 +4,38 @@
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="2_d3f3d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
-friction = 0.2
+friction = 0.0
 bounce = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
-properties/0/path = NodePath("FootBall:position")
+properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("FootBall:rotation")
+properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Node3D" type="Node3D" unique_id=312642086]
-script = ExtResource("1_d3f3d")
+[sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
 
-[node name="FootBall" parent="." unique_id=956360008 instance=ExtResource("2_d3f3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, 0, -0.0316571)
+[node name="Node3D" type="RigidBody3D" unique_id=1159331189]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
-contact_monitor = true
-max_contacts_reported = 2000
+gravity_scale = 0.1
+script = ExtResource("1_d3f3d")
 
-[node name="ball_shape" type="CollisionShape3D" parent="FootBall" unique_id=2116463812]
-transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 1.9284674, 1.0435269, 0.0007420778)
+[node name="FootBall" parent="." unique_id=1113712202 instance=ExtResource("2_d3f3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, -1.0375372, -0.0316571)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=884479803]
+replication_config = SubResource("SceneReplicationConfig_d3f3d")
+
+[node name="ball_shape" type="CollisionShape3D" parent="." unique_id=2116463812]
+transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 0, 0, 0)
 shape = SubResource("SphereShape3D_11hlg")
 
 [node name="ball_area" type="Area3D" parent="." unique_id=1939856972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134759, 0, -0.031657103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134759, -1.0375372, -0.031657103)
 
 [node name="ball_shape2" type="CollisionShape3D" parent="ball_area" unique_id=1343976970]
 transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 1.9284675, 1.0435269, 0.00074208155)
 shape = SubResource("SphereShape3D_11hlg")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=884479803]
-replication_config = SubResource("SceneReplicationConfig_d3f3d")

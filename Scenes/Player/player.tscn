@@ -4,10 +4,12 @@
 [ext_resource type="Material" uid="uid://eo3r4vp1dpgv" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG.tres" id="2_a3d8c"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
-radius = 0.3
+radius = 0.6
+height = 3.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3d8c"]
-radius = 0.3
+radius = 0.6
+height = 3.0
 
 [node name="Player" type="Node3D" unique_id=531167561]
 script = ExtResource("1_4flbx")

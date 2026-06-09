@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/FootBall.fbx-6b9c86bd652b09ce3cce258739da2680
 
 [params]
 
-nodes/root_type="RigidBody3D"
+nodes/root_type="Node3D"
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
