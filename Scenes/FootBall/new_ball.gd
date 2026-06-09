@@ -26,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	var collide = ball.move_and_collide(linear_velocity*delta)
 	var collision_list:Array[Node3D] = ball.get_colliding_bodies()
 	if collision_list:
-		Debug.log("collide")
+		#Debug.log("collide")
 		var bar = collision_list[0] as StaticBody3D
 		if bar:
 			last_player_obj = bar
-			Debug.log(last_player_obj)
+			#Debug.log(last_player_obj)
 			if collide:
 				ball.apply_force(Vector3(mouse_acc[0], 0, mouse_acc[1])*0.0005)
 				last_mouse_speed = mouse_speed
