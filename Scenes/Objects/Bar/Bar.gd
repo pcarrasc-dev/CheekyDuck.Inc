@@ -25,9 +25,7 @@ func _process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	if Input.is_action_just_pressed("skill"):
-		Debug.log("skill")
-		
-			
+		#Debug.log("skill")
 		pass
 	
 

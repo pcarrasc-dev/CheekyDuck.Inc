@@ -20,7 +20,7 @@ var sp_list: Array[Marker3D]              = [sp_0, sp_1, sp_2, sp_3]
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
-const GOALS_TO_WIN:   int    = 1
+const GOALS_TO_WIN:   int    = 3
 
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)

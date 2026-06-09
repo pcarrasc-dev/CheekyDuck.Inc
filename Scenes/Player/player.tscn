@@ -3,20 +3,35 @@
 [ext_resource type="Script" uid="uid://4ve8sb0hif8g" path="res://Scenes/Player/player.gd" id="1_4flbx"]
 [ext_resource type="Material" uid="uid://eo3r4vp1dpgv" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG.tres" id="2_a3d8c"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_a3d8c"]
+size = Vector3(0.743, 0.354, 0.771)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3d8c"]
 radius = 0.3
-height = 3.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 radius = 0.3
-height = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3d8c"]
+size = Vector3(0.7427368, 0.35437012, 0.77111816)
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=67029722]
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=240296017]
+[node name="FeetMesh" type="MeshInstance3D" parent="." unique_id=1994063709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841, 0)
+visible = false
+material_override = ExtResource("2_a3d8c")
+mesh = SubResource("BoxMesh_a3d8c")
+skeleton = NodePath("../BodyMesh")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=240296017]
 shape = SubResource("CapsuleShape3D_a3d8c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1420936729]
+[node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=1420936729]
 material_override = ExtResource("2_a3d8c")
 mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="FeetCollision" type="CollisionShape3D" parent="." unique_id=2118263253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008026123, -0.84147775, -0.0026245117)
+shape = SubResource("BoxShape3D_a3d8c")
