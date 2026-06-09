@@ -25,7 +25,7 @@ const GOALS_TO_WIN:   int    = 1
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
-var ball_spawn: Vector3 = Vector3(0, 4.834766, 0)
+var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8
@@ -96,7 +96,7 @@ func _on_goal(body: Node3D, side: String) -> void:
 	if not multiplayer.is_server():
 		return
 	# Sólo la pelota marca gol
-	if not (body is RigidBody3D):
+	if not (body is kinetic_ball):
 		return
 	if not match_running:
 		return
@@ -123,7 +123,7 @@ func _sync_score(a: int, b: int) -> void:
 
 @rpc("authority", "reliable", "call_local")
 func _reset_ball() -> void:
-	var football: RigidBody3D = $Balls/Ball/FootBall
+	var football: kinetic_ball = $Balls/Ball
 	football.linear_velocity  = Vector3.ZERO
 	football.angular_velocity = Vector3.ZERO
 	football.global_position  = ball_spawn

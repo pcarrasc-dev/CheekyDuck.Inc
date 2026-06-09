@@ -16,22 +16,20 @@ func _ready() -> void:
 		set_physics_process(false)
 		return
 	multiplayer_synchronizer.set_multiplayer_authority(Game.players[0].id)
-	await get_tree().create_timer(5).timeout
-	apply_central_impulse(Vector3(10,10,10)*1)
-	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	if sleeping:
 		linear_velocity= Vector3(1,1,1)
+	Debug.log("physics process")
 	var collide = move_and_collide(linear_velocity*delta)
 	var collision_list:Array[Node3D] = get_colliding_bodies()
 	if collision_list:
 		var bar = collision_list[0] as StaticBody3D
 		if bar:
 			last_player_obj = bar
-			#Debug.log(last_player_obj)
+			Debug.log(last_player_obj)
 			if collide:
 				apply_force(Vector3(mouse_acc[0], 0, mouse_acc[1]))
 				last_mouse_speed = mouse_speed
