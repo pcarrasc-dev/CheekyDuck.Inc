@@ -3,7 +3,7 @@ extends StaticBody3D
 
 @export var rotation_sensibility: float = 0.006
 @export var traslation_sensibility: float = 0.0025
-@export var traslation_limit: float = 0.3
+@export var traslation_limit: float = 0.15
 @export var team_bar_index: int = 1
 
 var is_selected: bool = false
