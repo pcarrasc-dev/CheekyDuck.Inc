@@ -14,19 +14,17 @@ grow_vertical = 2
 theme = ExtResource("1_3qnx1")
 script = ExtResource("2_p6ygj")
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=95552055]
-clip_contents = true
-layout_mode = 1
-offset_left = -65.0
-offset_top = -47.0
-offset_right = 1345.0
-offset_bottom = 770.0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=389958185]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=389958185]
 custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_wk0pr")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=953531144]
 layout_mode = 1

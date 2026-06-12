@@ -26,8 +26,8 @@ radius = 0.3
 [sub_resource type="BoxMesh" id="BoxMesh_ui3cn"]
 size = Vector3(0.743, 0.354, 0.771)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eogg6"]
-size = Vector3(0.7427368, 0.35437012, 0.77111816)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyora"]
+size = Vector3(0.5470123, 0.35437012, 0.77111816)
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=408717749]
 collision_layer = 255
@@ -49,6 +49,6 @@ material_override = SubResource("StandardMaterial3D_g4j5n")
 mesh = SubResource("BoxMesh_ui3cn")
 skeleton = NodePath("../BodyMesh")
 
-[node name="FeetCollision" type="CollisionShape3D" parent="." unique_id=1932908762]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008026123, -0.84147775, -0.0026245117)
-shape = SubResource("BoxShape3D_eogg6")
+[node name="FeetCollision" type="CollisionShape3D" parent="." unique_id=1833831096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007118225, -0.84147775, -0.0026245117)
+shape = SubResource("BoxShape3D_jyora")

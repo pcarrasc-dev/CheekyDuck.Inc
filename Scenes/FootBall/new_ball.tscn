@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
 friction = 0.3
-bounce = 1.0
+bounce = 0.8
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")

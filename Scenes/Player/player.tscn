@@ -13,7 +13,7 @@ radius = 0.3
 radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3d8c"]
-size = Vector3(0.7427368, 0.35437012, 0.77111816)
+size = Vector3(0.5470123, 0.35437012, 0.77111816)
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=67029722]
 collision_layer = 255
@@ -35,5 +35,5 @@ material_override = ExtResource("2_a3d8c")
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="FeetCollision" type="CollisionShape3D" parent="." unique_id=2118263253]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008026123, -0.84147775, -0.0026245117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007118225, -0.84147775, -0.0026245117)
 shape = SubResource("BoxShape3D_a3d8c")
