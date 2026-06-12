@@ -35,6 +35,7 @@ var _player_scene_b: PackedScene = preload("res://Scenes/Player/player_2.tscn")
 
 
 func _ready() -> void:
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	Debug.log("Players al cargar: %d" % Game.players.size())
 	for p in Game.players:
 		Debug.log("  id:%d index:%d" % [p.id, p.index])

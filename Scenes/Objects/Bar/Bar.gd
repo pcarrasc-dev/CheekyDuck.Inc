@@ -16,6 +16,7 @@ var skill: Skills
 
 func _ready() -> void:
 	_origin_x = position.x
+	
 	#Debug.log("Bar (team_idx:%d) — autoridad: %d" % [
 	#	team_bar_index,
 	#	$MultiplayerSynchronizer.get_multiplayer_authority()
@@ -45,6 +46,7 @@ func _input(event: InputEvent) -> void:
 		elif Game.get_current_player().id == Game.players[1].id:
 			_apply_rotation(mouse_event.relative.x)
 			_apply_translation(mouse_event.relative.y)
+		
  
  
 func _unhandled_input(event: InputEvent) -> void:
