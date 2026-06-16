@@ -64,6 +64,15 @@ func _ready() -> void:
 		match_timer.start()
 	match_running = true
 
+#revisar
+func _input(event: InputEvent) -> void:
+	var alt: InputEventKey = event as InputEventKey
+	if alt:
+		if alt.is_action_pressed("mouse en pantalla"):
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		if alt.is_action_released("mouse en pantalla"):
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+
 
 func _on_players_updated() -> void:
 	if Game.players.size() < 2:
@@ -84,6 +93,8 @@ func _process(delta: float) -> void:
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
 		play_area.body_exited.connect(ball_reset)
+		
+	
 
 @rpc("authority", "unreliable")
 func _sync_timer(time_left: float) -> void:
