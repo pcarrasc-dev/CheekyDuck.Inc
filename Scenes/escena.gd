@@ -65,7 +65,7 @@ func _ready() -> void:
 	match_running = true
 
 #revisar
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	var alt: InputEventKey = event as InputEventKey
 	if alt:
 		if alt.is_action_pressed("mouse en pantalla"):
