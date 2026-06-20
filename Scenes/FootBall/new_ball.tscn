@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="2_d3f3d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
-friction = 0.3
-bounce = 0.8
+friction = 0.6
+bounce = 0.35
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")
@@ -18,7 +18,7 @@ properties/1/replication_mode = 1
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
-mass = 0.2
+mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
 contact_monitor = true
 max_contacts_reported = 2000
