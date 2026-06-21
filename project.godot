@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Taca Taca con Huesillo"
 run/main_scene="uid://buxla4a3c3k2"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -35,12 +35,8 @@ gdscript/warnings/unsafe_method_access=1
 
 [dialogic]
 
-directories/dch_directory={
-"cheeky duck": "res://Dialogue/cheeky duck.dch"
-}
-directories/dtl_directory={
-"tutorial": "res://Dialogue/tutorial.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 layout/style_directory={}
 
 [display]
