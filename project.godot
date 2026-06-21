@@ -35,8 +35,12 @@ gdscript/warnings/unsafe_method_access=1
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"cheeky duck": "res://Dialogue/cheeky duck.dch"
+}
+directories/dtl_directory={
+"tutorial": "res://Dialogue/tutorial.dtl"
+}
 layout/style_directory={}
 
 [display]
