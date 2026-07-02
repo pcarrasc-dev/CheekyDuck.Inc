@@ -1,0 +1,18 @@
+join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
+"Normal Duck": He aquí la cancha de juego.
+"Normal Duck" (annoyed): Tu arco se encuentra en el lado izquierdo de la pantalla.
+"Normal Duck": Y el arco de tu contrincante se encuentra en el lado derecho de la pantalla.
+"Normal Duck": Puedes elegir una barra con los botones 1,2 3, o 4 del teclado.
+"Normal Duck": También puedes cambiar entre las barras usando esos mismos botones.
+join "cheeky duck" (Happy) leftmost [animation="Slide From Left" wait="true"]
+"cheeky duck": Y para moverlas, se usan los botones ARRIBA, ABAJO, IZQ y DER.
+"Normal Duck" (annoyed): ...
+"Normal Duck" (annoyed): Las barras usan el movimiento del mouse, no del teclado.
+"Normal Duck" (normal): Pero, tu mouse ha desaparecido, ¿no?
+"cheeky duck" (Normal): Siento mucho tu pérdida, nunca lo verás de nuevo.
+"Normal Duck" (annoyed): Puedes hacerlo aparecer nuevamente con el botón ALT Derecho.
+"Normal Duck" (normal): Y hacerlo desaparecer con el mismo botón.
+"Normal Duck": La jugabilidad aumenta si está desaparecido. Así que te recomiendo que lo dejes así como está.
+"Normal Duck" (normal): ¿Por qué no lo pones a prueba?
+leave "Normal Duck" [animation="Slide To Right"]
+leave "cheeky duck" [animation="Slide To Left"]

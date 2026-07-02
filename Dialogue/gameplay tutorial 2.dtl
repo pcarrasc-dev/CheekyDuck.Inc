@@ -1,0 +1,7 @@
+join "cheeky duck" leftmost [animation="Slide From Left" wait="true"]
+"cheeky duck" (Happy): Lo hiciste mal.
+join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
+"Normal Duck" (annoyed): ...
+"Normal Duck" (normal): Ahora, te daré una pelota para que intentes pegarle con las barras.
+leave "Normal Duck" [animation="Slide To Right"]
+leave "cheeky duck" [animation="Slide To Left"]

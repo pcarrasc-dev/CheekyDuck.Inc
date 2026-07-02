@@ -1,0 +1,20 @@
+join "cheeky duck" leftmost [animation="Slide From Left" wait="true"]
+"cheeky duck": ¿QuE tE paReCió jUgaR cOn La pELoTa?
+"cheeky duck": Te apuesto a que no pudiste pegarle.
+join "Normal Duck" (upset) rightmost [animation="Slide From Right" wait="true"]
+update "Normal Duck" [animation="Shake Y"]
+"Normal Duck": Ya cállate.
+"cheeky duck" (Surprised): Jeje.
+"Normal Duck" (normal): Ahem... Bueno.
+update "cheeky duck" (Normal)
+"Normal Duck": ¿Qué te ha parecido por ahora el juego?
+- Malo
+	update "cheeky duck" [animation="Tada" length="1.0"]
+	"cheeky duck" (Happy): No le gustó tu explicación JAJAJAJ.
+	"Normal Duck" (annoyed): Contigo no se disfruta nada.
+- Bueno
+	"cheeky duck" (Happy): Claro que te gustó, a los jugadores como tú les gusta este tipo de juegos~.
+	"Normal Duck" (annoyed): ¿Y eso qué significa?
+	"cheeky duck": jeje...
+leave "cheeky duck" [animation="Slide To Left"]
+leave "Normal Duck" [animation="Slide To Right"]

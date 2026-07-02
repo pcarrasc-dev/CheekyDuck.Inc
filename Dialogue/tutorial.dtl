@@ -1,7 +1,32 @@
+join "cheeky duck" leftmost [animation="Slide From Left" wait="true"]
 Hola, escuché que querías jugar al Taca-Taca.
+Mala suerte, no te voy a decir nada.
+label saludo
 - ¿Quién eres?
-	"cheeky duck" (Happy): Me llamo Cheeky Duck, y soy un pato.
-	return
+	No te voy a decir.
+	join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
+	"Normal Duck": Yo soy Mote, y él es Huesillo.
+	leave "Normal Duck" [animation="Slide To Right"]
+	jump saludo
 - ¿Qué es Taca-Taca?
-	"cheeky duck" (Annoyed): Taca-Taca es un juego chileno que imita el fútbol.
-	"cheeky duck" (Normal): Normalmente se juega con un tablero, y cada futbolista es controlado por
+	"cheeky duck" (Angry): Si no te voy a decir nada.
+	join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
+	"Normal Duck" (annoyed): Taca-Taca es un juego chileno parecido al fútbol.
+	update "cheeky duck" (Normal)
+	"Normal Duck" (annoyed): Se juega en una mesa que contiene una cancha con barras metálicas.
+	"Normal Duck": Cada barra puede tener desde 1 a 5 futbolistas.
+	"Normal Duck": Puedes hacer girar a los futbolistas moviendo las barras horizontalmente.
+	"Normal Duck": Y moverlos de lugar moviendo la barra hacia adelante o atrás.
+	"Normal Duck": Tu objetivo principal es hacer 3 goles en 3 minutos.
+"cheeky duck" (Angry): ¿Por qué le estás diciendo todo?
+"Normal Duck" (upset): Porque alguien tiene que hacerlo.
+"Normal Duck" (normal): Da igual.
+"Normal Duck" (happy): Te enseñaré cómo se juega.
+"cheeky duck" (Happy): Como si fueses el mejor jugador de Taca-Taca del mundo.
+"Normal Duck" (annoyed): Cállate.
+"Normal Duck" (normal): Este es un juego multijugador, así que necesitarás a uno de tus amigos para jugar.
+"cheeky duck": Pero, no tiene amigos...
+update "cheeky duck" (Surprised)
+"Normal Duck": Tú no tienes amigos.
+leave "Normal Duck" [animation="Slide To Right"]
+leave "cheeky duck" [animation="Slide To Left"]

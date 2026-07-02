@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(1, 1, 1, 1),
+&"color": Color(1, 0.30078125, 0.30078125, 1),
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
@@ -12,14 +12,14 @@
 },
 &"default_portrait": "Normal",
 &"description": "El pato",
-&"display_name": "Cheeky Duck",
+&"display_name": "Huesillo",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Annoyed": {
+"Angry": {
 "export_overrides": {
-"image": "\"res://Dialogue/annoyed.png\""
+"image": "\"res://Dialogue/duck/angry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -28,7 +28,7 @@
 },
 "Happy": {
 "export_overrides": {
-"image": "\"res://Dialogue/happy.png\""
+"image": "\"res://Dialogue/duck/happy.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -37,16 +37,16 @@
 },
 "Normal": {
 "export_overrides": {
-"image": "\"res://Dialogue/normal.png\""
+"image": "\"res://Dialogue/duck/normal.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": ""
 },
-"Upset": {
+"Surprised": {
 "export_overrides": {
-"image": "\"res://Dialogue/upset.png\""
+"image": "\"res://Dialogue/duck/surprised.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
