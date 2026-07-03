@@ -11,6 +11,7 @@ var mouse_speed: Vector2 = Vector2.ZERO
 
 const IMPULSE_MULTIPLIER: float = 0.008
 const MIN_IMPULSE: float = 0.1
+const MAX_SPEED: float = 8.0
 
 var _was_colliding: bool = false
 
@@ -39,9 +40,13 @@ func _physics_process(_delta: float) -> void:
 				if impulse.length() > MIN_IMPULSE:
 					apply_central_impulse(impulse)
 					last_mouse_speed = mouse_speed
+					mouse_speed = Vector2.ZERO
 			break
 
 	_was_colliding = is_colliding
+
+	if linear_velocity.length() > MAX_SPEED:
+		linear_velocity = linear_velocity.limit_length(MAX_SPEED)
 
 
 func _input(event: InputEvent) -> void:

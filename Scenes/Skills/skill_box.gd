@@ -20,8 +20,10 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
-		var bar: Bar = ball.get_player()
-		bar.skill = shield
-		skill_get.play("getSkill")
-		await skill_get.animation_finished
-		queue_free()
+		var player: Player = ball.get_player()
+		if player:
+			var bar: Bar = player.get_parent() as Bar
+			bar.skill = shield
+			skill_get.play("getSkill")
+			await skill_get.animation_finished
+			queue_free()
