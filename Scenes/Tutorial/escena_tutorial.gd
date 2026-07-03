@@ -36,6 +36,9 @@ func _ready() -> void:
 	goal_area_a.body_entered.connect(func(body): _on_goal(body, "A"))
 	goal_area_b.body_entered.connect(func(body): _on_goal(body, "B"))
 
+	play_area.body_exited.connect(ball_reset)
+	not_player_area.body_entered.connect(move_ball)
+
 	camera_3d.make_current()
 
 	match_running = true
@@ -54,8 +57,6 @@ var _timer_sync: float = 0.0
 func _process(delta: float) -> void:
 	if not match_running:
 		return
-	play_area.body_exited.connect(ball_reset)
-	not_player_area.body_entered.connect(move_ball)
 
 # ── Gol ───────────────────────────────────────────────────────────────────────
 

@@ -155,9 +155,12 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.69)
 
 [node name="Bar6" parent="." unique_id=1410702933 instance=ExtResource("21_kr6mu")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.125, -0.55)
+team_bar_index = 2
 
 [node name="Bar7" parent="." unique_id=1547022599 instance=ExtResource("22_cpros")]
 transform = Transform3D(0.08, 0, 2.220446e-16, 0, 0.08, 0, -2.220446e-16, 0, 0.08, 0, 0.125, -0.15)
+team_bar_index = 3
 
 [node name="Bar8" parent="." unique_id=92024880 instance=ExtResource("23_g3qji")]
 transform = Transform3D(0.08, 0, 2.220446e-16, 0, 0.08, 0, -2.220446e-16, 0, 0.08, 0, 0.125, 0.35)
+team_bar_index = 4
