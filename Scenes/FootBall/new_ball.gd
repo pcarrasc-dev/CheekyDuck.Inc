@@ -46,7 +46,7 @@ func _physics_process(_delta: float) -> void:
 	_was_colliding = is_colliding
 
 	if linear_velocity.length() > MAX_SPEED:
-		linear_velocity = linear_velocity.limit_length(MAX_SPEED)
+		linear_velocity = linear_velocity.lerp(linear_velocity.normalized() * MAX_SPEED, 0.1)
 
 
 func _input(event: InputEvent) -> void:

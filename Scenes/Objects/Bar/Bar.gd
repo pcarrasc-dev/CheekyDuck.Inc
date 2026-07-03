@@ -14,43 +14,47 @@ var previous_rotation: Vector3
 
 var skill: Skills
 
+var _target_rotation: float = 0.0
+var _target_translation: float = 0.0
+
+
 func _ready() -> void:
 	_origin_x = position.x
-	
-	#Debug.log("Bar (team_idx:%d) — autoridad: %d" % [
-	#	team_bar_index,
-	#	$MultiplayerSynchronizer.get_multiplayer_authority()
-	#])
- 
-func _process(delta: float) -> void:
-	if not is_multiplayer_authority():
-		return
-	if Input.is_action_just_pressed("skill"):
-		#Debug.log("skill")
-		pass
-	
 
-func _input(event: InputEvent) -> void:
-	# Solo el dueño de la barra la controla
+
+func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
-	# Solo responde si esta barra está seleccionada
 	if not is_selected:
 		return
- 
+
+	rotate_x(_target_rotation)
+	_target_rotation = 0.0
+
+	var new_x: float = position.x + _target_translation
+	var min_x: float = _origin_x - traslation_limit
+	var max_x: float = _origin_x + traslation_limit
+	position.x = clampf(new_x, min_x, max_x)
+	_target_translation = 0.0
+
+
+func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	if not is_selected:
+		return
+
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
 	if mouse_event:
 		if Game.get_current_player().id == Game.players[0].id:
-			_apply_rotation(-mouse_event.relative.x)
-			_apply_translation(-mouse_event.relative.y)
+			_target_rotation = -mouse_event.relative.x * rotation_sensibility
+			_target_translation = -mouse_event.relative.y * traslation_sensibility
 		elif Game.get_current_player().id == Game.players[1].id:
-			_apply_rotation(mouse_event.relative.x)
-			_apply_translation(mouse_event.relative.y)
-		
- 
- 
+			_target_rotation = mouse_event.relative.x * rotation_sensibility
+			_target_translation = mouse_event.relative.y * traslation_sensibility
+
+
 func _unhandled_input(event: InputEvent) -> void:
-	# Solo el dueño gestiona la selección de barra
 	if not is_multiplayer_authority():
 		return
 
@@ -62,21 +66,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_selected = (team_bar_index == 3)
 	elif event.is_action_pressed("bar_4"):
 		is_selected = (team_bar_index == 4)
- 
- 
-# Rota la barra sobre su eje X local según el movimiento horizontal del mouse
-func _apply_rotation(mouse_x: float) -> void:
-	rotate_x(mouse_x * rotation_sensibility)
- 
- 
-# Desplaza la barra en su eje Z local según el movimiento vertical del mouse,
-# respetando los límites definidos por translation_limit
-func _apply_translation(mouse_y: float) -> void:
-	var new_x: float = position.x - mouse_y * traslation_sensibility
-	var min_x: float = _origin_x -traslation_limit
-	var max_x: float = _origin_x + traslation_limit
-	position.x = clampf(new_x, min_x, max_x)
-	
+
+
 func set_skill(id: float) -> void:
 	if is_multiplayer_authority():
 		pass
