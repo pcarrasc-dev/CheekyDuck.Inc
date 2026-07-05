@@ -61,6 +61,6 @@ func _apply_translation(mouse_y: float) -> void:
 	var max_x: float = _origin_x + traslation_limit
 	position.x = clampf(new_x, min_x, max_x)
 	
-func set_skill(id: float) -> void:
-
-	pass
+func stop_input(value: bool) -> void:
+	set_process_input(value)
+	set_process_unhandled_input(value)

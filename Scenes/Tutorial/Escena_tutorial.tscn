@@ -4,13 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://by5pdtqtfqob0" path="res://Scenes/Tutorial/Field_V2_tutorial.tscn" id="2_fp5xr"]
 [ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="3_chj0k"]
 [ext_resource type="PackedScene" uid="uid://v2vf14vxf0m" path="res://Scenes/Tutorial/hud_tutorial.tscn" id="4_7p30f"]
-[ext_resource type="PackedScene" uid="uid://b01l15ldcnbny" path="res://Scenes/Tutorial/ball_tutorial.tscn" id="5_othkw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
 size = Vector3(1.4672318, 2.5521865, 6.420129)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(3.099884, 2.529358, 20.102112)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
 size = Vector3(28.932222, 24.064728, 25.29551)
@@ -80,22 +76,6 @@ shape = SubResource("BoxShape3D_i7ybl")
 
 [node name="Balls" type="Node3D" parent="." unique_id=2045065630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
-
-[node name="ball" parent="Balls" unique_id=1159331189 instance=ExtResource("5_othkw")]
-
-[node name="NotPlayerArea" type="Area3D" parent="." unique_id=1164449269]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NotPlayerArea" unique_id=1306540356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0040922, 1.6075134, -0.0128479)
-shape = SubResource("BoxShape3D_g4v7s")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="NotPlayerArea" unique_id=181979954]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8964276, 1.6075134, -0.0128479)
-shape = SubResource("BoxShape3D_g4v7s")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="NotPlayerArea" unique_id=249780555]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.534158, 1.6075134, -0.0128479)
-shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
 

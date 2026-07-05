@@ -101,6 +101,9 @@ func go_to_join() -> void:
 	get_tree().change_scene_to_file("res://lobby/join_screen.tscn")
 	reset()
 
+func go_to_tutorial() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Tutorial/Escena_tutorial.tscn")
+	reset()
 
 @rpc("any_peer", "reliable")
 func send_data(data: Dictionary) -> void:

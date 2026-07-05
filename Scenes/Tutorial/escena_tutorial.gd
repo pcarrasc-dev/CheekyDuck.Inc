@@ -15,7 +15,9 @@ var sp_list: Array[Marker3D]              = [sp_0, sp_1, sp_2, sp_3]
 @onready var camera_3d: Camera3D          = $Camera3D
 @onready var balls: Node3D                = $Balls
 @onready var skill_timer: Timer           = $Skills/SkillTimer
-@onready var not_player_area: Area3D      = $NotPlayerArea
+var not_player_area: Area3D
+@onready var field_v_2_tutorial: fieldTutorial   = $FieldV2_tutorial
+
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
@@ -31,13 +33,12 @@ var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")
 
 func _ready() -> void:
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
-
+	start_dialogue("res://Dialogue/gameplay tutorial 1.dtl")
 	# Conectar áreas de gol
 	goal_area_a.body_entered.connect(func(body): _on_goal(body, "A"))
 	goal_area_b.body_entered.connect(func(body): _on_goal(body, "B"))
 
-	play_area.body_exited.connect(ball_reset)
-	not_player_area.body_entered.connect(move_ball)
+	not_player_area = field_v_2_tutorial.not_player_area
 
 	camera_3d.make_current()
 
@@ -57,6 +58,12 @@ var _timer_sync: float = 0.0
 func _process(delta: float) -> void:
 	if not match_running:
 		return
+	play_area.body_exited.connect(ball_reset)
+	
+	not_player_area.body_entered.connect(_ball_start)
+	
+	
+	
 
 # ── Gol ───────────────────────────────────────────────────────────────────────
 
@@ -164,3 +171,26 @@ func move_ball(body: Node3D) -> void:
 	if ball:
 		#Debug.log("ball exited")
 		ball.apply_force(Vector3(10,10,10))
+
+func start_dialogue(dialogue: String) -> void:
+	var bar_5: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar5")
+	var bar_6: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar6")
+	var bar_7: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar7")
+	var bar_8: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar8")
+	var bars: Array[Bar_tutorial]             = [bar_5, bar_6, bar_7, bar_8]
+	for bar in bars:
+		bar.stop_input(false)
+	Dialogic.start(dialogue)
+	await Dialogic.timeline_ended
+	for bar in bars:
+		bar.stop_input(true)
+		
+func _ball_start(body : Node3D) -> void:
+	Debug.log(body)
+	var player: Player = body as Player
+	if player:
+		await get_tree().create_timer(1).timeout
+		start_dialogue("res://Dialogue/gameplay tutorial 2.dtl")
+		not_player_area.queue_free()
+		var ball: kinetic_ball_tutorial = preload("res://Scenes/Tutorial/ball_tutorial.tscn").instantiate()
+		balls.add_child(ball, true)
