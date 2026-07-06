@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dc4dw6e7kuj2j"]
+
+[ext_resource type="AudioStream" uid="uid://qomuyaejndph" path="res://resources/Music/dannymurillo_poduction-cort_deportespercucionbatucadapublicob_dm-546409.mp3" id="1_4m5bw"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=797459184]
+stream = ExtResource("1_4m5bw")
+volume_db = -16.0
+autoplay = true
