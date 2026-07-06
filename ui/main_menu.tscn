@@ -34,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -254.0
-offset_top = -20.0
+offset_top = -81.0
 offset_right = 259.0
-offset_bottom = 360.0
+offset_bottom = 398.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -54,6 +54,11 @@ text = "Host"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
+
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=2127276570]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tutorial"
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=1427127326]
 unique_name_in_owner = true

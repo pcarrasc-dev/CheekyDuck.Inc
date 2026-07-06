@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b01l15ldcnbny"]
+
+[ext_resource type="Script" uid="uid://cwkhu10kp7v4d" path="res://Scenes/Tutorial/ball_tutorial.gd" id="1_gdys6"]
+[ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="2_yvnlp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
+friction = 0.3
+bounce = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
+
+[node name="ball" type="RigidBody3D" unique_id=1159331189]
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_d3f3d")
+contact_monitor = true
+max_contacts_reported = 2000
+script = ExtResource("1_gdys6")
+
+[node name="FootBall" parent="." unique_id=1113712202 instance=ExtResource("2_yvnlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, -1.0375372, -0.0316571)
+
+[node name="ball_shape" type="CollisionShape3D" parent="." unique_id=2116463812]
+transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 0, 0, 0)
+shape = SubResource("SphereShape3D_11hlg")
+
+[node name="ball_area" type="Area3D" parent="." unique_id=1939856972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134759, -1.0375372, -0.031657103)
+
+[node name="ball_shape2" type="CollisionShape3D" parent="ball_area" unique_id=1343976970]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 1.9284675, 1.0435269, 0.00074208155)
+shape = SubResource("SphereShape3D_11hlg")

@@ -1,0 +1,49 @@
+join "cheeky duck" (Normal) leftmost [animation="Slide From Left" wait="true"]
+"cheeky duck": ¿Usaste tu poder?
+"cheeky duck" (Happy): ¿Qué te salió? Demás que fue el poder más inútil.
+join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
+"Normal Duck": Te puede salir 1 de 3 poderes a la vez.
+update "cheeky duck" (Surprised)
+"Normal Duck" (annoyed): Ninguno es el más inútil...
+[wait time="1.0" skippable="true"]
+update "cheeky duck" (Normal)
+"Normal Duck" (normal): Bueno... ¿Sobre cuál quieres saber?
+label Poderes
+update "Normal Duck" (normal)
+- Escudo.
+	"cheeky duck": Se forma un escudo encima de los jugadores y no podrán golpearle a la pelota.
+	"Normal Duck" (annoyed): El poder del escudo cubre tu arco por 5 segundos.
+	"Normal Duck" (normal): Ten cuidado, porque tiene un tiempo de demora al usarlo.
+	update "cheeky duck" (Happy) [animation="Tada" length="1.0"]
+	"cheeky duck" (Happy): Nunca vas a lograr usarlo en el momento correcto JAJAJ.
+	jump Poderes
+- Duplicación.
+	"cheeky duck" (Happy): Obviamente se duplican los jugadores al usarlo.
+	"cheeky duck": Lo dice en el nombre.
+	"Normal Duck" (annoyed): Lo que se duplica es la pelota.
+	update "cheeky duck" (Normal)
+	"Normal Duck" (normal): Dura por 20 segundos.
+	"cheeky duck": Si obtienes nuevamente el poder de duplicar, las pelotas desaparecen.
+	"cheeky duck": Y no podrás volver a jugar.
+	"Normal Duck" (upset): Si lo obtienes nuevamente, o si tu oponente lo usa mientras está activo, la cantidad de pelotas se duplicará nuevamente.
+	jump Poderes
+- Velocidad.
+	"cheeky duck": Claramente, los jugadores se moverán más rápido.
+	"Normal Duck" (annoyed): La pelota irá 2 veces más rápido.
+	"Normal Duck" (normal): Esto dura por 10 segundos.
+	jump Poderes
+- Ya me los sé.
+	"cheeky duck" (Happy): Se cansaron de ti.
+	"Normal Duck" (annoyed): jaja, si claro.
+	update "cheeky duck" (Surprised)
+	"Normal Duck" (upset): Más bien, se cansaron de tu actitud.
+update "cheeky duck" (Normal)
+"Normal Duck" (normal): Espera... Hay más.
+"Normal Duck": Puedes configurar la distribución de los futbolistas antes del partido.
+"Normal Duck": Así podrás ajustarlos a tu gusto.
+"cheeky duck": Dudo que vaya a ganar de todas formas.
+"Normal Duck" (normal): Bueno, eso fue todo. Espero que te haya gustado el tutorial.
+"Normal Duck" (happy): ¡Buena suerte jugando!
+"cheeky duck": Necesita toda la suerte del mundo JAJAJ.
+leave "cheeky duck" [animation="Slide To Left"]
+leave "Normal Duck" [animation="Slide To Right" wait="true"]
