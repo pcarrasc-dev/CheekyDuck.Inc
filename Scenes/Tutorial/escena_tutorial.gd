@@ -63,8 +63,6 @@ func _process(delta: float) -> void:
 
 # La pelota entró al área de gol del equipo "side" → anota el equipo contrario
 func _on_goal(body: Node3D, side: String) -> void:
-	if not multiplayer.is_server():
-		return
 	# Sólo la pelota marca gol
 	if not (body is kinetic_ball_tutorial):
 		return
