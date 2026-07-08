@@ -20,7 +20,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+@rpc("call_local")
 func try_spawn() -> void:
 	if skill_count >= amount:
 		return
@@ -52,5 +53,5 @@ func spawn(pos: Vector3) -> void:
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
 
 func _on_timeout() -> void:
-	try_spawn()
+	try_spawn.rpc()
 	pass

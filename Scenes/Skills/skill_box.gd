@@ -2,11 +2,13 @@ extends Area3D
 class_name SkillBox
 
 @onready var skill_texture: TextureRect = $MarginContainer/Skill/SkillTexture
-@onready var shield: Skills = preload("res://Scenes/Skills/shield_skill.tscn").instantiate()
-
+@export var shield: PackedScene = preload("res://Scenes/Skills/shield_skill.tscn")
+@export var double: PackedScene = preload("res://Scenes/Skills/skill_double.tscn")
+@export var fast_ball: PackedScene = preload("res://Scenes/Skills/fast_ball.tscn")
 @onready var skill_get: AnimationPlayer = $SkillGet
+
 static var radius: float = 10
-var available_skillset: Array[Skills] = [shield]
+var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +27,7 @@ func _on_body_entered(body: Node3D) -> void:
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
 		var bar: Bar = ball.get_player()
-		bar.skill = shield
+		bar.skill = shield.instantiate()
 		skill_get.play("getSkill")
 		await skill_get.animation_finished
 		queue_free()
