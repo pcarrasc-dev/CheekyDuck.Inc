@@ -15,7 +15,7 @@ var sp_list: Array[Marker3D]              = [sp_0, sp_1, sp_2, sp_3]
 @onready var camera_3d: Camera3D          = $Camera3D
 @onready var balls: Node3D                = $Balls
 @onready var skill_timer: Timer           = $Skills/SkillTimer
-var not_player_area: Area3D
+@onready var check_move: Area3D           = $CheckMove
 @onready var field_v_2_tutorial: fieldTutorial   = $FieldV2_tutorial
 
 
@@ -38,7 +38,7 @@ func _ready() -> void:
 	goal_area_a.body_entered.connect(func(body): _on_goal(body, "A"))
 	goal_area_b.body_entered.connect(func(body): _on_goal(body, "B"))
 
-	not_player_area = field_v_2_tutorial.not_player_area
+	
 
 	camera_3d.make_current()
 
@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 		return
 	play_area.body_exited.connect(ball_reset)
 	
-	not_player_area.body_entered.connect(_ball_start)
+	check_move.body_entered.connect(_ball_start)
 	
 	
 	
@@ -191,6 +191,6 @@ func _ball_start(body : Node3D) -> void:
 	if player:
 		await get_tree().create_timer(1).timeout
 		start_dialogue("res://Dialogue/gameplay tutorial 2.dtl")
-		not_player_area.queue_free()
+		check_move.queue_free()
 		var ball: kinetic_ball_tutorial = preload("res://Scenes/Tutorial/ball_tutorial.tscn").instantiate()
 		balls.add_child(ball, true)

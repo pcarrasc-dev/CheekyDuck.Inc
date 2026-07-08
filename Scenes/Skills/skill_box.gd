@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node3D) -> void:
+	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
 		var bar: Bar = ball.get_player()

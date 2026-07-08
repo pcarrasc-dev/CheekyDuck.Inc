@@ -8,6 +8,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
 size = Vector3(1.4672318, 2.5521865, 6.420129)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(2.684082, 4.2245483, 22.489746)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
 size = Vector3(28.932222, 24.064728, 25.29551)
 
@@ -76,6 +79,12 @@ shape = SubResource("BoxShape3D_i7ybl")
 
 [node name="Balls" type="Node3D" parent="." unique_id=2045065630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
+
+[node name="CheckMove" type="Area3D" parent="." unique_id=684004928]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckMove" unique_id=651099900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.842041, 1.6122742, 0.52563477)
+shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
 
