@@ -1,5 +1,5 @@
 class_name Bar_tutorial
-extends StaticBody3D
+extends RigidBody3D
 
 @export var rotation_sensibility: float = 0.006
 @export var traslation_sensibility: float = 0.0025
@@ -8,9 +8,6 @@ extends StaticBody3D
 
 var is_selected: bool = false
 var _origin_x: float = 0.0
-
-var angular_velocity: Vector3
-var previous_rotation: Vector3
 
 var skill: Skills
 

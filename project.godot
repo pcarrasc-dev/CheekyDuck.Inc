@@ -43,7 +43,7 @@ directories/dch_directory={
 "x2": "res://Dialogue/x2.dch"
 }
 directories/dtl_directory={
-"gameplay tutorial": "res://Dialogue/gameplay tutorial 1.dtl",
+"gameplay tutorial 1": "res://Dialogue/gameplay tutorial 1.dtl",
 "gameplay tutorial 2": "res://Dialogue/gameplay tutorial 2.dtl",
 "gameplay tutorial 3": "res://Dialogue/gameplay tutorial 3.dtl",
 "gameplay tutorial 4": "res://Dialogue/gameplay tutorial 4.dtl",

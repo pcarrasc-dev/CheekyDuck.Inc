@@ -13,6 +13,9 @@ var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not is_multiplayer_authority():
+		return
+	body_entered.connect(_on_body_entered)
 	pass # Replace with function body.
 
 
@@ -20,10 +23,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
-	body_entered.connect(_on_body_entered)
+	
 	pass
 
 func _on_body_entered(body: Node3D) -> void:
+	give_ball.rpc(body)
+
+@rpc("call_local")
+func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
