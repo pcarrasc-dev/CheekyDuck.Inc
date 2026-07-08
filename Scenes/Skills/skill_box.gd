@@ -37,7 +37,7 @@ func give_ball(body: Node3D) -> void:
 		var player: Player = ball.get_player()
 		if player:
 			var bar: Bar = player.get_parent() as Bar
-			bar.skill = shield
+			bar.skill = shield.instantiate()
 			skill_get.play("getSkill")
 			await skill_get.animation_finished
 			queue_free()

@@ -78,18 +78,12 @@ func _on_goal(body: Node3D, side: String) -> void:
 
 	Debug.log("¡GOL! Score A:%d  B:%d" % [score_a, score_b])
 	_sync_score(score_a, score_b)
-	_reset_ball()
+	ball_reset(body)
 
 func _sync_score(a: int, b: int) -> void:
 	score_a = a
 	score_b = b
 	hud.update_score(score_a, score_b)
-
-func _reset_ball() -> void:
-	var football: kinetic_ball_tutorial = $Balls/Ball
-	football.linear_velocity  = Vector3.ZERO
-	football.angular_velocity = Vector3.ZERO
-	football.global_position  = ball_spawn
 
 # ── Fin de partido ────────────────────────────────────────────────────────────
 
@@ -168,10 +162,10 @@ func start_dialogue(dialogue: String) -> void:
 		
 func _ball_start(body : Node3D) -> void:
 	Debug.log(body)
-	var player: Player = body as Player
+	var player: Bar_tutorial = body as Bar_tutorial
 	if player:
-		await get_tree().create_timer(1).timeout
 		start_dialogue("res://Dialogue/gameplay tutorial 2.dtl")
 		check_move.queue_free()
+		await Dialogic.timeline_ended
 		var ball: kinetic_ball_tutorial = preload("res://Scenes/Tutorial/ball_tutorial.tscn").instantiate()
 		balls.add_child(ball, true)

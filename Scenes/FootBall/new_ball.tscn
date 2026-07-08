@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://byeuwmcn0vvrx" path="res://Scenes/FootBall/new_ball.gd" id="1_d3f3d"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="2_d3f3d"]
-[ext_resource type="Script" uid="" path="res://Scenes/FootBall/BallVisual.gd" id="3_s0xqr"]
+[ext_resource type="Script" uid="uid://1h0kw4po8psw" path="res://Scenes/FootBall/BallVisual.gd" id="3_s0xqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
 friction = 0.01
-bounce = 0.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")
@@ -21,15 +20,15 @@ radius = 0.97
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
 mass = 0.5
-gravity_scale = 2.0
-linear_damp = 0.06
-angular_damp = 0.15
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
+gravity_scale = 2.0
 contact_monitor = true
 max_contacts_reported = 8
+linear_damp = 0.06
+angular_damp = 0.15
 script = ExtResource("1_d3f3d")
 
-[node name="BallVisual" type="Node3D" parent="."]
+[node name="BallVisual" type="Node3D" parent="." unique_id=698737982]
 script = ExtResource("3_s0xqr")
 
 [node name="FootBall" parent="BallVisual" unique_id=1113712202 instance=ExtResource("2_d3f3d")]
@@ -39,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, -1.0375372, -0.03
 replication_config = SubResource("SceneReplicationConfig_d3f3d")
 
 [node name="ball_shape" type="CollisionShape3D" parent="." unique_id=2116463812]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_11hlg")
 
 [node name="ball_area" type="Area3D" parent="." unique_id=1939856972]

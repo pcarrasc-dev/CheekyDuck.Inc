@@ -5,7 +5,7 @@ class_name kinetic_ball
 @onready var ball_area: Area3D = $ball_area
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
-var last_player_obj: StaticBody3D
+var last_player_obj: Player
 
 const MAX_SPEED: float = 24.0
 const SOFT_CLAMP_FACTOR: float = 0.15
