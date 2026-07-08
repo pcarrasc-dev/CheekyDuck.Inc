@@ -11,10 +11,9 @@ var skill_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not multiplayer.is_server():
-		return
-	timer.start(1 / rate)
-	timer.timeout.connect(_on_timeout)
+	if multiplayer.is_server():
+		timer.start(1 / rate)
+		timer.timeout.connect(_on_timeout)
 	pass # Replace with function body.
 
 
@@ -25,7 +24,6 @@ func _process(delta: float) -> void:
 func try_spawn() -> void:
 	if skill_count >= amount:
 		return
-	spawn(global_position)
 	var check_radius: float = SkillBox.radius
 	
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
@@ -42,7 +40,9 @@ func try_spawn() -> void:
 	var results: Array[Dictionary] = space_state.intersect_shape(params)
 	for result: Dictionary in results:
 		Debug.log(result.collider.name)
-	pass
+	if results.size() > 0:
+		return
+	spawn(global_position)
 
 func spawn(pos: Vector3) -> void:
 	var skill_inst: SkillBox = skill_scene.instantiate()

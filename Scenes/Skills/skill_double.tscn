@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bimiurlaw1to"]
+
+[ext_resource type="Script" uid="uid://dcqiwug1vy8kw" path="res://Scenes/Skills/skill_double.gd" id="1_rag3i"]
+
+[node name="SkillDouble" type="Node3D" unique_id=1240160456]
+script = ExtResource("1_rag3i")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1631681680]
+spawn_path = NodePath(".")
+
+[node name="Timer" type="Timer" parent="." unique_id=1774534673]

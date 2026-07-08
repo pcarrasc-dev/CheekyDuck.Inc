@@ -3,12 +3,6 @@ extends Node3D
 # ── Referencias ───────────────────────────────────────────────────────────────
 @onready var skill_app: Node3D            = $Skills/SkillApp
 @onready var skill_timer: Timer           = $Skills/SkillTimer
-@onready var skill_spawn_list: Array[int] = [0,0,0,0]
-@onready var sp_0: Marker3D               = $"Skills/Skill SpawnPoint/SP0"
-@onready var sp_1: Marker3D               = $"Skills/Skill SpawnPoint/SP1"
-@onready var sp_2: Marker3D               = $"Skills/Skill SpawnPoint/SP2"
-@onready var sp_3: Marker3D               = $"Skills/Skill SpawnPoint/SP3"
-var sp_list: Array[Marker3D]              = [sp_0, sp_1, sp_2, sp_3]
 @onready var hud: CanvasLayer             = $HUD
 @onready var goal_area_a: Area3D          = $GoalAreaA   # gol para equipo B (arco de A)
 @onready var goal_area_b: Area3D          = $GoalAreaB   # gol para equipo A (arco de B)
@@ -160,23 +154,8 @@ func _end_match(final_a: int, final_b: int) -> void:
 		winner = Game.players[1].name
 	else:
 		winner = "Empate"
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	hud.show_end_screen(winner, final_a, final_b)
-
-
-# ── Skill (placeholder) ───────────────────────────────────────────────────────
-
-@rpc("any_peer", "reliable")
-func skill() -> void:
-	if not skill_timer.is_stopped():
-		return
-	skill_timer.start()
-	var new_skill: SkillBox = preload("res://Scenes/Skills/skill_box.tscn").instantiate()
-	for i in range(0, 4):
-		if skill_spawn_list[i] == 0:
-			new_skill.global_position = sp_list[i].global_position
-			skill_spawn_list[i] = 1
-			skill_app.add_child(new_skill)
-	Debug.log("Skill")
 
 
 # ── Barras / spawn ────────────────────────────────────────────────────────────
