@@ -1,16 +1,13 @@
 class_name Bar
-extends StaticBody3D
+extends RigidBody3D
 
 @export var rotation_sensibility: float = 0.006
 @export var traslation_sensibility: float = 0.0025
-@export var traslation_limit: float = 0.15
+@export var traslation_limit: float = 0.35
 @export var team_bar_index: int = 1
 
 var is_selected: bool = false
 var _origin_x: float = 0.0
-
-var angular_velocity: Vector3
-var previous_rotation: Vector3
 
 var skill: Skills
 
@@ -19,10 +16,38 @@ var _target_translation: float = 0.0
 
 
 func _ready() -> void:
+	freeze = true
+	freeze_mode = FREEZE_MODE_KINEMATIC
 	_origin_x = position.x
 
+	collision_layer = 255
+	collision_mask = 255
 
-func _physics_process(_delta: float) -> void:
+	var mat := PhysicsMaterial.new()
+	mat.friction = 0.2
+	mat.bounce = 0.3
+	physics_material_override = mat
+
+	for child in get_children():
+		var player := child as Player
+		if not player:
+			continue
+		_mirror_collision(player, "BodyCollision")
+		_mirror_collision(player, "FeetCollision")
+
+
+func _mirror_collision(player: Player, shape_name: String) -> void:
+	var src := player.get_node_or_null(shape_name) as CollisionShape3D
+	if not src:
+		return
+	var dst := CollisionShape3D.new()
+	dst.shape = src.shape
+	dst.transform = player.transform * src.transform
+	add_child(dst)
+	src.disabled = true
+
+
+func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	if not is_selected:
@@ -51,7 +76,7 @@ func _input(event: InputEvent) -> void:
 			_target_translation = -mouse_event.relative.y * traslation_sensibility
 		elif Game.get_current_player().id == Game.players[1].id:
 			_target_rotation = mouse_event.relative.x * rotation_sensibility
-			_target_translation = mouse_event.relative.y * traslation_sensibility
+			_target_translation = -mouse_event.relative.y * traslation_sensibility
 
 
 func _unhandled_input(event: InputEvent) -> void:

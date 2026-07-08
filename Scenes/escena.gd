@@ -185,7 +185,6 @@ func _setup_bars_authority() -> void:
 	Game.sort_players()
 	$Balls/Ball.set_multiplayer_authority(1)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
-	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar3.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar4.set_multiplayer_authority(Game.players[0].id)

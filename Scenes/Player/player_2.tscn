@@ -29,9 +29,14 @@ size = Vector3(0.743, 0.354, 0.771)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyora"]
 size = Vector3(0.5470123, 0.35437012, 0.77111816)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_player2"]
+bounce = 0.3
+friction = 0.2
+
 [node name="StaticBody3D" type="StaticBody3D" unique_id=408717749]
 collision_layer = 255
 collision_mask = 255
+physics_material_override = SubResource("PhysicsMaterial_player2")
 script = ExtResource("1_ktnsh")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=240296017]

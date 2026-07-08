@@ -81,6 +81,10 @@ bar_4={
 ]
 }
 
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.1287, 0.24612503, 0.33, 1)

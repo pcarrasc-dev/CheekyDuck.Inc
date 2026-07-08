@@ -21,7 +21,7 @@ properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 2
 
-[node name="Bar" type="StaticBody3D" unique_id=92024880]
+[node name="Bar" type="RigidBody3D" unique_id=92024880]
 script = ExtResource("1_igcbq")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=412934136]
