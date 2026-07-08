@@ -11,13 +11,16 @@ update "cheeky duck" (Normal)
 label Poderes
 update "Normal Duck" (normal)
 - Escudo.
+	join escudo center [animation="Fade In" z_index="20"]
 	"cheeky duck": Se forma un escudo encima de los jugadores y no podrán golpearle a la pelota.
 	"Normal Duck" (annoyed): El poder del escudo cubre tu arco por 5 segundos.
 	"Normal Duck" (normal): Ten cuidado, porque tiene un tiempo de demora al usarlo.
 	update "cheeky duck" (Happy) [animation="Tada" length="1.0"]
 	"cheeky duck" (Happy): Nunca vas a lograr usarlo en el momento correcto JAJAJ.
+	leave escudo [animation="Fade Out" wait="true"]
 	jump Poderes
 - Duplicación.
+	join x2 center [animation="Fade In" z_index="20"]
 	"cheeky duck" (Happy): Obviamente se duplican los jugadores al usarlo.
 	"cheeky duck": Lo dice en el nombre.
 	"Normal Duck" (annoyed): Lo que se duplica es la pelota.
@@ -26,11 +29,14 @@ update "Normal Duck" (normal)
 	"cheeky duck": Si obtienes nuevamente el poder de duplicar, las pelotas desaparecen.
 	"cheeky duck": Y no podrás volver a jugar.
 	"Normal Duck" (upset): Si lo obtienes nuevamente, o si tu oponente lo usa mientras está activo, la cantidad de pelotas se duplicará nuevamente.
+	leave x2 [animation="Fade Out" wait="true"]
 	jump Poderes
 - Velocidad.
+	join veloz center [animation="Fade In" z_index="20"]
 	"cheeky duck": Claramente, los jugadores se moverán más rápido.
 	"Normal Duck" (annoyed): La pelota irá 2 veces más rápido.
 	"Normal Duck" (normal): Esto dura por 10 segundos.
+	leave veloz [animation="Fade Out" wait="true"]
 	jump Poderes
 - Ya me los sé.
 	"cheeky duck" (Happy): Se cansaron de ti.

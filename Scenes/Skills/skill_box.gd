@@ -4,6 +4,7 @@ class_name SkillBox
 @onready var skill_texture: TextureRect = $MarginContainer/Skill/SkillTexture
 @onready var shield: Skills = preload("res://Scenes/Skills/shield_skill.tscn").instantiate()
 @onready var skill_get: AnimationPlayer = $SkillGet
+static var radius: float = 10
 var available_skillset: Array[Skills] = [shield]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
