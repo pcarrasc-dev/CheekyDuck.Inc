@@ -57,6 +57,7 @@ func _ready() -> void:
 		match_timer.timeout.connect(_on_match_timeout)
 		match_timer.start()
 	match_running = true
+	play_area.body_exited.connect(ball_reset)
 
 #revisar
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,7 +87,6 @@ func _process(delta: float) -> void:
 		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
-		play_area.body_exited.connect(ball_reset)
 		
 	
 
@@ -164,7 +164,6 @@ func _setup_bars_authority() -> void:
 	Game.sort_players()
 	$Balls/Ball.set_multiplayer_authority(1)
 	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
-	$FieldV2/Bar.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar2.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar3.set_multiplayer_authority(Game.players[0].id)
 	$FieldV2/Bar4.set_multiplayer_authority(Game.players[0].id)
@@ -214,4 +213,4 @@ func ball_reset(body: Node3D) -> void:
 		#Debug.log("ball exited")
 		ball.linear_velocity = Vector3.ZERO
 		ball.angular_velocity = Vector3.ZERO
-		ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		ball.global_position = ball_spawn

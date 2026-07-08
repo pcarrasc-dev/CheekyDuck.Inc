@@ -80,7 +80,7 @@ light_energy = 0.525
 replication_config = SubResource("SceneReplicationConfig_ybuur")
 
 [node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("5_i7ybl")]
-transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0, 0, 0)
+transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 2.3837852, -0.6863365, -0.1398269)
 
 [node name="Skills" type="Node3D" parent="." unique_id=1160852673]
 
