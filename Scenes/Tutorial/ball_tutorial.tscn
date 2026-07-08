@@ -8,6 +8,7 @@ friction = 0.3
 bounce = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
+radius = 0.5211043
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
 mass = 0.2

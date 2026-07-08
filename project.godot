@@ -38,7 +38,10 @@ gdscript/warnings/unsafe_method_access=1
 
 directories/dch_directory={
 "Normal Duck": "res://Dialogue/Normal Duck.dch",
-"cheeky duck": "res://Dialogue/cheeky duck.dch"
+"cheeky duck": "res://Dialogue/cheeky duck.dch",
+"escudo": "res://Dialogue/escudo.dch",
+"veloz": "res://Dialogue/veloz.dch",
+"x2": "res://Dialogue/x2.dch"
 }
 directories/dtl_directory={
 "gameplay tutorial 1": "res://Dialogue/gameplay tutorial 1.dtl",
@@ -148,6 +151,10 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 

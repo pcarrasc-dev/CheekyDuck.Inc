@@ -1,6 +1,5 @@
 extends Node3D
 class_name fieldTutorial
-@onready var not_player_area: Area3D = $NotPlayerArea
 
 
 # Called when the node enters the scene tree for the first time.

@@ -50,6 +50,9 @@ _data = {
 }
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_s8ch3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339980354]

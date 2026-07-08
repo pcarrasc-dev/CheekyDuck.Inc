@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://byeuwmcn0vvrx" path="res://Scenes/FootBall/new_ball.gd" id="1_d3f3d"]
 [ext_resource type="PackedScene" uid="uid://c6w18akihquxq" path="res://Scenes/FootBall/FootBall.fbx" id="2_d3f3d"]
+[ext_resource type="Script" uid="uid://1h0kw4po8psw" path="res://Scenes/FootBall/BallVisual.gd" id="3_s0xqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
-friction = 0.3
-bounce = 0.8
+friction = 0.01
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")
@@ -16,27 +16,33 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
+radius = 0.97
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
-mass = 0.2
+mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
+gravity_scale = 2.0
 contact_monitor = true
-max_contacts_reported = 2000
+max_contacts_reported = 8
+linear_damp = 0.06
+angular_damp = 0.15
 script = ExtResource("1_d3f3d")
 
-[node name="FootBall" parent="." unique_id=1113712202 instance=ExtResource("2_d3f3d")]
+[node name="BallVisual" type="Node3D" parent="." unique_id=698737982]
+script = ExtResource("3_s0xqr")
+
+[node name="FootBall" parent="BallVisual" unique_id=1113712202 instance=ExtResource("2_d3f3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134758, -1.0375372, -0.0316571)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=884479803]
 replication_config = SubResource("SceneReplicationConfig_d3f3d")
 
 [node name="ball_shape" type="CollisionShape3D" parent="." unique_id=2116463812]
-transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 0, 0, 0)
 shape = SubResource("SphereShape3D_11hlg")
 
 [node name="ball_area" type="Area3D" parent="." unique_id=1939856972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134759, -1.0375372, -0.031657103)
 
 [node name="ball_shape2" type="CollisionShape3D" parent="ball_area" unique_id=1343976970]
-transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 1.9284675, 1.0435269, 0.00074208155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9284675, 1.0435269, 0.00074208155)
 shape = SubResource("SphereShape3D_11hlg")

@@ -13,7 +13,9 @@ top_radius = 0.08
 bottom_radius = 0.08
 height = 100.0
 
-[node name="Bar" type="StaticBody3D" unique_id=92024880]
+[node name="Bar" type="RigidBody3D" unique_id=90169783]
+axis_lock_linear_y = true
+gravity_scale = 0.0
 script = ExtResource("1_waf14")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=412934136]
