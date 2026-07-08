@@ -18,7 +18,7 @@ var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
 var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
-
+var dialogue_3_4: bool = false
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8
 const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
@@ -77,6 +77,7 @@ func _on_goal(body: Node3D, side: String) -> void:
 	Debug.log("¡GOL! Score A:%d  B:%d" % [score_a, score_b])
 	_sync_score(score_a, score_b)
 	ball_reset(body)
+	start_dialogue_3_4()
 
 func _sync_score(a: int, b: int) -> void:
 	score_a = a
@@ -137,6 +138,7 @@ func ball_reset(body: Node3D) -> void:
 		ball.linear_velocity = Vector3.ZERO
 		ball.angular_velocity = Vector3.ZERO
 		ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		start_dialogue_3_4()
 
 func move_ball(body: Node3D) -> void:
 	var ball: kinetic_ball_tutorial = body as kinetic_ball_tutorial
@@ -146,6 +148,7 @@ func move_ball(body: Node3D) -> void:
 		ball.apply_force(Vector3(10,10,10))
 
 func start_dialogue(dialogue: String) -> void:
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	var bar_5: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar5")
 	var bar_6: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar6")
 	var bar_7: Bar_tutorial                   = field_v_2_tutorial.get_node("Bar7")
@@ -157,6 +160,7 @@ func start_dialogue(dialogue: String) -> void:
 	await Dialogic.timeline_ended
 	for bar in bars:
 		bar.stop_input(true)
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 		
 func _ball_start(body : Node3D) -> void:
 	Debug.log(body)
@@ -167,3 +171,10 @@ func _ball_start(body : Node3D) -> void:
 		await Dialogic.timeline_ended
 		var ball: kinetic_ball_tutorial = preload("res://Scenes/Tutorial/ball_tutorial.tscn").instantiate()
 		balls.add_child(ball, true)
+
+func start_dialogue_3_4() -> void:
+	if not dialogue_3_4:
+		start_dialogue("res://Dialogue/gameplay tutorial 3.dtl")
+		await Dialogic.timeline_ended
+		start_dialogue("res://Dialogue/gameplay tutorial 4.dtl")
+		dialogue_3_4 = true
