@@ -60,7 +60,7 @@ size = Vector3(1.4672318, 2.5521865, 6.420129)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
 size = Vector3(28.932222, 24.064728, 25.29551)
 
-[node name="Escena" type="Node3D" unique_id=1303625090]
+[node name="Escena2" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
@@ -140,6 +140,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.1449
 
 [node name="Ball" parent="Balls" unique_id=312642086 instance=ExtResource("5_kfaxj")]
 unique_name_in_owner = true
+mass = 0.2
+gravity_scale = 1.0
+max_contacts_reported = 2000
+linear_damp = 0.0
+angular_damp = 0.0
 
 [node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
 

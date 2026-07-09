@@ -73,6 +73,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			if bar:
 				player = _first_player_in_bar(bar)
 		if player:
+			Debug.log(player)
 			last_player_obj = player
 			_impact_cooldown = IMPACT_COOLDOWN
 			break
