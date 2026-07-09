@@ -1,0 +1,12 @@
+# Blender 4.0.2 MTL File: 'Healthy&Junk_Food.blend'
+# www.blender.org
+
+newmtl Food_Color_mat
+Ns 265.632416
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/pc/Desktop/Arabic_Food/Style1/Food_Color.psd

@@ -79,6 +79,8 @@ func _ready() -> void:
 		match_timer.start()
 	match_running = true
 	play_area.body_exited.connect(ball_reset)
+	BackgroundMusic.start_match()
+	
 
 #revisar
 func _unhandled_input(event: InputEvent) -> void:
@@ -104,6 +106,9 @@ func _process(delta: float) -> void:
 		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
+		_check_last_minute_music(match_timer.time_left)
+	
+		
 		
 	
 
@@ -111,8 +116,15 @@ func _process(delta: float) -> void:
 func _sync_timer(time_left: float) -> void:
 	hud.update_timer(time_left)
 	hud_2.update_timer(time_left)
+	_check_last_minute_music(time_left)
 
-
+func _check_last_minute_music(time_left: float) -> void:
+	if _last_minute_triggered:
+		return
+	if time_left <= 60.0:
+		_last_minute_triggered = true
+		BackgroundMusic.trigger_last_minute()
+		
 # ── Gol ───────────────────────────────────────────────────────────────────────
 
 # La pelota entró al área de gol del equipo "side" → anota el equipo contrario
@@ -158,6 +170,9 @@ func _on_match_timeout() -> void:
 func _end_match(final_a: int, final_b: int) -> void:
 	match_running = false
 	match_timer.stop()
+	BackgroundMusic.play_final_whistle()
+	await get_tree().create_timer(2.0).timeout
+	BackgroundMusic.end_match()
 	var winner: String
 	if final_a > final_b:
 		winner = Game.players[0].name
