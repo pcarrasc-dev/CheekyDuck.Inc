@@ -50,10 +50,13 @@ _data = {
 }
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("1_s8ch3")
+shield = null
+double = null
+fast_ball = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339980354]
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)

@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://du651h2fd1qqu"]
+[gd_scene format=3 uid="uid://vifgj1hxaj7f"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="1_00wdd"]
-[ext_resource type="Script" uid="uid://bp61wo0oaw05d" path="res://Scenes/Skills/skill_box.gd" id="1_s8ch3"]
+[ext_resource type="Script" uid="uid://cx5exsy3cuhiq" path="res://Scenes/Tutorial/skill_box_tutorial.gd" id="1_8ud76"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="2_8soyx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8ch3"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cm6sg"]
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_texture = ExtResource("1_00wdd")
+albedo_texture = ExtResource("2_8soyx")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dxwca"]
 material = SubResource("ORMMaterial3D_cm6sg")
@@ -50,10 +50,10 @@ _data = {
 }
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 collision_layer = 255
 collision_mask = 255
-script = ExtResource("1_s8ch3")
+script = ExtResource("1_8ud76")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339980354]
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)

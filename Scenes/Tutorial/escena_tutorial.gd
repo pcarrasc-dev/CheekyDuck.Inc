@@ -1,7 +1,7 @@
 extends Node3D
 
 # ── Referencias ───────────────────────────────────────────────────────────────
-@onready var skill_app: Node3D            = $Skills/SkillApp
+@onready var skill_node: Node3D            = $Skills
 @onready var hud: CanvasLayer             = $HUD
 @onready var goal_area_a: Area3D          = $GoalAreaA   # gol para equipo B (arco de A)
 @onready var goal_area_b: Area3D          = $GoalAreaB   # gol para equipo A (arco de B)
@@ -11,7 +11,7 @@ extends Node3D
 @onready var skill_timer: Timer           = $Skills/SkillTimer
 @onready var check_move: Area3D           = $CheckMove
 @onready var field_v_2_tutorial: fieldTutorial   = $FieldV2_tutorial
-
+@export var skill_spawner: PackedScene = preload("res://Scenes/Tutorial/spawner_tutorial.tscn")
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
@@ -54,9 +54,7 @@ var _timer_sync: float = 0.0
 func _process(delta: float) -> void:
 	if not match_running:
 		return
-	
-	
-	
+
 	
 
 # ── Gol ───────────────────────────────────────────────────────────────────────
@@ -157,6 +155,10 @@ func start_dialogue(dialogue: String) -> void:
 	for bar in bars:
 		bar.stop_input(false)
 	Dialogic.start(dialogue)
+	if dialogue == "res://Dialogue/gameplay tutorial 4.dtl":
+		var spawner_inst: Spawner_Tutorial = skill_spawner.instantiate()
+		spawner_inst.global_position = Vector3(-0.33, 1.612, 0.526)
+		skill_node.add_child(spawner_inst, true)
 	await Dialogic.timeline_ended
 	for bar in bars:
 		bar.stop_input(true)
@@ -178,3 +180,4 @@ func start_dialogue_3_4() -> void:
 		await Dialogic.timeline_ended
 		start_dialogue("res://Dialogue/gameplay tutorial 4.dtl")
 		dialogue_3_4 = true
+		
