@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://du651h2fd1qqu"]
+[gd_scene format=3 uid="uid://du651h2fd1qqu"]
 
 [ext_resource type="Script" uid="uid://bp61wo0oaw05d" path="res://Scenes/Skills/skill_box.gd" id="1_s8ch3"]
 [ext_resource type="PackedScene" uid="uid://b3p6c2g67i63t" path="res://Scenes/Skills/Ketchup_Pack.glb" id="3_cm6sg"]
@@ -44,9 +44,9 @@ _data = {
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s8ch3"]
-properties/0/path = NodePath("SkillGet:current_animation")
+properties/0/path = NodePath(".:current_animation")
 properties/0/spawn = true
-properties/0/replication_mode = 2
+properties/0/replication_mode = 1
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
@@ -62,11 +62,7 @@ shape = SubResource("BoxShape3D_s8ch3")
 physics_interpolation_mode = 2
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
-<<<<<<< HEAD
-mesh = SubResource("ArrayMesh_w1phl")
-=======
 mesh = SubResource("PlaceholderMesh_fvtde")
->>>>>>> be8a6e7699be340b9ace6ab03ed4d8e96f6175a5
 skeleton = NodePath("")
 
 [node name="Ketchup_Pack2" parent="SkillBoxMesh" unique_id=1980362021 instance=ExtResource("3_cm6sg")]
@@ -75,5 +71,5 @@ transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
 [node name="SkillGet" type="AnimationPlayer" parent="." unique_id=86888162]
 libraries/ = SubResource("AnimationLibrary_cm6sg")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=33164120]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=668322574]
 replication_config = SubResource("SceneReplicationConfig_s8ch3")

@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://dvq3f3lgbn2w2"]
+
+[ext_resource type="Script" uid="uid://l2hxj0js105c" path="res://Scenes/escena.gd" id="1_1wh3i"]
+[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="4_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://b24xiah1jlv4y" path="res://Scenes/Skills/spawner.tscn" id="4_kfaxj"]
+[ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
+[ext_resource type="PackedScene" uid="uid://pbsomgi086yu" path="res://Scenes/FootBall/new_ball.tscn" id="5_kfaxj"]
+[ext_resource type="PackedScene" uid="uid://ctquc3u8ytvub" path="res://Scenes/hud2.tscn" id="6_2lio0"]
+[ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
+properties/0/path = NodePath("Player:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Ball/FootBall:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Ball/FootBall:angular_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Ball/GPUParticles3D:amount")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Ball/GPUParticles3D:lifetime")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Ball/GPUParticles3D:emitting")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Ball/FootBall:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Ball/FootBall:rotation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Ball/GPUParticles3D:position")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Ball/GPUParticles3D:rotation")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Field_V2/Bar:position")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("Skills/Skill SpawnPoint/Spawner:position")
+properties/11/spawn = true
+properties/11/replication_mode = 2
+properties/12/path = NodePath("Skills/Skill SpawnPoint/Spawner2:position")
+properties/12/spawn = true
+properties/12/replication_mode = 2
+properties/13/path = NodePath("Skills/Skill SpawnPoint/Spawner3:position")
+properties/13/spawn = true
+properties/13/replication_mode = 2
+properties/14/path = NodePath("Skills/Skill SpawnPoint/Spawner4:position")
+properties/14/spawn = true
+properties/14/replication_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
+size = Vector3(1.4672318, 2.5521865, 6.420129)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfaxj"]
+size = Vector3(28.932222, 24.064728, 25.29551)
+
+[node name="Escena2" type="Node3D" unique_id=1303625090]
+script = ExtResource("1_1wh3i")
+player_slot_spread = null
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
+transform = Transform3D(1, 0, 0, 0, 0.47085774, 0.8822092, 0, -0.8822092, 0.47085774, 0.054712296, 13.080267, 9.59486)
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1588599253]
+transform = Transform3D(-0.9999999, 7.6828634e-08, -4.171454e-08, 0, 0.47715876, 0.878817, 8.742277e-08, 0.87881714, -0.4771587, 0.055, 13.08, -9.595)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1301504848]
+transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.890686e-08, 0.66131186, 0, -1, -4.371139e-08, -9.223031, 11.208929, 0)
+light_color = Color(0.9503198, 0.93344027, 0.48539716, 1)
+light_energy = 0.525
+
+[node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
+replication_config = SubResource("SceneReplicationConfig_ybuur")
+
+[node name="FieldV2" parent="." unique_id=151697161 instance=ExtResource("5_i7ybl")]
+transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0.14190054, 0.21033049, -0.1398269)
+
+[node name="Skills" type="Node3D" parent="." unique_id=1160852673]
+
+[node name="SkillApp" type="Node3D" parent="Skills" unique_id=111137199]
+
+[node name="SkillTimer" type="Timer" parent="Skills" unique_id=2103678800]
+wait_time = 10.0
+script = ExtResource("4_i7ybl")
+
+[node name="ShieldsSpawn" type="Node3D" parent="Skills" unique_id=2069301348]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="ShieldSpawn1" type="Marker3D" parent="Skills/ShieldsSpawn" unique_id=1019637695]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1, -4.3711392e-08, 2.701347, 0.20734005, 0)
+
+[node name="ShieldSpawn2" type="Marker3D" parent="Skills/ShieldsSpawn" unique_id=1840397351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8038206, 0, 0)
+
+[node name="Skill SpawnPoint" type="Node3D" parent="Skills" unique_id=1841719548]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
+
+[node name="Spawner" parent="Skills/Skill SpawnPoint" unique_id=1186608137 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.6906072, -0.27800018, 0.8044564)
+
+[node name="Spawner2" parent="Skills/Skill SpawnPoint" unique_id=1410926316 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.87434924, -0.14368016, -1.096846)
+
+[node name="Spawner3" parent="Skills/Skill SpawnPoint" unique_id=228474797 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.19999613, 0, 0.0012454767, 0, 0.2, 0, -0.0012454767, 0, 0.19999613, 4.552084, -0.12512967, 1.331396)
+
+[node name="Spawner4" parent="Skills/Skill SpawnPoint" unique_id=1875794966 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.7721877, -0.22288468, -1.5069562)
+
+[node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]
+
+[node name="HUD2" parent="." unique_id=1405608253 instance=ExtResource("6_2lio0")]
+
+[node name="MatchTimer" type="Timer" parent="." unique_id=1668992692]
+wait_time = 180.0
+one_shot = true
+
+[node name="GoalAreaA" type="Area3D" parent="." unique_id=517932853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaA" unique_id=2082696953]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000005, 1.1435442, 0.5896984, -0.5285961)
+shape = SubResource("BoxShape3D_i7ybl")
+debug_color = Color(1, 0.26650617, 0.6696673, 1)
+
+[node name="GoalAreaB" type="Area3D" parent="." unique_id=1875410742]
+transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98855454, 13.8, 1, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
+shape = SubResource("BoxShape3D_i7ybl")
+debug_color = Color(1, 0.26650617, 0.6696673, 1)
+
+[node name="Balls" type="Node3D" parent="." unique_id=2045065630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
+
+[node name="Ball" parent="Balls" unique_id=312642086 instance=ExtResource("5_kfaxj")]
+unique_name_in_owner = true
+mass = 0.2
+gravity_scale = 1.0
+max_contacts_reported = 2000
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
+
+[node name="PlayAreaShape" type="CollisionShape3D" parent="PlayArea" unique_id=486252881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11272144, 8.464798, 0.18128586)
+shape = SubResource("BoxShape3D_kfaxj")

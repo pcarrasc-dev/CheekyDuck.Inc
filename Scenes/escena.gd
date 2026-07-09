@@ -20,7 +20,7 @@ var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 @onready var shield_spawn_1: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn1
 @onready var shield_spawn_2: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn2
 
-var skill_box: PackedScene = preload("res://Scenes/Skills/skill_box.tscn")
+var skill_box = preload("uid://du651h2fd1qqu")
 
 var skills_array: Array[PackedScene] = [skill_box, skill_box]
 
