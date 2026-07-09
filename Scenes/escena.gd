@@ -28,6 +28,8 @@ var skills_array: Array[PackedScene] = [skill_box, skill_box]
 const MATCH_DURATION: float  = 180.0   # 3 minutos
 const GOALS_TO_WIN:   int    = 3
 
+var _last_minute_triggered: bool = false
+
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
