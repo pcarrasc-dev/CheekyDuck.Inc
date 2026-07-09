@@ -26,6 +26,7 @@ var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
 var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
 var last_player: Player
+var _last_minute_triggered: bool = false
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8
@@ -64,6 +65,8 @@ func _ready() -> void:
 		match_timer.start()
 	match_running = true
 	play_area.body_exited.connect(ball_reset)
+	BackgroundMusic.start_match()
+	
 
 #revisar
 func _unhandled_input(event: InputEvent) -> void:
@@ -93,14 +96,24 @@ func _process(delta: float) -> void:
 		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
+		_check_last_minute_music(match_timer.time_left)
+	
+		
 		
 	
 
 @rpc("authority", "unreliable")
 func _sync_timer(time_left: float) -> void:
 	hud.update_timer(time_left)
+	_check_last_minute_music(time_left)
 
-
+func _check_last_minute_music(time_left: float) -> void:
+	if _last_minute_triggered:
+		return
+	if time_left <= 60.0:
+		_last_minute_triggered = true
+		BackgroundMusic.trigger_last_minute()
+		
 # ── Gol ───────────────────────────────────────────────────────────────────────
 
 # La pelota entró al área de gol del equipo "side" → anota el equipo contrario
@@ -131,6 +144,7 @@ func _sync_score(a: int, b: int) -> void:
 	score_a = a
 	score_b = b
 	hud.update_score(score_a, score_b)
+	BackgroundMusic.play_goal()
 
 
 @rpc("authority", "reliable", "call_local")
@@ -153,6 +167,9 @@ func _on_match_timeout() -> void:
 func _end_match(final_a: int, final_b: int) -> void:
 	match_running = false
 	match_timer.stop()
+	BackgroundMusic.play_final_whistle()
+	await get_tree().create_timer(2.0).timeout
+	BackgroundMusic.end_match()
 	var winner: String
 	if final_a > final_b:
 		winner = Game.players[0].name
