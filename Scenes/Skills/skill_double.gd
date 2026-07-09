@@ -1,4 +1,5 @@
 extends Node3D
+class_name Double_Ball
 
 @export var ball: PackedScene = preload("uid://pbsomgi086yu")
 var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)

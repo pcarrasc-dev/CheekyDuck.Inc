@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b24xiah1jlv4y" path="res://Scenes/Skills/spawner.tscn" id="4_kfaxj"]
 [ext_resource type="PackedScene" uid="uid://by0dxsbp44hby" path="res://Scenes/Objects/Table/Field_V2.tscn" id="5_i7ybl"]
 [ext_resource type="PackedScene" uid="uid://pbsomgi086yu" path="res://Scenes/FootBall/new_ball.tscn" id="5_kfaxj"]
+[ext_resource type="PackedScene" uid="uid://ctquc3u8ytvub" path="res://Scenes/hud2.tscn" id="6_2lio0"]
 [ext_resource type="PackedScene" uid="uid://duwtl4se34to" path="res://Scenes/hud.tscn" id="7_2lio0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ybuur"]
@@ -115,6 +116,8 @@ transform = Transform3D(0.19999613, 0, 0.0012454767, 0, 0.2, 0, -0.0012454767, 0
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.7721877, -0.22288468, -1.5069562)
 
 [node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]
+
+[node name="HUD2" parent="." unique_id=1405608253 instance=ExtResource("6_2lio0")]
 
 [node name="MatchTimer" type="Timer" parent="." unique_id=1668992692]
 wait_time = 180.0

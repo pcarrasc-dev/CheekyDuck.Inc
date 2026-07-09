@@ -6,6 +6,8 @@ extends RigidBody3D
 @export var traslation_limit: float = 0.35
 @export var team_bar_index: int = 1
 
+var hud: CanvasLayer = preload("res://Scenes/hud.tscn").instantiate()
+
 var is_selected: bool = false
 var _origin_x: float = 0.0
 
@@ -94,6 +96,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_selected = (team_bar_index == 3)
 	elif event.is_action_pressed("bar_4"):
 		is_selected = (team_bar_index == 4)
+	
+		
 
 
 func set_skill(id: float) -> void:

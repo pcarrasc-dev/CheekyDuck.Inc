@@ -9,7 +9,7 @@ signal player_ball
 
 var last_player_obj: Player
 
-const MAX_SPEED: float = 24.0
+var MAX_SPEED: float = 24.0
 const SOFT_CLAMP_FACTOR: float = 0.15
 const HARD_CLAMP_THRESHOLD: float = 36.0
 const IMPACT_COOLDOWN: float = 0.1

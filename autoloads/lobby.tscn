@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpbc81lwktlxs"]
+[gd_scene format=3 uid="uid://bpbc81lwktlxs"]
 
 [ext_resource type="Script" uid="uid://b6e84r7fxxg4h" path="res://autoloads/lobby.gd" id="1_485el"]
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="1_boshi"]
 
-[node name="Lobby" type="Node"]
+[node name="Lobby" type="Node" unique_id=228202348]
 script = ExtResource("1_485el")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=788045179]
 layer = 64
 
-[node name="MessageContainer" type="Panel" parent="CanvasLayer"]
+[node name="MessageContainer" type="Panel" parent="CanvasLayer" unique_id=487317132]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ mouse_filter = 2
 theme = ExtResource("1_boshi")
 theme_type_variation = &"Darker"
 
-[node name="PlayerDisconnected" type="MarginContainer" parent="CanvasLayer/MessageContainer"]
+[node name="PlayerDisconnected" type="MarginContainer" parent="CanvasLayer/MessageContainer" unique_id=140302225]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -36,20 +36,20 @@ offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/PlayerDisconnected"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/PlayerDisconnected" unique_id=1901107453]
 layout_mode = 2
 
-[node name="Player" type="Label" parent="CanvasLayer/MessageContainer/PlayerDisconnected/VBoxContainer"]
+[node name="Player" type="Label" parent="CanvasLayer/MessageContainer/PlayerDisconnected/VBoxContainer" unique_id=1775440841]
 layout_mode = 2
 text = "Player disconnected"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/MessageContainer/PlayerDisconnected/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/MessageContainer/PlayerDisconnected/VBoxContainer" unique_id=923780575]
 layout_mode = 2
 text = "Returning to lobby ..."
 horizontal_alignment = 1
 
-[node name="ServerDisconnected" type="MarginContainer" parent="CanvasLayer/MessageContainer"]
+[node name="ServerDisconnected" type="MarginContainer" parent="CanvasLayer/MessageContainer" unique_id=2101075689]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -64,15 +64,15 @@ offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/ServerDisconnected"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MessageContainer/ServerDisconnected" unique_id=1598608680]
 layout_mode = 2
 
-[node name="Player" type="Label" parent="CanvasLayer/MessageContainer/ServerDisconnected/VBoxContainer"]
+[node name="Player" type="Label" parent="CanvasLayer/MessageContainer/ServerDisconnected/VBoxContainer" unique_id=497865944]
 layout_mode = 2
 text = "Server disconnected"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/MessageContainer/ServerDisconnected/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/MessageContainer/ServerDisconnected/VBoxContainer" unique_id=1141492788]
 layout_mode = 2
 text = "Returning to main menu ..."
 horizontal_alignment = 1

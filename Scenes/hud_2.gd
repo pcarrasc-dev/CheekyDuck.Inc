@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name HUD
+class_name HUD_2
 
 @export var player_skills_scene: PackedScene
 
@@ -48,7 +48,6 @@ func update_skill(a: bool, scene: PackedScene) -> void:
 		escudo.hide()
 		fast_ball.hide()
 		double_ball.hide()
-			
 
 func show_end_screen(winner: String, final_a: int, final_b: int) -> void:
 	end_panel.show()

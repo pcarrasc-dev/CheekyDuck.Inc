@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gllgvfbw3j4r"]
 
 [ext_resource type="Texture2D" uid="uid://dcl1n0hv0n7vh" path="res://resources/Grass005_4K-JPG/Grass005_4K-JPG_NormalDX.jpg" id="1_4edp4"]
-[ext_resource type="Script" uid="uid://c628aod7k0jn3" path="res://Scenes/Skills/skills.gd" id="1_cj5lc"]
+[ext_resource type="Script" uid="uid://dqqdirgdj26hm" path="res://Scenes/Skills/shield_skill.gd" id="1_cj5lc"]
 
 [sub_resource type="Animation" id="Animation_4edp4"]
 resource_name = "Appearance"
