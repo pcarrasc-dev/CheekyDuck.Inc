@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://du651h2fd1qqu"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="1_00wdd"]
 [ext_resource type="Script" uid="uid://bp61wo0oaw05d" path="res://Scenes/Skills/skill_box.gd" id="1_s8ch3"]
+[ext_resource type="PackedScene" uid="uid://b3p6c2g67i63t" path="res://Scenes/Skills/Ketchup_Pack.glb" id="3_cm6sg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8ch3"]
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cm6sg"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_texture = ExtResource("1_00wdd")
-
-[sub_resource type="BoxMesh" id="BoxMesh_dxwca"]
-material = SubResource("ORMMaterial3D_cm6sg")
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_fvtde"]
 
 [sub_resource type="Animation" id="Animation_cm6sg"]
 length = 0.001
@@ -63,8 +57,11 @@ shape = SubResource("BoxShape3D_s8ch3")
 physics_interpolation_mode = 2
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
-mesh = SubResource("BoxMesh_dxwca")
+mesh = SubResource("PlaceholderMesh_fvtde")
 skeleton = NodePath("")
+
+[node name="Ketchup_Pack2" parent="SkillBoxMesh" unique_id=1980362021 instance=ExtResource("3_cm6sg")]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
 
 [node name="SkillGet" type="AnimationPlayer" parent="." unique_id=86888162]
 libraries/ = SubResource("AnimationLibrary_cm6sg")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cg5483qg0ggh2"]
+
+[ext_resource type="Script" path="res://autoloads/background_music.gd" id="1_w2shn"]
+[ext_resource type="AudioStream" uid="uid://qomuyaejndph" path="res://resources/Music/dannymurillo_poduction-cort_deportespercucionbatucadapublicob_dm-546409.mp3" id="2_71sbr"]
+[ext_resource type="AudioStream" uid="uid://bkwbr0dtapba6" path="res://resources/Music/bombinsound-football-football-soccer-game-music-490558.mp3" id="3_i7ylw"]
+[ext_resource type="AudioStream" uid="uid://dtsskxvso22cj" path="res://resources/Music/jonathanslattermusic-fx0394-football-commentary-with-goal-scored-486924_swiMgmlD.mp3" id="4_5clry"]
+[ext_resource type="AudioStream" uid="uid://d2pamxbrwch5u" path="res://resources/Music/freesound-community-metal-whistle-6121_qUtdPlxU.mp3" id="5_wfu2j"]
+
+[node name="BackgroundMusic" type="Node" unique_id=338098679]
+script = ExtResource("1_w2shn")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1269239267]
+stream = ExtResource("2_71sbr")
+
+[node name="LastMinutePlayer" type="AudioStreamPlayer" parent="." unique_id=263935957]
+stream = ExtResource("3_i7ylw")
+
+[node name="GoalPlayer" type="AudioStreamPlayer" parent="." unique_id=1846237092]
+stream = ExtResource("4_5clry")
+
+[node name="WhistlePlayer" type="AudioStreamPlayer" parent="." unique_id=932800872]
+stream = ExtResource("5_wfu2j")
