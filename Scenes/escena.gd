@@ -11,6 +11,11 @@ extends Node3D
 @onready var camera_3d: Camera3D          = $Camera3D
 @onready var camera_3d_2: Camera3D        = $Camera3D2
 @onready var balls: Node3D                = $Balls
+@onready var spawner: Spawner = $"Skills/Skill SpawnPoint/Spawner"
+@onready var spawner_2: Spawner = $"Skills/Skill SpawnPoint/Spawner2"
+@onready var spawner_3: Spawner = $"Skills/Skill SpawnPoint/Spawner3"
+@onready var spawner_4: Spawner = $"Skills/Skill SpawnPoint/Spawner4"
+var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 
 # ── Estado del partido ────────────────────────────────────────────────────────
 const MATCH_DURATION: float  = 180.0   # 3 minutos
@@ -20,6 +25,7 @@ var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
 var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
+var last_player: Player
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8

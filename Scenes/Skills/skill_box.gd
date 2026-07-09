@@ -6,7 +6,9 @@ class_name SkillBox
 @export var double: PackedScene = preload("res://Scenes/Skills/skill_double.tscn")
 @export var fast_ball: PackedScene = preload("res://Scenes/Skills/fast_ball.tscn")
 @onready var skill_get: AnimationPlayer = $SkillGet
-
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var losing_weights: Array[float] = [2, 0.5, 1]
+var winning_weights: Array[float] = [0.5, 2, 1]
 static var radius: float = 10
 var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 
@@ -34,11 +36,15 @@ func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
+		ball.player_ball.connect(_player_connect)
 		Debug.log(ball)
-		var player: Player = ball.get_player()
-		if player:
-			var bar: Bar = player.get_parent() as Bar
-			bar.skill = shield.instantiate()
-			skill_get.play("getSkill")
-			await skill_get.animation_finished
-			queue_free()
+
+func _player_connect(player: Player) -> void:
+	var bar: Bar = player.get_parent()
+	if bar:
+		bar.skill = available_skillset[rng.rand_weighted(winning_weights)]
+		Debug.log(bar.skill)
+		skill_get.play("getSkill")
+		await skill_get.animation_finished
+		queue_free()
+	pass

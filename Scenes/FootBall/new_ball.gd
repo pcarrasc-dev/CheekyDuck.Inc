@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name kinetic_ball
 
+signal player_ball
+
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
@@ -74,7 +76,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 				player = _first_player_in_bar(bar)
 		if player:
 			Debug.log(player)
-			last_player_obj = player
+			player_ball.emit(player)
 			_impact_cooldown = IMPACT_COOLDOWN
 			break
 
@@ -85,7 +87,3 @@ func _first_player_in_bar(bar: Bar) -> Player:
 		if player:
 			return player
 	return null
-
-
-func get_player() -> StaticBody3D:
-	return last_player_obj
