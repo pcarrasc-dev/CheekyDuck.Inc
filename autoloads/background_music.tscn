@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dc4dw6e7kuj2j"]
 
 [ext_resource type="AudioStream" uid="uid://qomuyaejndph" path="res://resources/Music/dannymurillo_poduction-cort_deportespercucionbatucadapublicob_dm-546409.mp3" id="1_4m5bw"]
-[ext_resource type="Script" uid="uid://be2b8kh3ndju5" path="res://background_music.gd" id="2_l3d1b"]
+[ext_resource type="Script" uid="uid://be2b8kh3ndju5" path="res://autoloads/background_music.gd" id="2_l3d1b"]
 [ext_resource type="AudioStream" uid="uid://bkwbr0dtapba6" path="res://resources/Music/bombinsound-football-football-soccer-game-music-490558.mp3" id="3_kqdjy"]
 [ext_resource type="AudioStream" uid="uid://d2pamxbrwch5u" path="res://resources/Music/freesound-community-metal-whistle-6121_qUtdPlxU.mp3" id="3_uwx38"]
 [ext_resource type="AudioStream" uid="uid://dtsskxvso22cj" path="res://resources/Music/jonathanslattermusic-fx0394-football-commentary-with-goal-scored-486924_swiMgmlD.mp3" id="4_vraox"]
