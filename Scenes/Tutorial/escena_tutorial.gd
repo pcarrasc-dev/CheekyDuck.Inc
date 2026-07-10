@@ -57,6 +57,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	if dialogue_3_4 and event.is_action_pressed("skill"):
 		update_skill_scene()
+	if event.is_action_pressed("exit_tutorial"):
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 
 var _timer_sync: float = 0.0
 
@@ -189,19 +192,18 @@ func start_dialogue_3_4() -> void:
 func update_skill_scene() -> void:
 	hud.update_skill(false, skill_box)
 	if skills_array.instantiate() is Shield:
-		_shield(skills_array.instantiate(), shield_spawn_2)
+		_shield(shield_spawn_2)
 	elif skills_array.instantiate() is Double_Ball_Tutorial:
 		_double_ball(skills_array.instantiate())
 	elif skills_array.instantiate() is Fast_Ball:
 		_fast_ball(skills_array.instantiate())
 	start_dialogue("res://Dialogue/gameplay tutorial 6.dtl")
 	await Dialogic.timeline_ended
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-	Lobby.go_to_menu()
 		
 
-func _shield(shield: Shield, spawn: Marker3D) -> void:
-	shield.global_scale(Vector3.ONE*5)
+func _shield(spawn: Marker3D) -> void:
+	var shield: Shield = skills_array.instantiate()
+	shield.global_scale(Vector3.ONE*10)
 	shield.global_position = spawn.global_position
 	skill_app.add_child(shield)
 	skills_array = skill_box
