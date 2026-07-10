@@ -32,7 +32,8 @@ func try_spawn() -> void:
 @rpc("call_local")
 func spawn_box() -> void:
 	var skill_inst: SkillBox = skill_scene.instantiate()
-	add_child(skill_inst)
+	get_tree().current_scene.add_child(skill_inst)
+	skill_inst.global_position = global_position
 	skill_count += 1
 	skill_inst.skill.connect(func (scene: PackedScene, bar: Bar) -> void: skill_received.emit(scene, bar))
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
