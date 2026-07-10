@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
 friction = 0.3
-bounce = 0.8
+bounce = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
 radius = 0.5211043
@@ -34,10 +34,14 @@ material = SubResource("StandardMaterial3D_w8atv")
 shape = 0
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
-mass = 0.2
+mass = 2.3
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
+gravity_scale = 1.8
 contact_monitor = true
 max_contacts_reported = 2000
+linear_damp = 0.01
+angular_damp = 0.1
+continuous_cd = true
 script = ExtResource("1_gdys6")
 
 [node name="FootBall" parent="." unique_id=1113712202 instance=ExtResource("2_yvnlp")]

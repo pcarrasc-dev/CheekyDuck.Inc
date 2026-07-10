@@ -19,6 +19,7 @@ extends Node3D
 var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 @onready var shield_spawn_1: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn1
 @onready var shield_spawn_2: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn2
+@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
 var skill_box = preload("uid://du651h2fd1qqu")
 var shield_scene: PackedScene = preload("res://Scenes/Skills/shield_skill.tscn")
@@ -42,7 +43,7 @@ var _goal_processed: Dictionary = {}
 var _goal_poll_tick: int = 0
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
-@export_range(0.1, 10.0, 0.05) var player_slot_spread: float = 8
+@export_range(0.1, 10.0, 0.05) var player_slot_spread: float = 0.8
 const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
 var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")
 var _player_scene_b: PackedScene = preload("res://Scenes/Player/player_2.tscn")
@@ -279,6 +280,9 @@ func _spawn_in_bar(bar: RigidBody3D, count: int, scene: PackedScene, bar_field_i
 		var instance: Node3D = scene.instantiate() as Node3D
 		bar.add_child(instance)
 		instance.position = pos
+	var bar_node: Bar = bar as Bar
+	if bar_node:
+		bar_node.refresh_collisions()
 
 func ball_reset(body: Node3D, dir: float = 0.0) -> void:
 	var ball:kinetic_ball = body as kinetic_ball

@@ -62,7 +62,6 @@ size = Vector3(28.932222, 24.064728, 25.29551)
 
 [node name="Escena2" type="Node3D" unique_id=1303625090]
 script = ExtResource("1_1wh3i")
-field_half_width = 4.25
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1511802282]
 transform = Transform3D(1, 0, 0, 0, 0.47085774, 0.8822092, 0, -0.8822092, 0.47085774, 0.054712296, 13.080267, 9.59486)

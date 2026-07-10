@@ -3,13 +3,13 @@ extends RigidBody3D
 
 @export var rotation_sensibility: float = 0.006
 @export var traslation_sensibility: float = 0.0025
-@export var traslation_limit: float = 0.35
+@export var traslation_limit: float = 0.1
 @export var team_bar_index: int = 1
 
 var is_selected: bool = false
 var _origin_x: float = 0.0
 
-
+var skill: PackedScene
 var _target_rotation: float = 0.0
 var _target_translation: float = 0.0
 
@@ -23,8 +23,8 @@ func _ready() -> void:
 	collision_mask = 255
 
 	var mat := PhysicsMaterial.new()
-	mat.friction = 0.2
-	mat.bounce = 0.3
+	mat.friction = 0.3
+	mat.bounce = 0.1
 	physics_material_override = mat
 
 	for child in get_children():

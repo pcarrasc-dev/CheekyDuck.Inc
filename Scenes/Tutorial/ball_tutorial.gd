@@ -7,13 +7,13 @@ class_name kinetic_ball_tutorial
 
 signal player_ball
 
-var MAX_SPEED: float = 24.0
+var MAX_SPEED: float = 32.0
 const SOFT_CLAMP_FACTOR: float = 0.15
-const HARD_CLAMP_THRESHOLD: float = 36.0
+const HARD_CLAMP_THRESHOLD: float = 80.0
 const IMPACT_COOLDOWN: float = 0.1
 const STUCK_SPEED_THRESHOLD: float = 0.3
-const STUCK_TIME_THRESHOLD: float = 0.5
-const ESCAPE_IMPULSE: float = 1.5
+const STUCK_TIME_THRESHOLD: float = 0.3
+const ESCAPE_IMPULSE: float = 0.8
 
 var _impact_cooldown: float = 0.0
 var _stuck_timer: float = 0.0

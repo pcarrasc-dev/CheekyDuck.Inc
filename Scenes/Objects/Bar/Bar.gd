@@ -6,7 +6,7 @@ extends RigidBody3D
 @export var traslation_limit: float = 0.1
 @export var team_bar_index: int = 1
 
-var hud: CanvasLayer = preload("res://Scenes/hud.tscn").instantiate()
+var hud: HUD = preload("res://Scenes/hud.tscn").instantiate()
 
 var is_selected: bool = false
 var _origin_x: float = 0.0
@@ -50,6 +50,15 @@ func _mirror_collision(player: Player, shape_name: String) -> void:
 	dst.transform = player.transform * src.transform
 	add_child(dst)
 	src.disabled = true
+
+
+func refresh_collisions() -> void:
+	for child in get_children():
+		var player := child as Player
+		if not player:
+			continue
+		_mirror_collision(player, "BodyCollision")
+		_mirror_collision(player, "FeetCollision")
 
 
 func _physics_process(delta: float) -> void:

@@ -17,11 +17,10 @@ var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not is_multiplayer_authority():
+	if not multiplayer.is_server():
 		return
 	body_entered.connect(_on_body_entered)
-	multiplayer_synchronizer.set_multiplayer_authority(Game.players[0].id)
-	pass # Replace with function body.
+	multiplayer_synchronizer.set_multiplayer_authority(1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +33,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	give_ball.rpc(body)
 	
-@rpc("call_local")
+@rpc("authority")
 func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
