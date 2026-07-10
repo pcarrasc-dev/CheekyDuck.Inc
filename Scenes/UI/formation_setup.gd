@@ -159,14 +159,17 @@ func _notify_all_ready() -> void:
 ## Devuelve las posiciones locales predefinidas para `count` personajes en una barra.
 ## Las posiciones están distribuidas uniformemente a lo largo del eje Z local de la barra,
 ## dentro del rango [-half_spread, +half_spread].
-static func get_slot_positions(count: int, field_half_width: float = 8.75, offset_y: float = -0.4) -> Array[Vector3]:
+static func get_slot_positions(count: int, half_spread: float = 0.8, offset_y: float = -0.4) -> Array[Vector3]:
 	var positions: Array[Vector3] = []
 	if count <= 0:
 		return positions
-	var segment: float = (field_half_width * 2.0) / float(count + 1)
+	if count == 1:
+		positions.append(Vector3(0.0, offset_y, 0.0))
+		return positions
+	var step: float = (half_spread * 2.0) / float(count - 1)
 	for i: int in range(count):
-		var x: float = -field_half_width + segment * float(i + 1)
-		positions.append(Vector3(x, offset_y, 0.0))  # ← asegúrate que sea offset_y y no 0.0
+		var x: float = -half_spread + step * float(i)
+		positions.append(Vector3(x, offset_y, 0.0))
 	return positions
 
 func _on_all_players_ready() -> void:
