@@ -7,6 +7,5 @@ script = ExtResource("1_x5jsc")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1349927242]
 _spawnable_scenes = PackedStringArray("uid://du651h2fd1qqu")
-spawn_path = NodePath(".")
 
 [node name="Timer" type="Timer" parent="." unique_id=1944196347]

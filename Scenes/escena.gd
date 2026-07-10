@@ -45,7 +45,7 @@ var _goal_processed: Dictionary = {}
 var _goal_poll_tick: int = 0
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
-@export_range(0.1, 10.0, 0.05) var player_slot_spread: float = 4
+@export_range(0.1, 10.0, 0.05) var player_slot_spread: float = 3.5
 const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
 var _player_scene_a: PackedScene = preload("res://Scenes/Player/player.tscn")
 var _player_scene_b: PackedScene = preload("res://Scenes/Player/player_2.tscn")
@@ -277,7 +277,9 @@ func _spawn_in_bar(bar: RigidBody3D, count: int, scene: PackedScene, bar_field_i
 		else:
 			final_count = 1
 	
-	var positions: Array[Vector3] = FormationSetup.get_slot_positions(final_count, player_slot_spread)
+	var spacing: float = 2.5
+	var effective_spread := spacing * (final_count - 1) / 2.0
+	var positions: Array[Vector3] = FormationSetup.get_slot_positions(final_count, effective_spread)
 	for pos: Vector3 in positions:
 		var instance: Node3D = scene.instantiate() as Node3D
 		instance.position = pos
@@ -285,6 +287,7 @@ func _spawn_in_bar(bar: RigidBody3D, count: int, scene: PackedScene, bar_field_i
 	var bar_node: Bar = bar as Bar
 	if bar_node:
 		bar_node.refresh_collisions()
+		bar_node.set_formation(final_count, effective_spread)
 
 func ball_reset(body: Node3D, dir: float = 0.0) -> void:
 	var ball:kinetic_ball = body as kinetic_ball

@@ -61,6 +61,21 @@ func refresh_collisions() -> void:
 		_mirror_collision(player, "FeetCollision")
 
 
+func set_formation(_count: int, _half_spread: float) -> void:
+	if _count <= 1:
+		return
+	var furthest: float = 0.0
+	for child in get_children():
+		var player := child as Player
+		if not player:
+			continue
+		var px: float = abs(player.position.x)
+		if px > furthest:
+			furthest = px
+	var outer_world: float = abs(scale.x) * furthest
+	traslation_limit = maxf(0.5 - outer_world - 0.03, 0.1)
+
+
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
