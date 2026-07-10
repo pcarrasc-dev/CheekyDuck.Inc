@@ -4,7 +4,6 @@ class_name HUD_Tutorial
 @export var player_skills_scene: PackedScene
 
 @onready var score_label: Label   = %ScoreLabel
-@onready var timer_label: Label   = %TimerLabel
 @onready var end_panel: Panel     = %EndPanel
 @onready var winner_label: Label  = %WinnerLabel
 @onready var final_score_label: Label = %FinalScoreLabel
@@ -22,17 +21,11 @@ func _ready() -> void:
 	fast_ball.hide()
 	escudo.hide()
 	update_score(0, 0)
-	update_timer(180.0)
 	back_button.pressed.connect(_on_back_pressed)
 
 
 func update_score(a: int, b: int) -> void:
 	score_label.text = "%d  —  %d" % [a, b]
-
-
-func update_timer(seconds_left: float) -> void:
-	var s := int(seconds_left)
-	timer_label.text = "%d:%02d" % [s / 60, s % 60]
 
 func update_skill(a: bool, scene: PackedScene) -> void:
 	if a:

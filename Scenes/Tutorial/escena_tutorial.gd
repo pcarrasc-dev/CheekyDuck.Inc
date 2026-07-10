@@ -1,8 +1,8 @@
 extends Node3D
 
 # ── Referencias ───────────────────────────────────────────────────────────────
-@onready var skill_node: Node3D            = $Skills
-@onready var hud: CanvasLayer             = $HUD
+@onready var skill_node: Node3D           = $Skills
+@onready var hud: HUD_Tutorial            = $HUD
 @onready var goal_area_a: Area3D          = $GoalAreaA   # gol para equipo B (arco de A)
 @onready var goal_area_b: Area3D          = $GoalAreaB   # gol para equipo A (arco de B)
 @onready var play_area: Area3D            = $PlayArea

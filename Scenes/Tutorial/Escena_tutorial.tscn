@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dme8m0oafbgnr" path="res://Scenes/Tutorial/escena_tutorial.gd" id="1_fp5xr"]
 [ext_resource type="PackedScene" uid="uid://by5pdtqtfqob0" path="res://Scenes/Tutorial/Field_V2_tutorial.tscn" id="2_fp5xr"]
-[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="3_chj0k"]
 [ext_resource type="PackedScene" uid="uid://bckkgvyvxtyd2" path="res://Scenes/Tutorial/hud_tutorial.tscn" id="4_7p30f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
@@ -31,10 +30,6 @@ light_energy = 0.525
 [node name="Skills" type="Node3D" parent="." unique_id=1160852673]
 
 [node name="SkillApp" type="Node3D" parent="Skills" unique_id=111137199]
-
-[node name="SkillTimer" type="Timer" parent="Skills" unique_id=2103678800]
-wait_time = 10.0
-script = ExtResource("3_chj0k")
 
 [node name="ShieldsSpawn" type="Node3D" parent="Skills" unique_id=2069301348]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
