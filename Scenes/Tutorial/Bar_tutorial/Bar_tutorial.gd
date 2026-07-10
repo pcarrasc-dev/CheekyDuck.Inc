@@ -9,8 +9,6 @@ extends RigidBody3D
 var is_selected: bool = false
 var _origin_x: float = 0.0
 
-var skill: Skills
-
 var _target_rotation: float = 0.0
 var _target_translation: float = 0.0
 
