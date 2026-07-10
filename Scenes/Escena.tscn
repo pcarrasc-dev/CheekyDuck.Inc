@@ -100,16 +100,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8038206, 0, 0)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.645, 1.679, 0)
 
 [node name="Spawner" parent="Skills/Skill SpawnPoint" unique_id=1186608137 instance=ExtResource("4_kfaxj")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.6906072, -0.27800018, 0.8044564)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.5985684, -0.2236915, 1.2210574)
 
-[node name="Spawner2" parent="Skills/Skill SpawnPoint" unique_id=1410926316 instance=ExtResource("4_kfaxj")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.87434924, -0.14368016, -1.096846)
+[node name="Spawner2" parent="Skills/Skill SpawnPoint" unique_id=1562287413 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.8680558, -0.08682953, -1.508685)
 
-[node name="Spawner3" parent="Skills/Skill SpawnPoint" unique_id=228474797 instance=ExtResource("4_kfaxj")]
-transform = Transform3D(0.19999613, 0, 0.0012454767, 0, 0.2, 0, -0.0012454767, 0, 0.19999613, 4.552084, -0.12512967, 1.331396)
+[node name="Spawner3" parent="Skills/Skill SpawnPoint" unique_id=1794625120 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.6465089, -0.20650552, 0.973365)
 
-[node name="Spawner4" parent="Skills/Skill SpawnPoint" unique_id=1875794966 instance=ExtResource("4_kfaxj")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.7721877, -0.22288468, -1.5069562)
+[node name="Spawner4" parent="Skills/Skill SpawnPoint" unique_id=595614205 instance=ExtResource("4_kfaxj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.8504902, -0.11303271, -1.5321652)
 
 [node name="HUD" parent="." unique_id=1177319416 instance=ExtResource("7_2lio0")]
 

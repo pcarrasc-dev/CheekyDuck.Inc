@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://502c2alsar3"]
-
-[node name="ball_spawner" type="Node3D" unique_id=505377118]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=34846737]

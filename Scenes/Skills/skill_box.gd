@@ -10,7 +10,7 @@ signal skill
 @onready var skill_get: AnimationPlayer = $SkillGet
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var weights: Array[float] = [1, 1, 1]
-static var radius: float = 5
+static var radius: float = 0.1
 var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 

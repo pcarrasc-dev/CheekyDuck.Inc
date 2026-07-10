@@ -44,6 +44,7 @@ func try_spawn() -> void:
 	params.shape = square_shape
 	var results: Array[Dictionary] = space_state.intersect_shape(params)
 	for result: Dictionary in results:
+		Debug.log("spawner")
 		Debug.log(result.collider.name)
 	if results.size() > 0:
 		return
@@ -51,9 +52,10 @@ func try_spawn() -> void:
 
 func spawn(pos: Vector3) -> void:
 	var skill_inst: SkillBox = skill_scene.instantiate()
-	skill_inst.global_scale(Vector3.ONE * 1.5)
 	skill_inst.global_position = pos
-	add_child(skill_inst, true)
+	Debug.log("spawn")
+	Debug.log(skill_inst.global_position)
+	multiplayer_spawner.add_child(skill_inst, true)
 	skill_count += 1
 	skill_inst.skill.connect(func (scene: PackedScene, bar: Bar) -> void: skill_received.emit(scene, bar))
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
