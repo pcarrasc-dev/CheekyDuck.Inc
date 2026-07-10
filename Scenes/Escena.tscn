@@ -130,7 +130,7 @@ debug_color = Color(1, 0.26650617, 0.6696673, 1)
 transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98855454, 13.8, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364867, 0, -0.17364793, 0.9848105, -28.744339, 1.3964672, -0.41776228)
 shape = SubResource("BoxShape3D_i7ybl")
 debug_color = Color(1, 0.26650617, 0.6696673, 1)
 
