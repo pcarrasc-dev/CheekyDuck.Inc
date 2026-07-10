@@ -109,7 +109,6 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027048282, 0)
 size = Vector3(1.4, 0.05, 1)
 material = SubResource("StandardMaterial3D_p5w8u")
-physics_material_override = SubResource("PhysicsMaterial_suelo")
 
 [node name="Paredes" type="CSGBox3D" parent="CSGCombiner3D" unique_id=897209270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07241158, 0)

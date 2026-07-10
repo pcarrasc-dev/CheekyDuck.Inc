@@ -7,9 +7,23 @@
 script = ExtResource("2_hvxmk")
 
 [node name="Label" parent="MarginContainer2/VBoxContainer/Panel" parent_id_path=PackedInt32Array(1647368166) index="0" unique_id=1514084047]
+offset_left = -96.0
+offset_top = -208.0
+offset_right = 123.0
+offset_bottom = -120.0
 text = "Credits"
 
+[node name="BackButton" parent="MarginContainer2/VBoxContainer/Panel" parent_id_path=PackedInt32Array(1647368166) index="1" unique_id=472286791]
+offset_left = -185.0
+offset_top = -191.0
+offset_right = -121.0
+offset_bottom = -127.0
+
 [node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(1043687473) index="0" unique_id=1393195370]
+offset_left = -629.0
+offset_top = -239.0
+offset_right = -220.0
+offset_bottom = 434.0
 theme_type_variation = &"Zero"
 
 [node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" type="RichTextLabel" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0" unique_id=1317809475]
@@ -18,4 +32,78 @@ bbcode_enabled = true
 text = "[center]
 [b]Lobby[/b]
 Elías Zelada
+
+[b]Development Team[/b]
+Mista317
+realmentemal
+VictorPetersV
+
+[b]Textures[/b]
+ambientCG
+
+[b]Ketchup Power[/b]
+KloWorks
+[/center]"
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(1043687473) index="1" unique_id=1863111547]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -216.0
+offset_top = -237.0
+offset_right = 193.0
+offset_bottom = 436.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Zero"
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" type="RichTextLabel" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" index="0" unique_id=2077016585]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+[b]Ilustrations[/b]
+Mista317
+
+[b]Backgroun Music[/b]
+DannyMurillo_Poduction
+
+[b]Last Minute Music[/b]
+BombinSound
+
+[b]Goal Sound[/b]
+JonathanSlatterMusic
+
+
+[/center]"
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer3" type="PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(1043687473) index="2" unique_id=1844495319]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = 205.0
+offset_top = -238.0
+offset_right = 614.0
+offset_bottom = 435.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Zero"
+
+[node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" type="RichTextLabel" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer3" index="0" unique_id=812891918]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+[b]Whistle Sound[/b]
+JonathanSlatterMusic
+
+[b]Football [/b]
+dLemon
+
 [/center]"

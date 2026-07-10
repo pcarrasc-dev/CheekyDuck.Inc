@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://gp3hfveknwf3" path="res://Scenes/Objects/Bar/Bar.gd" id="1_5ambr"]
 [ext_resource type="Material" uid="uid://c2a1y88oyolpy" path="res://resources/Metal053B_4K-JPG/Metal053B_4K-JPG.tres" id="3_1c3yd"]
-[ext_resource type="PackedScene" uid="uid://dbu80upcyvjut" path="res://Scenes/Player/player_2.tscn" id="3_5ambr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gpg3"]
 radius = 0.08
@@ -33,21 +32,6 @@ disabled = true
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("3_1c3yd")
 mesh = SubResource("CylinderMesh_8xvvv")
-
-[node name="Player" parent="." unique_id=531167561 instance=ExtResource("3_5ambr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.4, 0)
-
-[node name="Player2" parent="." unique_id=897588909 instance=ExtResource("3_5ambr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, 0)
-
-[node name="Player3" parent="." unique_id=1936990210 instance=ExtResource("3_5ambr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-
-[node name="Player4" parent="." unique_id=1540229948 instance=ExtResource("3_5ambr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.4, 0)
-
-[node name="Player5" parent="." unique_id=293158534 instance=ExtResource("3_5ambr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1059844396]
 replication_config = SubResource("SceneReplicationConfig_5gpg3")

@@ -3,7 +3,7 @@ extends RigidBody3D
 
 @export var rotation_sensibility: float = 0.006
 @export var traslation_sensibility: float = 0.002
-@export var traslation_limit: float = 0.18
+@export var traslation_limit: float = 0.1
 @export var team_bar_index: int = 1
 
 var hud: CanvasLayer = preload("res://Scenes/hud.tscn").instantiate()
