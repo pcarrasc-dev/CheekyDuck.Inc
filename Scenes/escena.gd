@@ -91,7 +91,22 @@ func _ready() -> void:
 	match_running = true
 	play_area.body_exited.connect(ball_reset)
 	BackgroundMusic.start_match()
-	
+	child_entered_tree.connect(_on_child_entered_tree)
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if not (node is SkillBox):
+		return
+	if multiplayer.is_server():
+		return
+	if Game.players.size() < 2:
+		return
+	var curr = Game.get_current_player()
+	if curr.id == Game.players[0].id:
+		camera_3d_2.make_current()
+	elif curr.id == Game.players[1].id:
+		camera_3d.make_current()
+
 
 #revisar
 func _unhandled_input(event: InputEvent) -> void:
