@@ -35,8 +35,19 @@ func spawn_box() -> void:
 	get_tree().current_scene.add_child(skill_inst)
 	skill_inst.global_position = global_position
 	skill_count += 1
+	if not multiplayer.is_server():
+		_reassert_camera.call_deferred()
 	skill_inst.skill.connect(func (scene: PackedScene, bar: Bar) -> void: skill_received.emit(scene, bar))
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
+
+
+func _reassert_camera() -> void:
+	var escena = get_tree().current_scene
+	var curr = Game.get_current_player()
+	if curr.id == Game.players[0].id:
+		escena.get_node("Camera3D2").make_current()
+	elif curr.id == Game.players[1].id:
+		escena.get_node("Camera3D").make_current()
 
 
 func _on_timeout() -> void:
