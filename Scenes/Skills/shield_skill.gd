@@ -5,6 +5,7 @@ class_name Shield
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global_scale(Vector3.ONE* 5)
 	shield_appearance.play("Appearance")
 	await shield_appearance.animation_finished
 	queue_free()

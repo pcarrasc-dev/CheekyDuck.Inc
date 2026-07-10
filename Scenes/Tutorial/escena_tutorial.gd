@@ -22,6 +22,8 @@ var match_running: bool = false
 var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
 var dialogue_3_4: bool = false
 var dialogue_5: bool = false
+var tutorial_finished: bool = false
+
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8
 const DEFAULT_FORMATION: Array[int] = [2, 5, 3]
@@ -197,13 +199,15 @@ func update_skill_scene() -> void:
 		_double_ball(skills_array.instantiate())
 	elif skills_array.instantiate() is Fast_Ball:
 		_fast_ball(skills_array.instantiate())
-	start_dialogue("res://Dialogue/gameplay tutorial 6.dtl")
-	await Dialogic.timeline_ended
+	if not tutorial_finished:
+		tutorial_finished = true
+		await get_tree().create_timer(5).timeout 
+		start_dialogue("res://Dialogue/gameplay tutorial 6.dtl")
 		
 
 func _shield(spawn: Marker3D) -> void:
 	var shield: Shield = skills_array.instantiate()
-	shield.global_scale(Vector3.ONE*10)
+	shield.global_scale(Vector3.ONE*1000)
 	shield.global_position = spawn.global_position
 	skill_app.add_child(shield)
 	skills_array = skill_box
@@ -215,12 +219,16 @@ func _double_ball(double_ball: Double_Ball_Tutorial) -> void:
 
 func _fast_ball(fast_ball: Fast_Ball) -> void:
 	skill_app.add_child(fast_ball)
-	for ball: kinetic_ball_tutorial in balls.get_children(true):
-		ball.MAX_SPEED *= 2
+	for ball in balls.get_children(true):
+		if ball is kinetic_ball_tutorial:
+			ball.set_particles(true)
+			ball.MAX_SPEED *= 2
 	skills_array = skill_box
 	await get_tree().create_timer(10).timeout
-	for ball: kinetic_ball_tutorial in balls.get_children(true):
-		ball.MAX_SPEED /= 2
+	for ball in balls.get_children(true):
+		if ball is kinetic_ball_tutorial:
+			ball.set_particles(false)
+			ball.MAX_SPEED /= 2
 	fast_ball.queue_free()
 
 func _on_skill_received(scene: PackedScene) -> void:

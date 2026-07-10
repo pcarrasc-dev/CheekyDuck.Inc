@@ -3,6 +3,7 @@ class_name kinetic_ball_tutorial
 
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 signal player_ball
 
@@ -16,6 +17,10 @@ const ESCAPE_IMPULSE: float = 1.5
 
 var _impact_cooldown: float = 0.0
 var _stuck_timer: float = 0.0
+
+func _ready() -> void:
+	set_particles(false)
+	pass
 
 func _physics_process(delta: float) -> void:
 
@@ -73,3 +78,6 @@ func _first_player_in_bar(bar: Bar_tutorial) -> Player:
 		if player:
 			return player
 	return null
+	
+func set_particles(state: bool) -> void:
+	gpu_particles_3d.emitting = state

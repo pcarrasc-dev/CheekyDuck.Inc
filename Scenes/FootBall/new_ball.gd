@@ -6,6 +6,7 @@ signal player_ball
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 var last_player_obj: Player
 
@@ -24,6 +25,7 @@ var _stuck_timer: float = 0.0
 func _ready() -> void:
 	if not is_multiplayer_authority():
 		set_physics_process(false)
+	set_particles(false)
 	multiplayer_synchronizer.set_multiplayer_authority(Game.players[0].id)
 
 
@@ -87,3 +89,6 @@ func _first_player_in_bar(bar: Bar) -> Player:
 		if player:
 			return player
 	return null
+	
+func set_particles(state: bool) -> void:
+	gpu_particles_3d.emitting = state

@@ -283,12 +283,16 @@ func _double_ball(double_ball: Double_Ball, num: int) -> void:
 
 func _fast_ball(fast_ball: Fast_Ball, num: int) -> void:
 	skill_app.add_child(fast_ball)
-	for ball: kinetic_ball in balls.get_children(true):
-		ball.MAX_SPEED *= 2
+	for ball in balls.get_children(true):
+		if ball is kinetic_ball:
+			ball.MAX_SPEED *= 2
+			ball.set_particles(true)
 	skills_array[num] = skill_box
 	await get_tree().create_timer(10).timeout
-	for ball: kinetic_ball in balls.get_children(true):
-		ball.MAX_SPEED /= 2
+	for ball in balls.get_children(true):
+		if ball is kinetic_ball:
+			ball.MAX_SPEED /= 2
+			ball.set_particles(false)
 
 func _on_skill_received(scene: PackedScene, bar: Bar) -> void:
 	Debug.log("on_skill_received")
