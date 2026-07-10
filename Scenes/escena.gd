@@ -252,9 +252,6 @@ func _spawn_players() -> void:
 	_spawn_team(bars_a, formation_a, _player_scene_a)
 	_spawn_team(bars_b, formation_b, _player_scene_b)
 
-	Debug.log("Spawn completado — equipo A: %s | equipo B: %s" % [
-		str(formation_a), str(formation_b)
-	])
 
 
 func _spawn_team(bars: Array[RigidBody3D], formation: Array[int], scene: PackedScene) -> void:
@@ -264,14 +261,8 @@ func _spawn_team(bars: Array[RigidBody3D], formation: Array[int], scene: PackedS
 
 
 func _spawn_in_bar(bar: RigidBody3D, count: int, scene: PackedScene, bar_field_index: int = -1) -> void:
-	Debug.log("_spawn_in_bar: barra=%s count=%d hijos_existentes=%d" % [
-	bar.name, count, bar.get_children().size()
-	])
 	var existing_players: int = 0
 	for child: Node in bar.get_children():
-		Debug.log("Hijo de %s: nombre=%s tipo=%s es_player=%s" % [
-		bar.name, child.name, child.get_class(), str(child is Player)
-	])
 		if child is Player:
 			existing_players += 1
 	if existing_players > 0:

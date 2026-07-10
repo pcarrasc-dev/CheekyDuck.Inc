@@ -182,7 +182,6 @@ var player_formations: Dictionary = {}
 
 func set_player_formation(peer_id: int, formation: Array[int]) -> void:
 	player_formations[peer_id] = formation
-	Debug.log("Game: formación guardada para peer %d → %s" % [peer_id, str(formation)])
 	
 func get_player_formation(peer_id: int) -> Array[int]:
 	if player_formations.has(peer_id):
