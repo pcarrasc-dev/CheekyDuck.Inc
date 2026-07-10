@@ -83,6 +83,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("bar_1") or event.is_action_pressed("bar_2") \
+	or event.is_action_pressed("bar_3") or event.is_action_pressed("bar_4"):
+		Debug.log("Bar %d — authority:%s selected:%s" % [           team_bar_index,
+			str(is_multiplayer_authority()),
+			str(is_selected)
+		])
 	if not is_multiplayer_authority():
 		return
 

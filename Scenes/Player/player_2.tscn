@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://y488buo7p0an" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG_NormalGL.jpg" id="4_ui3cn"]
 [ext_resource type="Texture2D" uid="uid://cw1x0nli8nldv" path="res://resources/Plastic014B_4K-JPG/Plastic014B_4K-JPG_Roughness.jpg" id="5_eogg6"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_player2"]
+friction = 0.2
+bounce = 0.3
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyora"]
 radius = 0.3
 
@@ -28,10 +32,6 @@ size = Vector3(0.743, 0.354, 0.771)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyora"]
 size = Vector3(0.5470123, 0.35437012, 0.77111816)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_player2"]
-bounce = 0.3
-friction = 0.2
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=408717749]
 collision_layer = 255

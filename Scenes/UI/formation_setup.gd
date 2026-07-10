@@ -105,29 +105,51 @@ func _on_ready_pressed() -> void:
 	_ready_button.disabled = true
 	_status_label.text = "Esperando al otro jugador..."
 
-	# Envía la formación al servidor
 	var formation: Array[int] = _bar_counts.duplicate()
-	_send_formation.rpc_id(1, formation)
+
+	# Si este peer ES el servidor, llama la función directamente para evitar
+	# que get_remote_sender_id() devuelva 0 en una llamada RPC local.
+	if multiplayer.is_server():
+		_register_formation(multiplayer.get_unique_id(), formation)
+	else:
+		_send_formation.rpc_id(1, formation)
 
 
-# RPC al servidor: recibe la formación de un peer y guarda el flag
+# RPC al servidor: recibe la formación de un cliente
 @rpc("any_peer", "reliable")
 func _send_formation(formation: Array[int]) -> void:
 	if not multiplayer.is_server():
 		return
-
 	var sender_id: int = multiplayer.get_remote_sender_id()
-	Game.set_player_formation(sender_id, formation)
-	_ready_flags[sender_id] = true
+	_register_formation(sender_id, formation)
 
-	Debug.log("Formación recibida de peer %d: %s" % [sender_id, str(formation)])
+
+# Registra la formación de un peer y verifica si todos están listos.
+# Separado del RPC para poder llamarse tanto localmente (servidor)
+# como desde el RPC (clientes).
+func _register_formation(peer_id: int, formation: Array[int]) -> void:
+	Game.set_player_formation(peer_id, formation)
+	_ready_flags[peer_id] = true
+
+	Debug.log("Formación recibida de peer %d: %s" % [peer_id, str(formation)])
 
 	if _ready_flags.size() >= 2:
+		# Distribuir formaciones de ambos jugadores a todos los peers
+		for registered_id: int in _ready_flags:
+			var registered_formation: Array[int] = Game.get_player_formation(registered_id)
+			_sync_formation.rpc(registered_id, registered_formation)
 		_notify_all_ready.rpc()
+		
+# RPC del servidor a todos: sincroniza la formación de un peer específico
+# call_local asegura que el servidor también actualiza su propio Game
+@rpc("authority", "reliable", "call_local")
+func _sync_formation(peer_id: int, formation: Array[int]) -> void:
+	Game.set_player_formation(peer_id, formation)
+	Debug.log("Formación sincronizada para peer %d: %s" % [peer_id, str(formation)])
 
 
 # RPC del servidor a todos: ambos jugadores confirmaron, se puede pasar al juego
-@rpc("authority", "reliable")
+@rpc("authority", "reliable", "call_local")
 func _notify_all_ready() -> void:
 	all_players_ready.emit()
 
@@ -137,19 +159,15 @@ func _notify_all_ready() -> void:
 ## Devuelve las posiciones locales predefinidas para `count` personajes en una barra.
 ## Las posiciones están distribuidas uniformemente a lo largo del eje Z local de la barra,
 ## dentro del rango [-half_spread, +half_spread].
-static func get_slot_positions(count: int, half_spread: float = 0.8) -> Array[Vector3]:
+static func get_slot_positions(count: int, field_half_width: float = 8.75, offset_y: float = -0.4) -> Array[Vector3]:
 	var positions: Array[Vector3] = []
 	if count <= 0:
 		return positions
-	if count == 1:
-		positions.append(Vector3.ZERO)
-		return positions
-	var step: float = (half_spread * 2.0) / float(count - 1)
+	var segment: float = (field_half_width * 2.0) / float(count + 1)
 	for i: int in range(count):
-		var z: float = -half_spread + step * float(i)
-		positions.append(Vector3(0.0, 0.0, z))
+		var x: float = -field_half_width + segment * float(i + 1)
+		positions.append(Vector3(x, offset_y, 0.0))  # ← asegúrate que sea offset_y y no 0.0
 	return positions
-	
+
 func _on_all_players_ready() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Escena.tscn")
-	
