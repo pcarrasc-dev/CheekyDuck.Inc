@@ -20,6 +20,8 @@ var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 @onready var shield_spawn_1: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn1
 @onready var shield_spawn_2: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn2
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@onready var ball_spawner: MultiplayerSpawner = $Balls/Ball_Spawner
+@onready var shield_spawner: MultiplayerSpawner = $Skills/SkillApp/ShieldSpawner
 
 var skill_box = preload("uid://du651h2fd1qqu")
 var shield_scene: PackedScene = preload("res://Scenes/Skills/shield_skill.tscn")
@@ -318,19 +320,19 @@ func update_skill_scene() -> void:
 @rpc("call_local")
 func _shield(shield: Shield, spawn: Marker3D, num: int) -> void:
 	shield.global_position = spawn.global_position
-	skill_app.add_child(shield)
+	shield_spawner.add_child(shield)
 	skills_array[num] = skill_box
 	
 @rpc("call_local")
 func _double_ball(double_ball: Double_Ball, num: int) -> void:
 	double_ball.global_position = balls.global_position
 	double_ball.set_multiplayer_authority(Game.players[0].id)
-	balls.add_child(double_ball)
+	ball_spawner.add_child(double_ball)
 	skills_array[num] = skill_box
 	
 @rpc("call_local")
 func _fast_ball(fast_ball: Fast_Ball, num: int) -> void:
-	skill_app.add_child(fast_ball)
+	shield_spawner.add_child(fast_ball)
 	for ball in balls.get_children(true):
 		if ball is kinetic_ball:
 			ball.MAX_SPEED *= 2

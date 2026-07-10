@@ -74,8 +74,6 @@ transform = Transform3D(0.66131186, 3.2788396e-08, -0.75011104, 0.75011104, -2.8
 light_color = Color(0.9503198, 0.93344027, 0.48539716, 1)
 light_energy = 0.525
 
-[node name="BallSpawnPoint" type="Marker3D" parent="." unique_id=1206436308]
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=939229117]
 replication_config = SubResource("SceneReplicationConfig_ybuur")
 
@@ -85,6 +83,9 @@ transform = Transform3D(-8.742278e-07, 0, 20, 0, 20, 0, -20, 0, -8.742278e-07, 0
 [node name="Skills" type="Node3D" parent="." unique_id=1160852673]
 
 [node name="SkillApp" type="Node3D" parent="Skills" unique_id=111137199]
+
+[node name="ShieldSpawner" type="MultiplayerSpawner" parent="Skills/SkillApp" unique_id=1089010847]
+spawn_path = NodePath(".")
 
 [node name="ShieldsSpawn" type="Node3D" parent="Skills" unique_id=2069301348]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -140,6 +141,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 0.2, 0.14496231)
 [node name="Ball" parent="Balls" unique_id=312642086 instance=ExtResource("5_kfaxj")]
 unique_name_in_owner = true
 max_contacts_reported = 2000
+
+[node name="Ball_Spawner" type="MultiplayerSpawner" parent="Balls" unique_id=1268212176]
+spawn_path = NodePath(".")
 
 [node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
 
