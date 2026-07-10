@@ -343,6 +343,7 @@ func _fast_ball(fast_ball: Fast_Ball, num: int) -> void:
 		if ball is kinetic_ball:
 			ball.MAX_SPEED /= 2
 			ball.set_particles(false)
+	fast_ball.queue_free()
 
 func _on_skill_received(scene: PackedScene, bar: Bar) -> void:
 	Debug.log("on_skill_received")
