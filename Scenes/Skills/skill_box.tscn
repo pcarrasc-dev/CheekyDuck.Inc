@@ -50,7 +50,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("1_s8ch3")

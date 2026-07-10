@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	give_ball.rpc(body)
 	
-@rpc("authority")
+@rpc("call_local")
 func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
