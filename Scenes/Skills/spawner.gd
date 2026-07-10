@@ -7,6 +7,7 @@ signal skill_received
 @export var skill_scene: PackedScene = preload("res://Scenes/Skills/skill_box.tscn")
 @export var amount: int = 1
 @export var rate: float = 0.1
+@onready var multiplayer_spawner: MultiplayerSpawner = $MultiplayerSpawner
 
 var skill_count = 0
 
@@ -30,7 +31,7 @@ func try_spawn() -> void:
 @rpc("call_local", "authority")
 func spawn(pos: Vector3) -> void:
 	var skill_inst: SkillBox = skill_scene.instantiate()
-	add_child(skill_inst)
+	multiplayer_spawner.add_child(skill_inst, true)
 	skill_inst.global_scale(Vector3.ONE * 1.5)
 	skill_inst.global_position = pos
 	Debug.log("spawn")
