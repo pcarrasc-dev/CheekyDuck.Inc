@@ -278,31 +278,34 @@ func update_skill_scene() -> void:
 	if Game.get_current_player().id == Game.players[0].id:
 		hud.update_skill(false, skill_box)
 		if skills_array[0].instantiate() is Shield:
-			_shield(skills_array[0].instantiate(), shield_spawn_1, 0)
+			_shield.rpc(skills_array[0].instantiate(), shield_spawn_1, 0)
 		elif skills_array[0].instantiate() is Double_Ball:
-			_double_ball(skills_array[0].instantiate(), 0)
+			_double_ball.rpc(skills_array[0].instantiate(), 0)
 		elif skills_array[0].instantiate() is Fast_Ball:
-			_fast_ball(skills_array[0].instantiate(), 0)
+			_fast_ball.rpc(skills_array[0].instantiate(), 0)
 	elif Game.get_current_player().id == Game.players[1].id:
 		hud_2.update_skill(false, skill_box)
 		if skills_array[1].instantiate() is Shield:
-			_shield(skills_array[1].instantiate(), shield_spawn_2, 1)
+			_shield.rpc(skills_array[1].instantiate(), shield_spawn_2, 1)
 		elif skills_array[1].instantiate() is Double_Ball:
-			_double_ball(skills_array[1].instantiate(), 1)
+			_double_ball.rpc(skills_array[1].instantiate(), 1)
 		elif skills_array[1].instantiate() is Fast_Ball:
-			_fast_ball(skills_array[1].instantiate(), 1)
+			_fast_ball.rpc(skills_array[1].instantiate(), 1)
 		
-
+@rpc("call_local")
 func _shield(shield: Shield, spawn: Marker3D, num: int) -> void:
 	shield.global_position = spawn.global_position
 	skill_app.add_child(shield)
 	skills_array[num] = skill_box
-
+	
+@rpc("call_local")
 func _double_ball(double_ball: Double_Ball, num: int) -> void:
 	double_ball.global_position = balls.global_position
+	double_ball.set_multiplayer_authority(Game.players[0].id)
 	balls.add_child(double_ball)
 	skills_array[num] = skill_box
-
+	
+@rpc("call_local")
 func _fast_ball(fast_ball: Fast_Ball, num: int) -> void:
 	skill_app.add_child(fast_ball)
 	for ball in balls.get_children(true):

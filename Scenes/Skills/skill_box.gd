@@ -9,7 +9,7 @@ signal skill
 @export var fast_ball: PackedScene = preload("res://Scenes/Skills/fast_ball.tscn")
 @onready var skill_get: AnimationPlayer = $SkillGet
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-var weights: Array[float] = [0,0, 1]
+var weights: Array[float] = [1, 1, 1]
 static var radius: float = 10
 var available_skillset: Array[PackedScene] = [shield, double, fast_ball]
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	give_ball.rpc(body)
 	
-@rpc("any_peer")
+@rpc("call_local")
 func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
