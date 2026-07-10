@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://1h0kw4po8psw" path="res://Scenes/FootBall/BallVisual.gd" id="3_s0xqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
-friction = 0.01
+friction = 0.3
+bounce = 0.05
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")
@@ -14,18 +15,48 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath(".:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:angular_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
 radius = 0.97
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_11hlg"]
+particle_flag_damping_as_friction = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Gradient" id="Gradient_gdys6"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vwt5q"]
+gradient = SubResource("Gradient_gdys6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gngh"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0.6953072, 0.646823, 1)
+albedo_texture = SubResource("GradientTexture2D_vwt5q")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vtgoh"]
+material = SubResource("StandardMaterial3D_3gngh")
+shape = 0
+
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
-mass = 0.5
+mass = 2.3
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
-gravity_scale = 2.0
+gravity_scale = 1.8
 contact_monitor = true
 max_contacts_reported = 8
-linear_damp = 0.06
-angular_damp = 0.15
+linear_damp = 0.01
+angular_damp = 0.1
+continuous_cd = true
 script = ExtResource("1_d3f3d")
 
 [node name="BallVisual" type="Node3D" parent="." unique_id=698737982]
@@ -46,3 +77,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9134759, -1.0375372, -0.03
 [node name="ball_shape2" type="CollisionShape3D" parent="ball_area" unique_id=1343976970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9284675, 1.0435269, 0.00074208155)
 shape = SubResource("SphereShape3D_11hlg")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1765670697]
+transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 0, 0, 0)
+sub_emitter = NodePath(".")
+lifetime = 0.5
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_11hlg")
+draw_pass_1 = SubResource("RibbonTrailMesh_vtgoh")

@@ -16,8 +16,8 @@ radius = 0.3
 size = Vector3(0.5470123, 0.35437012, 0.77111816)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_player"]
-friction = 0.2
-bounce = 0.3
+friction = 0.35
+bounce = 0.1
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=67029722]
 collision_layer = 255

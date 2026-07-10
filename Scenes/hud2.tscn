@@ -1,26 +1,26 @@
-[gd_scene format=3 uid="uid://duwtl4se34to"]
+[gd_scene format=3 uid="uid://ctquc3u8ytvub"]
 
-[ext_resource type="Script" uid="uid://vof4iv4n55sq" path="res://Scenes/hud.gd" id="1_bjfho"]
-[ext_resource type="Theme" uid="uid://dkxpidgc0e706" path="res://Scenes/theme.tres" id="1_fccik"]
-[ext_resource type="Texture2D" uid="uid://5ovs8dti5uhw" path="res://Scenes/Skills/escudo.png" id="4_36asn"]
-[ext_resource type="Texture2D" uid="uid://dc2mqwl3tiukv" path="res://Scenes/Skills/veloz.png" id="5_8jye8"]
-[ext_resource type="Texture2D" uid="uid://c5f122o4aqv7y" path="res://Scenes/Skills/x2.png" id="6_43w4t"]
+[ext_resource type="Script" uid="uid://boya7wdtn23ia" path="res://Scenes/hud_2.gd" id="1_f4yjp"]
+[ext_resource type="Theme" uid="uid://dkxpidgc0e706" path="res://Scenes/theme.tres" id="3_105a8"]
+[ext_resource type="Texture2D" uid="uid://5ovs8dti5uhw" path="res://Scenes/Skills/escudo.png" id="4_qs2ms"]
+[ext_resource type="Texture2D" uid="uid://dc2mqwl3tiukv" path="res://Scenes/Skills/veloz.png" id="5_rokm8"]
+[ext_resource type="Texture2D" uid="uid://c5f122o4aqv7y" path="res://Scenes/Skills/x2.png" id="6_6fa06"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_36asn"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1177319416]
-script = ExtResource("1_bjfho")
+script = ExtResource("1_f4yjp")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2137176547]
 offset_right = 183.0
 offset_bottom = 183.0
 offset_transform_enabled = true
-theme = ExtResource("1_fccik")
+theme = ExtResource("3_105a8")
 
 [node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1972074006]
 modulate = Color(0.7034928, 0.80623853, 0.97819656, 0.36078432)
 layout_mode = 2
-theme = ExtResource("1_fccik")
+theme = ExtResource("3_105a8")
 texture = SubResource("CanvasTexture_36asn")
 expand_mode = 2
 
@@ -29,7 +29,7 @@ layout_mode = 2
 
 [node name="Escudo" type="TextureRect" parent="MarginContainer/EscudoContainer" unique_id=1357107029]
 layout_mode = 2
-texture = ExtResource("4_36asn")
+texture = ExtResource("4_qs2ms")
 expand_mode = 4
 
 [node name="BallContainer" type="VBoxContainer" parent="MarginContainer" unique_id=834250353]
@@ -37,7 +37,7 @@ layout_mode = 2
 
 [node name="FastBall" type="TextureRect" parent="MarginContainer/BallContainer" unique_id=1172041228]
 layout_mode = 2
-texture = ExtResource("5_8jye8")
+texture = ExtResource("5_rokm8")
 expand_mode = 4
 
 [node name="DoubleContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1384735001]
@@ -45,7 +45,7 @@ layout_mode = 2
 
 [node name="DoubleBall" type="TextureRect" parent="MarginContainer/DoubleContainer" unique_id=96665877]
 layout_mode = 2
-texture = ExtResource("6_43w4t")
+texture = ExtResource("6_6fa06")
 expand_mode = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=769818566]

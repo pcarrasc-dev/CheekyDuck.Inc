@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://bmyrm88yjtt8n"]
 
+[ext_resource type="Script" uid="uid://4lyb2heyct8w" path="res://Scenes/Skills/fast_ball.gd" id="1_cki4p"]
+
 [node name="FastBall" type="Node3D" unique_id=652779885]
+script = ExtResource("1_cki4p")

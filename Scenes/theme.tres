@@ -2,9 +2,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xflx"]
 bg_color = Color(0, 0, 0, 0.501961)
+border_color = Color(0.36364907, 0.14621395, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duirp"]
-bg_color = Color(0, 0, 0, 0.0627451)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_clys6"]
 
@@ -12,11 +13,11 @@ bg_color = Color(0, 0, 0, 0.0627451)
 default_font_size = 32
 Darker/base_type = &"Panel"
 Darker/styles/panel = SubResource("StyleBoxFlat_3xflx")
-HBoxContainer/constants/separation = 32
-MarginContainer/constants/margin_bottom = 32
-MarginContainer/constants/margin_left = 32
-MarginContainer/constants/margin_right = 32
-MarginContainer/constants/margin_top = 32
+HBoxContainer/constants/separation = 20
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_duirp")
 Tight/base_type = &"MarginContainer"
 Tight/constants/margin_bottom = 16

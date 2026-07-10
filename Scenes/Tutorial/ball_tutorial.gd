@@ -3,10 +3,11 @@ class_name kinetic_ball_tutorial
 
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
-var last_player_obj: Player
+signal player_ball
 
-const MAX_SPEED: float = 24.0
+var MAX_SPEED: float = 24.0
 const SOFT_CLAMP_FACTOR: float = 0.15
 const HARD_CLAMP_THRESHOLD: float = 36.0
 const IMPACT_COOLDOWN: float = 0.1
@@ -16,6 +17,10 @@ const ESCAPE_IMPULSE: float = 1.5
 
 var _impact_cooldown: float = 0.0
 var _stuck_timer: float = 0.0
+
+func _ready() -> void:
+	set_particles(false)
+	pass
 
 func _physics_process(delta: float) -> void:
 
@@ -57,22 +62,22 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var collider := state.get_contact_collider_object(i)
 		var player := collider as Player
 		if not player:
-			var bar := collider as Bar
+			var bar := collider as Bar_tutorial
 			if bar:
 				player = _first_player_in_bar(bar)
 		if player:
-			last_player_obj = player
+			Debug.log(player)
+			player_ball.emit(player)
 			_impact_cooldown = IMPACT_COOLDOWN
 			break
 
 
-func _first_player_in_bar(bar: Bar) -> Player:
+func _first_player_in_bar(bar: Bar_tutorial) -> Player:
 	for child in bar.get_children():
 		var player := child as Player
 		if player:
 			return player
 	return null
-
-
-func get_player() -> StaticBody3D:
-	return last_player_obj
+	
+func set_particles(state: bool) -> void:
+	gpu_particles_3d.emitting = state

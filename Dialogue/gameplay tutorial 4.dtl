@@ -4,7 +4,7 @@ join "Normal Duck" rightmost [animation="Slide From Right" wait="true"]
 join "cheeky duck" leftmost [animation="Slide From Left" wait="true"]
 "cheeky duck": No.
 "Normal Duck": Tienes que hacer que la pelota le pegue para poder conseguir un poder.
-"Normal Duck": El poder sólo lo conseguirá el última jugador que haya tocado la pelota antes de golpear la caja.
+"Normal Duck": El poder sólo lo conseguirá el jugador que toque la pelota justo después de que ésta golpee la caja.
 "cheeky duck": Nunca va a conseguir pegarle a la pelota, mucho menos a la caja.
 "Normal Duck" (annoyed): Inténtalo.
 leave "Normal Duck" [animation="Slide To Right"]

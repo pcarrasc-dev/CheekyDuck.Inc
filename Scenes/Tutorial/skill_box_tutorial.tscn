@@ -1,17 +1,12 @@
-[gd_scene format=3 uid="uid://vifgj1hxaj7f"]
+[gd_scene format=3 uid="uid://bqn6bx3cbbcuo"]
 
 [ext_resource type="Script" uid="uid://cx5exsy3cuhiq" path="res://Scenes/Tutorial/skill_box_tutorial.gd" id="1_8ud76"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Scenes/Objects/icon.svg" id="2_8soyx"]
+[ext_resource type="PackedScene" uid="uid://b3p6c2g67i63t" path="res://Scenes/Skills/Ketchup_Pack.glb" id="2_8soyx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8ch3"]
+size = Vector3(1, 1, 2.55188)
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cm6sg"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_texture = ExtResource("2_8soyx")
-
-[sub_resource type="BoxMesh" id="BoxMesh_dxwca"]
-material = SubResource("ORMMaterial3D_cm6sg")
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_fvtde"]
 
 [sub_resource type="Animation" id="Animation_cm6sg"]
 length = 0.001
@@ -50,21 +45,24 @@ _data = {
 }
 
 [node name="SkillBoxArea" type="Area3D" unique_id=2117335705]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("1_8ud76")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339980354]
-transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.6427874, 0.7660441, 0, -0.7660441, 0.6427874, 0, 0, 0, 0.99999857, 0, 0, -0.014709524)
 shape = SubResource("BoxShape3D_s8ch3")
 
 [node name="SkillBoxMesh" type="MeshInstance3D" parent="." unique_id=687758417]
 physics_interpolation_mode = 2
 transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
-mesh = SubResource("BoxMesh_dxwca")
+mesh = SubResource("PlaceholderMesh_fvtde")
 skeleton = NodePath("")
+
+[node name="Ketchup_Pack2" parent="SkillBoxMesh" unique_id=1980362021 instance=ExtResource("2_8soyx")]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
 
 [node name="SkillGet" type="AnimationPlayer" parent="." unique_id=86888162]
 libraries/ = SubResource("AnimationLibrary_cm6sg")

@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dme8m0oafbgnr" path="res://Scenes/Tutorial/escena_tutorial.gd" id="1_fp5xr"]
 [ext_resource type="PackedScene" uid="uid://by5pdtqtfqob0" path="res://Scenes/Tutorial/Field_V2_tutorial.tscn" id="2_fp5xr"]
-[ext_resource type="Script" uid="uid://dlouce54xbq8s" path="res://Scenes/skill_timer.gd" id="3_chj0k"]
-[ext_resource type="PackedScene" uid="uid://v2vf14vxf0m" path="res://Scenes/Tutorial/hud_tutorial.tscn" id="4_7p30f"]
+[ext_resource type="PackedScene" uid="uid://bckkgvyvxtyd2" path="res://Scenes/Tutorial/hud_tutorial.tscn" id="4_7p30f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7ybl"]
 size = Vector3(1.4672318, 2.5521865, 6.420129)
@@ -32,10 +31,6 @@ light_energy = 0.525
 
 [node name="SkillApp" type="Node3D" parent="Skills" unique_id=111137199]
 
-[node name="SkillTimer" type="Timer" parent="Skills" unique_id=2103678800]
-wait_time = 10.0
-script = ExtResource("3_chj0k")
-
 [node name="ShieldsSpawn" type="Node3D" parent="Skills" unique_id=2069301348]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
@@ -59,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364867, 0, -0.17364793, 0.9848105, -28.619608, 1.3964672, -0.41776228)
 shape = SubResource("BoxShape3D_i7ybl")
 
 [node name="Balls" type="Node3D" parent="." unique_id=2045065630]
