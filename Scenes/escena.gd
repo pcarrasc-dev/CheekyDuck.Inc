@@ -205,7 +205,7 @@ func _end_match(final_a: int, final_b: int) -> void:
 		winner = "Empate"
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	hud.show_end_screen(winner, final_a, final_b)
-	hud_2.show_end_screen(winner, final_a, final_b)
+	hud_2.show_end_screen(winner, final_b,  final_a)
 
 
 # ── Barras / spawn ────────────────────────────────────────────────────────────
@@ -340,12 +340,12 @@ func _skill_hud_update(bar_authority: int, skill_index: int) -> void:
 		_: return
 	
 	if bar_authority == Game.players[0].id:
-		if skills_array[0].instantiate() is SkillBox:
+		if skills_array[0].instantiate() is not SkillBox:
 			return
 		skills_array[0] = scene
 		hud.update_skill(true, scene)
 	elif bar_authority == Game.players[1].id:
-		if skills_array[1].instantiate() is SkillBox:
+		if skills_array[1].instantiate() is not SkillBox:
 			return
 		skills_array[1] = scene
 		hud_2.update_skill(true, scene)
