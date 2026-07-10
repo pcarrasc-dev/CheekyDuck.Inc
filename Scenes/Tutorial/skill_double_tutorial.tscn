@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwrf2t8hyl2av"]
+
+[ext_resource type="Script" uid="uid://b78ey3r7oregk" path="res://Scenes/Tutorial/skill_double_tutorial.gd" id="1_i1bva"]
+
+[node name="SkillDouble" type="Node3D" unique_id=1240160456]
+script = ExtResource("1_i1bva")
+
+[node name="MultiplayerSpawner" type="Node3D" parent="." unique_id=1352526024]
+
+[node name="Timer" type="Timer" parent="." unique_id=1774534673]

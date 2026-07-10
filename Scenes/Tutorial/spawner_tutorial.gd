@@ -1,6 +1,8 @@
 class_name Spawner_Tutorial
 extends Marker3D
 
+signal skill_received
+
 @onready var multiplayer_spawner: Node3D = $MultiplayerSpawner
 @onready var timer: Timer = $Timer
 @export var skill_scene: PackedScene = preload("res://Scenes/Tutorial/skill_box_tutorial.tscn")
@@ -44,9 +46,11 @@ func try_spawn() -> void:
 
 func spawn(pos: Vector3) -> void:
 	var skill_inst: SkillBox_Tutorial = skill_scene.instantiate()
+	skill_inst.global_scale(Vector3.ONE * 1.5)
 	skill_inst.global_position = pos
 	multiplayer_spawner.add_child(skill_inst, true)
 	skill_count += 1
+	skill_inst.skill.connect(func (scene: PackedScene) -> void: skill_received.emit(scene))
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
 
 func _on_timeout() -> void:

@@ -294,12 +294,12 @@ func _on_skill_received(scene: PackedScene, bar: Bar) -> void:
 	Debug.log("on_skill_received")
 	Debug.log(bar.get_multiplayer_authority())
 	if bar.get_multiplayer_authority() == Game.players[0].id:
-		if skills_array[0].instantiate() is SkillBox:
+		if skills_array[0].instantiate() is not SkillBox:
 			return
 		skills_array[0] = scene
 		hud.update_skill(true, scene)
 	elif bar.get_multiplayer_authority() == Game.players[1].id:
-		if skills_array[1].instantiate() is SkillBox:
+		if skills_array[1].instantiate() is not SkillBox:
 			return
 		skills_array[1] = scene
 		hud_2.update_skill(true, scene)

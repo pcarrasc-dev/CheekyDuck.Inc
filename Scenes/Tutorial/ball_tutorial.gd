@@ -4,9 +4,9 @@ class_name kinetic_ball_tutorial
 @onready var ball_shape: CollisionShape3D = $ball_shape
 @onready var ball_area: Area3D = $ball_area
 
-var last_player_obj: Player
+signal player_ball
 
-const MAX_SPEED: float = 24.0
+var MAX_SPEED: float = 24.0
 const SOFT_CLAMP_FACTOR: float = 0.15
 const HARD_CLAMP_THRESHOLD: float = 36.0
 const IMPACT_COOLDOWN: float = 0.1
@@ -57,22 +57,19 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var collider := state.get_contact_collider_object(i)
 		var player := collider as Player
 		if not player:
-			var bar := collider as Bar
+			var bar := collider as Bar_tutorial
 			if bar:
 				player = _first_player_in_bar(bar)
 		if player:
-			last_player_obj = player
+			Debug.log(player)
+			player_ball.emit(player)
 			_impact_cooldown = IMPACT_COOLDOWN
 			break
 
 
-func _first_player_in_bar(bar: Bar) -> Player:
+func _first_player_in_bar(bar: Bar_tutorial) -> Player:
 	for child in bar.get_children():
 		var player := child as Player
 		if player:
 			return player
 	return null
-
-
-func get_player() -> StaticBody3D:
-	return last_player_obj

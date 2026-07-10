@@ -34,15 +34,14 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	give_ball.rpc(body)
 	
-@rpc("call_local")
+@rpc("any_peer")
 func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
-		ball.player_ball.connect(_player_received)
+		ball.player_ball.connect(_player_connect)
 		Debug.log(ball)
 
-@rpc("call_local")
 func _player_connect(player: Player) -> void:
 	var bar: Bar = player.get_parent()
 	if bar:
@@ -51,6 +50,3 @@ func _player_connect(player: Player) -> void:
 		await skill_get.animation_finished
 		queue_free()
 	pass
-
-func _player_received(player: Player) -> void:
-	_player_connect.rpc(player)

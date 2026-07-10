@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://vof4iv4n55sq" path="res://Scenes/hud.gd" id="1_bjfho"]
 [ext_resource type="Theme" uid="uid://dkxpidgc0e706" path="res://Scenes/theme.tres" id="1_fccik"]
-[ext_resource type="PackedScene" uid="uid://v1a05naolsn3" path="res://Scenes/player_skill.tscn" id="2_fccik"]
 [ext_resource type="Texture2D" uid="uid://5ovs8dti5uhw" path="res://Scenes/Skills/escudo.png" id="4_36asn"]
 [ext_resource type="Texture2D" uid="uid://dc2mqwl3tiukv" path="res://Scenes/Skills/veloz.png" id="5_8jye8"]
 [ext_resource type="Texture2D" uid="uid://c5f122o4aqv7y" path="res://Scenes/Skills/x2.png" id="6_43w4t"]
@@ -11,7 +10,6 @@
 
 [node name="HUD" type="CanvasLayer" unique_id=1177319416]
 script = ExtResource("1_bjfho")
-player_skills_scene = ExtResource("2_fccik")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2137176547]
 offset_right = 183.0
