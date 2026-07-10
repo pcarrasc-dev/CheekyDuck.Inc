@@ -19,6 +19,7 @@ extends Node3D
 var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 @onready var shield_spawn_1: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn1
 @onready var shield_spawn_2: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn2
+@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
 var skill_box = preload("uid://du651h2fd1qqu")
 var shield_scene: PackedScene = preload("res://Scenes/Skills/shield_skill.tscn")
