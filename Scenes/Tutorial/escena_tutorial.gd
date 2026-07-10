@@ -19,7 +19,7 @@ extends Node3D
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
-var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
+var ball_spawn: Vector3 = Vector3(-0.158, 0.2, 0.145)
 var dialogue_3_4: bool = false
 var dialogue_5: bool = false
 var tutorial_finished: bool = false
@@ -142,7 +142,7 @@ func ball_reset(body: Node3D) -> void:
 	if ball:
 		ball.linear_velocity = Vector3.ZERO
 		ball.angular_velocity = Vector3.ZERO
-		ball.global_position = Vector3(-0.158, 7.181, 0.145)
+		ball.global_position = ball_spawn
 		start_dialogue_3_4()
 
 func move_ball(body: Node3D) -> void:

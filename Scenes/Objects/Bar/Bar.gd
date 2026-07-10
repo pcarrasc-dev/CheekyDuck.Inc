@@ -52,6 +52,15 @@ func _mirror_collision(player: Player, shape_name: String) -> void:
 	src.disabled = true
 
 
+func refresh_collisions() -> void:
+	for child in get_children():
+		var player := child as Player
+		if not player:
+			continue
+		_mirror_collision(player, "BodyCollision")
+		_mirror_collision(player, "FeetCollision")
+
+
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
