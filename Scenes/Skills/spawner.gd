@@ -3,6 +3,7 @@ extends Marker3D
 
 signal skill_received
 
+@onready var multiplayer_spawner: MultiplayerSpawner = $MultiplayerSpawner
 @onready var timer: Timer = $Timer
 @export var skill_scene: PackedScene = preload("res://Scenes/Skills/skill_box.tscn")
 @export var amount: int = 1
@@ -21,24 +22,44 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+@rpc("call_local")
 func try_spawn() -> void:
+	if not multiplayer.is_server():
+		return
 	if skill_count >= amount:
 		return
-	spawn.rpc(global_position)
+	var check_radius: float = SkillBox.radius
+	
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var params: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+	params.collide_with_areas = true
+	params.collide_with_bodies = false
+	params.collision_mask = 4
+	var t: Transform3D = Transform3D.IDENTITY
+	t.origin = global_position
+	params.transform = t
+	var square_shape: BoxShape3D = BoxShape3D.new()
+	square_shape.size = Vector3.ONE * check_radius
+	params.shape = square_shape
+	var results: Array[Dictionary] = space_state.intersect_shape(params)
+	for result: Dictionary in results:
+		Debug.log("spawner")
+		Debug.log(result.collider.name)
+	if results.size() > 0:
+		return
+	spawn(global_position)
 
-@rpc("call_local", "authority")
 func spawn(pos: Vector3) -> void:
 	var skill_inst: SkillBox = skill_scene.instantiate()
-	add_child(skill_inst)
-	skill_inst.global_scale(Vector3.ONE * 1.5)
 	skill_inst.global_position = pos
 	Debug.log("spawn")
 	Debug.log(skill_inst.global_position)
+	multiplayer_spawner.add_child(skill_inst, true)
 	skill_count += 1
 	skill_inst.skill.connect(func (scene: PackedScene, bar: Bar) -> void: skill_received.emit(scene, bar))
 	skill_inst.tree_exited.connect(func() -> void: skill_count -= 1)
 
 func _on_timeout() -> void:
-	try_spawn()
+	try_spawn.rpc()
 	pass
