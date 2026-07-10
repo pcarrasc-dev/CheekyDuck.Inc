@@ -25,8 +25,11 @@
 [ext_resource type="PackedScene" uid="uid://bspewck47d1xu" path="res://Scenes/Objects/Bar/bar_8.tscn" id="23_elkuu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_suelo"]
-friction = 0.2
-bounce = 0.1
+friction = 0.02
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_paredes"]
+bounce = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5w8u"]
 albedo_color = Color(0.92389965, 0.92389965, 0.92389965, 1)
@@ -112,6 +115,7 @@ physics_material_override = SubResource("PhysicsMaterial_suelo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07241158, 0)
 size = Vector3(1.45, 0.2, 1.05)
 material = SubResource("StandardMaterial3D_cw45l")
+physics_material_override = SubResource("PhysicsMaterial_paredes")
 
 [node name="Interior" type="CSGBox3D" parent="CSGCombiner3D/Paredes" unique_id=675702972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048438847, 0)

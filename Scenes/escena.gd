@@ -21,6 +21,9 @@ var spawner_array: Array[Spawner] = [spawner, spawner_2, spawner_3, spawner_4]
 @onready var shield_spawn_2: Marker3D = $Skills/ShieldsSpawn/ShieldSpawn2
 
 var skill_box = preload("uid://du651h2fd1qqu")
+var shield_scene: PackedScene = preload("res://Scenes/Skills/shield_skill.tscn")
+var fast_ball_scene: PackedScene = preload("res://Scenes/Skills/fast_ball.tscn")
+var double_ball_scene: PackedScene = preload("res://Scenes/Skills/skill_double.tscn")
 
 var skills_array: Array[PackedScene] = [skill_box, skill_box]
 
@@ -33,7 +36,10 @@ var _last_minute_triggered: bool = false
 var score_a: int = 0   # equipo del jugador 0 (barras 1-4)
 var score_b: int = 0   # equipo del jugador 1 (barras 5-8)
 var match_running: bool = false
-var ball_spawn: Vector3 = Vector3(-0.158, 7.181, 0.145)
+var ball_spawn: Vector3 = Vector3(-0.158, 0.2, 0.145)
+
+var _goal_processed: Dictionary = {}
+var _goal_poll_tick: int = 0
 
 # ── Spawn / formaciones ───────────────────────────────────────────────────────
 @export var player_slot_spread: float = 0.8
@@ -105,10 +111,11 @@ func _process(delta: float) -> void:
 		hud.update_timer(match_timer.time_left)
 		hud_2.update_timer(match_timer.time_left)
 		_timer_sync += delta
-		if _timer_sync >= 1.0:  # sincroniza cada 1 segundo
+		if _timer_sync >= 1.0:
 			_timer_sync = 0.0
 			_sync_timer.rpc(match_timer.time_left)
 		_check_last_minute_music(match_timer.time_left)
+		_goal_poll()
 	
 		
 		
@@ -126,6 +133,16 @@ func _check_last_minute_music(time_left: float) -> void:
 	if time_left <= 60.0:
 		_last_minute_triggered = true
 		BackgroundMusic.trigger_last_minute()
+
+func _goal_poll() -> void:
+	if not match_running:
+		return
+	for body in goal_area_a.get_overlapping_bodies():
+		if body is kinetic_ball and not _goal_processed.has(body.get_instance_id()):
+			_on_goal(body, "A")
+	for body in goal_area_b.get_overlapping_bodies():
+		if body is kinetic_ball and not _goal_processed.has(body.get_instance_id()):
+			_on_goal(body, "B")
 		
 # ── Gol ───────────────────────────────────────────────────────────────────────
 
@@ -133,11 +150,14 @@ func _check_last_minute_music(time_left: float) -> void:
 func _on_goal(body: Node3D, side: String) -> void:
 	if not multiplayer.is_server():
 		return
-	# Sólo la pelota marca gol
 	if not (body is kinetic_ball):
 		return
 	if not match_running:
 		return
+	var id := body.get_instance_id()
+	if _goal_processed.has(id):
+		return
+	_goal_processed[id] = true
 
 	if side == "A":
 		score_b += 1
@@ -146,7 +166,8 @@ func _on_goal(body: Node3D, side: String) -> void:
 
 	Debug.log("¡GOL! Score A:%d  B:%d" % [score_a, score_b])
 	_sync_score.rpc(score_a, score_b)
-	ball_reset.rpc(body)
+	var concede_dir: float = 1.0 if side == "A" else -1.0
+	ball_reset.rpc(body, concede_dir)
 
 	if score_a >= GOALS_TO_WIN or score_b >= GOALS_TO_WIN:
 		_end_match.rpc(score_a, score_b)
@@ -240,14 +261,15 @@ func _spawn_in_bar(bar: StaticBody3D, count: int, scene: PackedScene, bar_field_
 		bar.add_child(instance)
 		instance.position = pos
 
-func ball_reset(body: Node3D) -> void:
+func ball_reset(body: Node3D, dir: float = 0.0) -> void:
 	var ball:kinetic_ball = body as kinetic_ball
-	#Debug.log("body exited")
 	if ball:
-		#Debug.log("ball exited")
+		_goal_processed.erase(ball.get_instance_id())
 		ball.linear_velocity = Vector3.ZERO
 		ball.angular_velocity = Vector3.ZERO
 		ball.global_position = ball_spawn
+		if dir != 0.0:
+			ball.linear_velocity = Vector3(dir * 6.0, 0.0, 0.0)
 
 # ── skills ────────────────────────────────────────────────────────────
 
@@ -296,14 +318,34 @@ func _fast_ball(fast_ball: Fast_Ball, num: int) -> void:
 
 func _on_skill_received(scene: PackedScene, bar: Bar) -> void:
 	Debug.log("on_skill_received")
-	Debug.log(bar.get_multiplayer_authority())
-	if bar.get_multiplayer_authority() == Game.players[0].id:
-		if skills_array[0].instantiate() is not SkillBox:
+	var idx := _skill_index(scene)
+	if idx < 0:
+		return
+	_skill_hud_update.rpc(bar.get_multiplayer_authority(), idx)
+
+func _skill_index(scene: PackedScene) -> int:
+	var inst := scene.instantiate()
+	if inst is Shield: return 0
+	if inst is Fast_Ball: return 1
+	if inst is Double_Ball: return 2
+	return -1
+
+@rpc("authority", "reliable", "call_local")
+func _skill_hud_update(bar_authority: int, skill_index: int) -> void:
+	var scene: PackedScene
+	match skill_index:
+		0: scene = shield_scene
+		1: scene = fast_ball_scene
+		2: scene = double_ball_scene
+		_: return
+	
+	if bar_authority == Game.players[0].id:
+		if skills_array[0].instantiate() is SkillBox:
 			return
 		skills_array[0] = scene
 		hud.update_skill(true, scene)
-	elif bar.get_multiplayer_authority() == Game.players[1].id:
-		if skills_array[1].instantiate() is not SkillBox:
+	elif bar_authority == Game.players[1].id:
+		if skills_array[1].instantiate() is SkillBox:
 			return
 		skills_array[1] = scene
 		hud_2.update_skill(true, scene)

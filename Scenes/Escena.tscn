@@ -133,7 +133,6 @@ debug_color = Color(1, 0.26650617, 0.6696673, 1)
 
 [node name="GoalAreaB" type="Area3D" parent="." unique_id=1875410742]
 transform = Transform3D(1, 0, 0, 0, 0.98855454, -0.15086399, 0, 0.15086399, 0.98855454, 13.8, 1, 0)
-collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalAreaB" unique_id=2027457370]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.98480624, 0.17364866, 0, -0.17364793, 0.9848104, -28.311703, 1.3964672, -0.41776228)
@@ -141,15 +140,11 @@ shape = SubResource("BoxShape3D_i7ybl")
 debug_color = Color(1, 0.26650617, 0.6696673, 1)
 
 [node name="Balls" type="Node3D" parent="." unique_id=2045065630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 7.1808796, 0.14496231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1581068, 0.2, 0.14496231)
 
 [node name="Ball" parent="Balls" unique_id=312642086 instance=ExtResource("5_kfaxj")]
 unique_name_in_owner = true
-mass = 0.2
-gravity_scale = 1.0
 max_contacts_reported = 2000
-linear_damp = 0.0
-angular_damp = 0.0
 
 [node name="PlayArea" type="Area3D" parent="." unique_id=49329078]
 

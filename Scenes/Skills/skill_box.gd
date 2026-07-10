@@ -39,14 +39,17 @@ func give_ball(body: Node3D) -> void:
 	Debug.log(body)
 	var ball: kinetic_ball = body as kinetic_ball
 	if ball:
-		ball.player_ball.connect(_player_connect)
+		ball.player_ball.connect(_player_received)
 		Debug.log(ball)
 
-func _player_connect(player: Player) -> void:
-	var bar: Bar = player.get_parent()
+func _player_received(player: Player) -> void:
+	var bar: Bar = player.get_parent() if player else null
 	if bar:
 		skill.emit(available_skillset[rng.rand_weighted(weights)], bar)
-		skill_get.play("getSkill")
-		await skill_get.animation_finished
-		queue_free()
-	pass
+	_destroy_box.rpc()
+
+@rpc("call_local")
+func _destroy_box() -> void:
+	skill_get.play("getSkill")
+	await skill_get.animation_finished
+	queue_free()

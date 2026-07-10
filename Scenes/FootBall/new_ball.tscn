@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://1h0kw4po8psw" path="res://Scenes/FootBall/BallVisual.gd" id="3_s0xqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3f3d"]
-friction = 0.01
+friction = 0.3
+bounce = 0.05
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d3f3d"]
 properties/0/path = NodePath(".:position")
@@ -14,6 +15,12 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath(".:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:angular_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11hlg"]
 radius = 0.97
@@ -42,13 +49,14 @@ material = SubResource("StandardMaterial3D_3gngh")
 shape = 0
 
 [node name="ball" type="RigidBody3D" unique_id=1159331189]
-mass = 0.5
+mass = 2.3
 physics_material_override = SubResource("PhysicsMaterial_d3f3d")
-gravity_scale = 2.0
+gravity_scale = 1.8
 contact_monitor = true
 max_contacts_reported = 8
-linear_damp = 0.06
-angular_damp = 0.15
+linear_damp = 0.01
+angular_damp = 0.1
+continuous_cd = true
 script = ExtResource("1_d3f3d")
 
 [node name="BallVisual" type="Node3D" parent="." unique_id=698737982]

@@ -25,7 +25,7 @@ Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
 Lobby="*res://autoloads/lobby.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
-BackgroundMusic="*uid://dc4dw6e7kuj2j"
+BackgroundMusic="*uid://cg5483qg0ggh2"
 
 [debug]
 
@@ -165,6 +165,9 @@ exit_tutorial={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
+3d/physics_ticks_per_second=120
 
 [rendering]
 

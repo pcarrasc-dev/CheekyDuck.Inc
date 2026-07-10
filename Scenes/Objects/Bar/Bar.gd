@@ -2,8 +2,8 @@ class_name Bar
 extends RigidBody3D
 
 @export var rotation_sensibility: float = 0.006
-@export var traslation_sensibility: float = 0.0025
-@export var traslation_limit: float = 0.15
+@export var traslation_sensibility: float = 0.002
+@export var traslation_limit: float = 0.18
 @export var team_bar_index: int = 1
 
 var hud: CanvasLayer = preload("res://Scenes/hud.tscn").instantiate()
@@ -26,8 +26,8 @@ func _ready() -> void:
 	collision_mask = 255
 
 	var mat := PhysicsMaterial.new()
-	mat.friction = 0.2
-	mat.bounce = 0.3
+	mat.friction = 0.3
+	mat.bounce = 0.1
 	physics_material_override = mat
 
 	for child in get_children():
@@ -76,12 +76,16 @@ func _input(event: InputEvent) -> void:
 
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
 	if mouse_event:
+		var raw: float = mouse_event.relative.y
+		var abs_raw: float = abs(raw)
+		var curved: float = sign(raw) * pow(abs_raw, 1.2) * 0.0005 * 0.47
+
 		if Game.get_current_player().id == Game.players[0].id:
 			_target_rotation = -mouse_event.relative.x * rotation_sensibility
-			_target_translation = -mouse_event.relative.y * traslation_sensibility
+			_target_translation = curved
 		elif Game.get_current_player().id == Game.players[1].id:
 			_target_rotation = mouse_event.relative.x * rotation_sensibility
-			_target_translation = -mouse_event.relative.y * traslation_sensibility
+			_target_translation = -curved
 
 
 func _unhandled_input(event: InputEvent) -> void:
